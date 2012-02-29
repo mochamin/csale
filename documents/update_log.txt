@@ -1,0 +1,121 @@
+14-02-2012
+============================================
+- tambahkan tabel jobdes
+- tambahkan tabel karyawan
+- report laba-rugi
+- report neraca
+- report general ledger
+
+
+
+tgl: 09-02-2012
+=============================================
+tambahkan tabel2 untuk accounting:
+
+- account_group
+- chart_of_account
+- general_ledger
+- ref_transaction_type
+
+
+
+28-01-2012
+===============
+tambahkan tabel:quotation
+
+
+tabel:beli
+- tambahkan field: be_islangsung tinyint(1) default:0
+
+
+25-01-2012
+==================================
+admin khusus untuk hapus transaksi pembelian/penjualan
+
+
+
+21/01/2012
+
+===========================
+- tambahkan tabel neraca
+
+=============================================
+- tambahkan tabel "akun"
+- tambahkan tabel "klasifikasi_ac"
+
+
+
+update: 27/12/2011
+
+tabel: beli
+===============
+field : be_due (date)
+
+
+02/01/2012
+
+tabel:beli
+=============
+- change field type be_supplier_id ==> integer
+- change field type be_pic ==> integer;
+- add field ===> be_post tinyint(1)
+
+tabel: belidetail
+==================
+- change bd_kd_barang type ===> integer;
+
+
+tabel: supplier_pic
+======================
+- change sp_supplier ===> integer;
+
+tabel:belidetail
+=================================
+- change bd_up     ===> integer;
+- change bd_sendto ===> integer;
+
+
+tabel:gudang
+==========================
+tambahkan tabel gudang
+
+
+tabel:inventory
+============================
+tambahkan tabel inventory
+
+tabel:beli
+===========
+- add field: be_Cash varchar(10)
+
+tabel:jual & jualdetail
+=========================
+tambahkan 2 tabel
+
+
+tabel:delivery
+=========================
+tambahkan tabel
+
+
+18/01/2012
+
+tabel:inventory_check
+======================
+tambahkan tabel
+
+
+tabel:inventory_masuk
+======================
+tambahkan tabel
+
+
+tabel:inventory_keluar
+=======================
+tambahkan tabel
+
+
+=======================================
+19/01/2011
+========================================
+- buat tabel jurnal umum
