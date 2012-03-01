@@ -151,7 +151,6 @@ type
     deliverydetaildd_qty: TSmallintField;
     deliverydo_tgl: TDateField;
     deliverydo_pic: TStringField;
-    deliverydo_invoice: TStringField;
     deliverydo_kode: TStringField;
     deliverydo_cust_id: TIntegerField;
     deliverydo_cust_pic: TIntegerField;
@@ -678,6 +677,12 @@ type
     IntegerField52: TIntegerField;
     IntegerField53: TIntegerField;
     deliveryviewcu_nama: TStringField;
+    customeradd: TZQuery;
+    deliverydo_ju_trans: TStringField;
+    jualflag: TZQuery;
+    deliverydo_cust_kode: TStringField;
+    jualju_cust_kode: TStringField;
+    invoiceju_barang_sent: TSmallintField;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

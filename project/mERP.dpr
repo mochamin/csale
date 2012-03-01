@@ -77,7 +77,8 @@ uses
   salaryrptun in '..\units\salaryrptun.pas' {salaryrptfrm},
   jurnalumumun in '..\units\jurnalumumun.pas' {jurnalumumfrm},
   akunviewun in '..\units\akunviewun.pas' {akunviewfrm},
-  dolistun in '..\units\dolistun.pas' {dolistfrm};
+  dolistun in '..\units\dolistun.pas' {dolistfrm},
+  cobagit in '..\units\cobagit.pas';
 
 {$R *.res}
 

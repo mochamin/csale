@@ -1,8 +1,9 @@
 inherited custpicaddfrm: Tcustpicaddfrm
-  Left = 829
-  Top = 211
+  Left = 569
+  Top = 199
   ClientHeight = 237
   OldCreateOrder = True
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -17,7 +18,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     Align = alClient
     object Label2: TLabel
       Left = 21
-      Top = 26
+      Top = 41
       Width = 38
       Height = 16
       Caption = 'Nama:'
@@ -30,7 +31,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label3: TLabel
       Left = 21
-      Top = 50
+      Top = 65
       Width = 45
       Height = 16
       Caption = 'Alamat:'
@@ -43,7 +44,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label4: TLabel
       Left = 21
-      Top = 74
+      Top = 89
       Width = 42
       Height = 16
       Caption = 'No HP:'
@@ -56,7 +57,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label5: TLabel
       Left = 21
-      Top = 98
+      Top = 113
       Width = 37
       Height = 16
       Caption = 'Email:'
@@ -67,9 +68,22 @@ inherited custpicaddfrm: Tcustpicaddfrm
       Font.Style = []
       ParentFont = False
     end
+    object Label6: TLabel
+      Left = 20
+      Top = 17
+      Width = 47
+      Height = 16
+      Caption = 'Cust ID:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object namadepan: TDBEdit
       Left = 141
-      Top = 24
+      Top = 39
       Width = 345
       Height = 22
       Ctl3D = False
@@ -86,7 +100,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit1: TDBEdit
       Left = 141
-      Top = 48
+      Top = 63
       Width = 345
       Height = 22
       Ctl3D = False
@@ -103,7 +117,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit2: TDBEdit
       Left = 141
-      Top = 72
+      Top = 87
       Width = 345
       Height = 22
       Ctl3D = False
@@ -120,7 +134,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit3: TDBEdit
       Left = 141
-      Top = 96
+      Top = 111
       Width = 345
       Height = 22
       Ctl3D = False
@@ -135,13 +149,36 @@ inherited custpicaddfrm: Tcustpicaddfrm
       ParentFont = False
       TabOrder = 3
     end
+    object DBEdit4: TDBEdit
+      Left = 141
+      Top = 15
+      Width = 345
+      Height = 22
+      Ctl3D = False
+      DataField = 'cp_nama'
+      DataSource = ds.custpic
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 4
+    end
   end
   inherited Panel3: TPanel
     Top = 197
+    inherited SpeedButton1: TSpeedButton
+      Height = 38
+    end
     inherited SpeedButton3: TSpeedButton
+      Height = 38
       OnClick = SpeedButton3Click
     end
     inherited SpeedButton4: TSpeedButton
+      Height = 38
       OnClick = SpeedButton4Click
     end
   end

@@ -245,7 +245,7 @@ object deliveryfrm: Tdeliveryfrm
       Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = []
-      KeyField = 'cu_id'
+      KeyField = 'cu_kode'
       ListField = 'cu_nama'
       ListSource = ds.customer
       ParentCtl3D = False
@@ -290,13 +290,13 @@ object deliveryfrm: Tdeliveryfrm
       ParentFont = False
       TabOrder = 4
     end
-    object DBEdit1: TDBEdit
+    object notrans: TDBEdit
       Left = 101
       Top = 56
       Width = 316
       Height = 22
       Ctl3D = False
-      DataField = 'do_invoice'
+      DataField = 'do_ju_trans'
       DataSource = ds.delivery
       Enabled = False
       Font.Charset = ANSI_CHARSET
@@ -307,7 +307,7 @@ object deliveryfrm: Tdeliveryfrm
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 1
-      OnKeyDown = DBEdit1KeyDown
+      OnKeyDown = notransKeyDown
     end
   end
   object Panel3: TPanel
@@ -554,50 +554,5 @@ object deliveryfrm: Tdeliveryfrm
         Title.Caption = 'Qty'
         Visible = True
       end>
-  end
-  object rddeliver: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.delivery
-    Left = 656
-    Top = 69
-  end
-  object rpDeliver: TRvProject
-    Engine = rsdeliver
-    Left = 616
-    Top = 69
-  end
-  object rsdeliver: TRvSystem
-    TitleSetup = 'Output Options'
-    TitleStatus = 'Report Status'
-    TitlePreview = 'Report Preview'
-    SystemSetups = [ssAllowCopies, ssAllowCollate, ssAllowDuplex, ssAllowDestPreview, ssAllowDestPrinter, ssAllowDestFile, ssAllowPrinterSetup, ssAllowPreviewSetup]
-    SystemFiler.StatusFormat = 'Generating page %p'
-    SystemPreview.FormState = wsMaximized
-    SystemPreview.ZoomFactor = 100.000000000000000000
-    SystemPrinter.ScaleX = 100.000000000000000000
-    SystemPrinter.ScaleY = 100.000000000000000000
-    SystemPrinter.StatusFormat = 'Printing page %p'
-    SystemPrinter.Title = 'ReportPrinter Report'
-    SystemPrinter.UnitsFactor = 1.000000000000000000
-    Left = 616
-    Top = 101
-  end
-  object rddeliverydetail: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.deliverydetail
-    Left = 688
-    Top = 69
-  end
-  object rdcustdeliver: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.customer
-    Left = 656
-    Top = 101
-  end
-  object rdcustpicdeliver: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.custpic
-    Left = 688
-    Top = 101
   end
 end

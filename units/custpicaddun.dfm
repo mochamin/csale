@@ -1,8 +1,9 @@
 inherited custpicaddfrm: Tcustpicaddfrm
   Left = 569
   Top = 199
-  ClientHeight = 237
+  ClientHeight = 216
   OldCreateOrder = True
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -13,11 +14,11 @@ inherited custpicaddfrm: Tcustpicaddfrm
   end
   inherited Panel2: TPanel
     Width = 508
-    Height = 144
+    Height = 123
     Align = alClient
     object Label2: TLabel
       Left = 21
-      Top = 26
+      Top = 16
       Width = 38
       Height = 16
       Caption = 'Nama:'
@@ -30,7 +31,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label3: TLabel
       Left = 21
-      Top = 50
+      Top = 40
       Width = 45
       Height = 16
       Caption = 'Alamat:'
@@ -43,7 +44,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label4: TLabel
       Left = 21
-      Top = 74
+      Top = 64
       Width = 42
       Height = 16
       Caption = 'No HP:'
@@ -56,7 +57,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object Label5: TLabel
       Left = 21
-      Top = 98
+      Top = 88
       Width = 37
       Height = 16
       Caption = 'Email:'
@@ -69,7 +70,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object namadepan: TDBEdit
       Left = 141
-      Top = 24
+      Top = 14
       Width = 345
       Height = 22
       Ctl3D = False
@@ -86,7 +87,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit1: TDBEdit
       Left = 141
-      Top = 48
+      Top = 38
       Width = 345
       Height = 22
       Ctl3D = False
@@ -103,7 +104,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit2: TDBEdit
       Left = 141
-      Top = 72
+      Top = 62
       Width = 345
       Height = 22
       Ctl3D = False
@@ -120,7 +121,7 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
     object DBEdit3: TDBEdit
       Left = 141
-      Top = 96
+      Top = 86
       Width = 345
       Height = 22
       Ctl3D = False
@@ -137,11 +138,16 @@ inherited custpicaddfrm: Tcustpicaddfrm
     end
   end
   inherited Panel3: TPanel
-    Top = 197
+    Top = 176
+    inherited SpeedButton1: TSpeedButton
+      Height = 38
+    end
     inherited SpeedButton3: TSpeedButton
+      Height = 38
       OnClick = SpeedButton3Click
     end
     inherited SpeedButton4: TSpeedButton
+      Height = 38
       OnClick = SpeedButton4Click
     end
   end

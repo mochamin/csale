@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 425
-  Top = 48
+  Left = 553
+  Top = 137
   Height = 649
   Width = 850
   object conerp: TZConnection
@@ -171,7 +171,6 @@ object dm: Tdm
   object customer: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'SELECT * FROM customer  ORDER BY cu_id desc ')
     Params = <>
@@ -282,7 +281,6 @@ object dm: Tdm
   end
   object custpic: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'SELECT * FROM custpic order by cp_id desc ')
     Params = <>
@@ -417,6 +415,10 @@ object dm: Tdm
     object jualju_ppn: TStringField
       FieldName = 'ju_ppn'
       Size = 5
+    end
+    object jualju_cust_kode: TStringField
+      FieldName = 'ju_cust_kode'
+      Size = 255
     end
   end
   object jualdetail: TZQuery
@@ -667,6 +669,9 @@ object dm: Tdm
       FieldName = 'ju_ppn'
       Size = 5
     end
+    object invoiceju_barang_sent: TSmallintField
+      FieldName = 'ju_barang_sent'
+    end
   end
   object orderdetail: TZQuery
     Connection = conerp
@@ -733,10 +738,6 @@ object dm: Tdm
       FieldName = 'do_pic'
       Size = 255
     end
-    object deliverydo_invoice: TStringField
-      FieldName = 'do_invoice'
-      Size = 255
-    end
     object deliverydo_kode: TStringField
       FieldName = 'do_kode'
       Size = 255
@@ -746,6 +747,14 @@ object dm: Tdm
     end
     object deliverydo_cust_pic: TIntegerField
       FieldName = 'do_cust_pic'
+    end
+    object deliverydo_ju_trans: TStringField
+      FieldName = 'do_ju_trans'
+      Size = 255
+    end
+    object deliverydo_cust_kode: TStringField
+      FieldName = 'do_cust_kode'
+      Size = 255
     end
   end
   object deliverydetail: TZQuery
@@ -3192,5 +3201,22 @@ object dm: Tdm
       FieldName = 'cu_nama'
       Size = 255
     end
+  end
+  object customeradd: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM customer  ORDER BY cu_id desc ')
+    Params = <>
+    Left = 344
+    Top = 320
+  end
+  object jualflag: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from jual')
+    Params = <>
+    Left = 344
+    Top = 496
   end
 end

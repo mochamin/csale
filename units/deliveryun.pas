@@ -26,14 +26,14 @@ type
     lookcust: TDBLookupComboBox;
     lookpic: TDBLookupComboBox;
     dbtgl: TDBEdit;
-    DBEdit1: TDBEdit;
+    notrans: TDBEdit;
     Panel3: TPanel;
     btntambah: TSpeedButton;
     btnsimpan: TSpeedButton;
     btnbatal: TSpeedButton;
     DBGrid1: TDBGrid;
     SpeedButton2: TSpeedButton;
-    procedure DBEdit1KeyDown(Sender: TObject; var Key: Word;
+    procedure notransKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btntambahClick(Sender: TObject);
@@ -44,6 +44,7 @@ type
   private
     { Private declarations }
     procedure generateDO;
+    procedure flagtransaksiJual;
   public
     { Public declarations }
   end;
@@ -55,6 +56,20 @@ implementation
 
 uses dmun,fungsi_merp, polistun, invoicelistun,strutils;
 {$R *.dfm}
+
+procedure Tdeliveryfrm.flagtransaksiJual;
+begin
+  with dm.jualflag do
+  begin
+    sql.Text := 'select * from jual where ju_kode=(:kd) limit 1 ';
+    params.ParamByName('kd').Value := notrans.Text;
+    open;
+    edit;
+    fieldbyname('ju_barang_sent').Value := 1;
+    post;
+    applyupdates;
+  end;
+end;
 
 procedure Tdeliveryfrm.generateDO;
 var getNo                 : integer;
@@ -114,7 +129,7 @@ begin
     dm.delivery.Post;
 end;
 
-procedure Tdeliveryfrm.DBEdit1KeyDown(Sender: TObject; var Key: Word;
+procedure Tdeliveryfrm.notransKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
  if key=vk_return then
@@ -146,7 +161,7 @@ begin
 
   dm.delivery.ApplyUpdates;
   dm.deliverydetail.ApplyUpdates;
-
+  flagTransaksiJual;
  
 end;
 end;

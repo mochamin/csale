@@ -49,6 +49,10 @@ type
     procedure HapusInvoice1Click(Sender: TObject);
     procedure FakturPajak1Click(Sender: TObject);
     procedure cariChange(Sender: TObject);
+    procedure cariKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure gridinvKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     procedure insertToDelivery;
@@ -113,9 +117,14 @@ end;
 procedure Tinvoicelistfrm.insertToDelivery;
 begin
  // input ke delivery data customer
-   
+   if dm.invoice.FieldByName('ju_barang_sent').Value = 1 then
+   begin
+      messagedlg('Barang Sudah Dikirim! Mohon cek ulang Daftar Pengiriman Barang',mtError,[mbOk],0);
+      abort;
+   end;
+
    dm.delivery.Edit;
-   dm.delivery.FieldByName('do_invoice').Value    :=  dm.invoice.fieldbyname('ju_kode').Value;
+   dm.delivery.FieldByName('do_ju_trans').Value   :=  dm.invoice.fieldbyname('ju_kode').Value;
    dm.delivery.FieldByName('do_cust_id').Value    :=  dm.invoice.fieldbyname('ju_cust_id').Value;
    dm.delivery.FieldByName('do_cust_pic').Value   :=  dm.invoice.fieldbyname('ju_cust_pic').Value;
 
@@ -240,6 +249,18 @@ begin
     params.ParamByName('kd').Value := '%'+cari.Text+'%';
     open;
   end;
+end;
+
+procedure Tinvoicelistfrm.cariKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key=vk_return then insertToDelivery;
+end;
+
+procedure Tinvoicelistfrm.gridinvKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   if key=vk_return then insertToDelivery;
 end;
 
 end.

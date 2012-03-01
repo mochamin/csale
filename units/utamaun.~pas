@@ -129,7 +129,7 @@ uses grouplistun, userlistun, passchangeun, barangmstrun,fungsi_merp,
   neracaun, projectun, penawaranun, foot_globalun, labarugiun, glun,
   karyawanun, jobdesun, salary_levelun, ptkpun, deptun, bankun, pphun,
   salaryinputun, salaryleveltambahun, penguranggajiun, salaryrptun,
-  jurnalumumun;
+  jurnalumumun, dolistun;
 
 {$R *.dfm}
 

@@ -16,6 +16,8 @@ type
     DBEdit2: TDBEdit;
     Label5: TLabel;
     DBEdit3: TDBEdit;
+    Label6: TLabel;
+    DBEdit4: TDBEdit;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
   private

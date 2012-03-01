@@ -16,7 +16,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     Align = alClient
     object Label2: TLabel
       Left = 21
-      Top = 26
+      Top = 36
       Width = 98
       Height = 16
       Caption = 'Nama Customer:'
@@ -29,7 +29,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     end
     object Label3: TLabel
       Left = 21
-      Top = 50
+      Top = 60
       Width = 45
       Height = 16
       Caption = 'Alamat:'
@@ -42,7 +42,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     end
     object Label4: TLabel
       Left = 21
-      Top = 74
+      Top = 84
       Width = 31
       Height = 16
       Caption = 'Kota:'
@@ -55,7 +55,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     end
     object Label5: TLabel
       Left = 21
-      Top = 98
+      Top = 108
       Width = 27
       Height = 16
       Caption = 'Telp:'
@@ -68,7 +68,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     end
     object Label6: TLabel
       Left = 21
-      Top = 122
+      Top = 132
       Width = 44
       Height = 16
       Caption = 'NPWP:'
@@ -79,9 +79,22 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentFont = False
     end
+    object Label7: TLabel
+      Left = 21
+      Top = 12
+      Width = 65
+      Height = 16
+      Caption = 'Kode Cust:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object namadepan: TDBEdit
       Left = 141
-      Top = 24
+      Top = 34
       Width = 345
       Height = 22
       Ctl3D = False
@@ -94,11 +107,11 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
     end
     object DBEdit1: TDBEdit
       Left = 141
-      Top = 48
+      Top = 58
       Width = 345
       Height = 22
       Ctl3D = False
@@ -111,11 +124,11 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
     end
     object DBEdit2: TDBEdit
       Left = 141
-      Top = 72
+      Top = 82
       Width = 345
       Height = 22
       Ctl3D = False
@@ -128,11 +141,11 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 3
     end
     object DBEdit3: TDBEdit
       Left = 141
-      Top = 96
+      Top = 106
       Width = 345
       Height = 22
       Ctl3D = False
@@ -145,11 +158,11 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
     end
     object DBEdit4: TDBEdit
       Left = 141
-      Top = 120
+      Top = 130
       Width = 345
       Height = 22
       Ctl3D = False
@@ -162,15 +175,38 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Style = []
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 5
+    end
+    object kdcust: TDBEdit
+      Left = 141
+      Top = 10
+      Width = 345
+      Height = 22
+      Ctl3D = False
+      DataField = 'cu_kode'
+      DataSource = ds.customer
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
     end
   end
   inherited Panel3: TPanel
     Top = 222
+    inherited SpeedButton1: TSpeedButton
+      Height = 38
+    end
     inherited SpeedButton3: TSpeedButton
+      Height = 38
       OnClick = SpeedButton3Click
     end
     inherited SpeedButton4: TSpeedButton
+      Height = 38
       OnClick = SpeedButton4Click
     end
   end

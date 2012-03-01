@@ -262,14 +262,14 @@ object jualfrm: Tjualfrm
       Width = 318
       Height = 21
       Ctl3D = False
-      DataField = 'ju_cust_id'
+      DataField = 'ju_cust_kode'
       DataSource = ds.jual
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = []
-      KeyField = 'cu_id'
+      KeyField = 'cu_kode'
       ListField = 'cu_nama'
       ListSource = ds.customer
       ParentCtl3D = False

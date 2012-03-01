@@ -238,14 +238,14 @@ object deliveryfrm: Tdeliveryfrm
       Width = 318
       Height = 21
       Ctl3D = False
-      DataField = 'do_cust_id'
+      DataField = 'do_cust_kode'
       DataSource = ds.delivery
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
       Font.Name = 'Arial'
       Font.Style = []
-      KeyField = 'cu_id'
+      KeyField = 'cu_kode'
       ListField = 'cu_nama'
       ListSource = ds.customer
       ParentCtl3D = False
@@ -290,13 +290,13 @@ object deliveryfrm: Tdeliveryfrm
       ParentFont = False
       TabOrder = 4
     end
-    object DBEdit1: TDBEdit
+    object notrans: TDBEdit
       Left = 101
       Top = 56
       Width = 316
       Height = 22
       Ctl3D = False
-      DataField = 'do_invoice'
+      DataField = 'do_ju_trans'
       DataSource = ds.delivery
       Enabled = False
       Font.Charset = ANSI_CHARSET
@@ -307,7 +307,7 @@ object deliveryfrm: Tdeliveryfrm
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 1
-      OnKeyDown = DBEdit1KeyDown
+      OnKeyDown = notransKeyDown
     end
   end
   object Panel3: TPanel

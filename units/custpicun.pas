@@ -15,6 +15,7 @@ type
     procedure SpeedButton5Click(Sender: TObject);
   private
     { Private declarations }
+   // procedure generateCustPic;
   public
     { Public declarations }
   end;
@@ -28,6 +29,7 @@ uses dmun,fungsi_merp, custpicaddun;
 
 {$R *.dfm}
 
+
 procedure Tcustpicfrm.FormCreate(Sender: TObject);
 begin
   //inherited;
@@ -38,6 +40,7 @@ procedure Tcustpicfrm.SpeedButton4Click(Sender: TObject);
 begin
   //inherited;
   dm.custpic.Append;
+  //generateCustPic;
   aktifkanform(custpicaddfrm,TCustpicaddfrm);
 end;
 

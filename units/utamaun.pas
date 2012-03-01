@@ -74,6 +74,8 @@ type
     EntryJurnalUmum1: TMenuItem;
     N17: TMenuItem;
     ListDeliveryOrder1: TMenuItem;
+    N18: TMenuItem;
+    ListDaftarInvoice1: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure GroupSettings1Click(Sender: TObject);
     procedure UserSettings1Click(Sender: TObject);

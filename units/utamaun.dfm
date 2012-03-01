@@ -3419,8 +3419,14 @@ object utamafrm: Tutamafrm
         Caption = '-'
       end
       object ListInvoice1: TMenuItem
-        Caption = 'List Penjualan'
+        Caption = 'List/Daftar Penjualan'
         OnClick = ListInvoice1Click
+      end
+      object N18: TMenuItem
+        Caption = '-'
+      end
+      object ListDaftarInvoice1: TMenuItem
+        Caption = '&List/Daftar Invoice'
       end
     end
     object Keuangan1: TMenuItem

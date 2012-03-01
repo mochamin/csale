@@ -149,6 +149,7 @@ object invoicelistfrm: Tinvoicelistfrm
       ParentFont = False
       TabOrder = 0
       OnChange = cariChange
+      OnKeyDown = cariKeyDown
     end
   end
   object gridinv: TDBGrid
@@ -166,6 +167,7 @@ object invoicelistfrm: Tinvoicelistfrm
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    OnKeyDown = gridinvKeyDown
     Columns = <
       item
         Expanded = False

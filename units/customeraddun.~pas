@@ -18,6 +18,8 @@ type
     DBEdit3: TDBEdit;
     Label6: TLabel;
     DBEdit4: TDBEdit;
+    Label7: TLabel;
+    kdcust: TDBEdit;
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);

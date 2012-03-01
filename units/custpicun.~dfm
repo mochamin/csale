@@ -1,6 +1,6 @@
 inherited custpicfrm: Tcustpicfrm
-  Left = 450
-  Top = 161
+  Left = 523
+  Top = 373
   OldCreateOrder = True
   OnCreate = FormCreate
   PixelsPerInch = 96

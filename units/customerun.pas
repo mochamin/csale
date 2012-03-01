@@ -18,6 +18,7 @@ type
   private
     { Private declarations }
     procedure showCP;
+    procedure generateKodeCust;
   public
     { Public declarations }
   end;
@@ -27,14 +28,30 @@ var
 
 implementation
 
-uses dmun,fungsi_merp, customeraddun, custpicun;
+uses dmun,fungsi_merp, customeraddun, custpicun,strutils;
 {$R *.dfm}
+
+procedure Tcustomerfrm.generateKodeCust;
+var custinc : integer;
+begin
+  with dm.customeradd do
+  begin
+     sql.Text := 'select * from customer order by cu_id desc limit 1 ';
+     open;
+     custinc := strToInt(RightStr(fieldbyname('cu_kode').Value,7))+1;
+
+  end;
+    dm.customer.append;
+    dm.customer.fieldbyname('cu_kode').Value := 'SVC-'+format('%7.7d',[custinc]);
+
+end;
 
 procedure Tcustomerfrm.showCP;
 begin
 with dm.custpic do
  begin
-   sql.Text := 'SELECT * FROM custpic WHERE cp_custid = '+dm.customer.fieldbyname('cu_id').AsString;
+   sql.Text := 'SELECT * FROM custpic WHERE cp_custid = (:kdcust) ';
+   params.ParamByName('kdcust').Value :=dm.customer.fieldbyname('cu_id').AsString;
    open;
  end;
  aktifkanform(custpicfrm,TCustpicfrm);
@@ -50,6 +67,7 @@ procedure Tcustomerfrm.SpeedButton4Click(Sender: TObject);
 begin
   inherited;
   dm.customer.Append;
+  generateKodeCust;
   aktifkanform(CustomerAddfrm,TCustomerAddfrm);
 end;
 

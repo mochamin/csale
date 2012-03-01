@@ -328,6 +328,7 @@ end;
 
 procedure Tjualfrm.FormCreate(Sender: TObject);
 begin
+ //ini untuk mengaktifkan database
  aktifkandata(dm.fakturpajak);
  aktifkandata(dm.fakturpajakdetail);
  aktifkandata(dm.jual);

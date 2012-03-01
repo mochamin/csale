@@ -12,6 +12,9 @@ inherited customerfrm: Tcustomerfrm
     inherited SpeedButton4: TSpeedButton
       OnClick = SpeedButton4Click
     end
+    inherited SpeedButton6: TSpeedButton
+      Visible = False
+    end
     object SpeedButton9: TSpeedButton
       Left = 98
       Top = -1
