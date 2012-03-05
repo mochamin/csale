@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, Buttons, ExtCtrls, Menus, RpCon,
-  RpConDS, RpBase, RpSystem, RpDefine, RpRave;
+  RpConDS, RpBase, RpSystem, RpDefine, RpRave, DBCtrls, ImgList;
 
 type
   Tinvoicelistfrm = class(TForm)
@@ -14,22 +14,14 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     Panel2: TPanel;
-    SpeedButton1: TSpeedButton;
     cari: TEdit;
     gridinv: TDBGrid;
     popinv: TPopupMenu;
     RefreshData1: TMenuItem;
-    rpInvoice: TRvProject;
-    RvSystem1: TRvSystem;
-    rdinvoice: TRvDataSetConnection;
-    rdincust: TRvDataSetConnection;
-    rdinvoicedetail: TRvDataSetConnection;
     N1: TMenuItem;
     cetakinv: TMenuItem;
     N2: TMenuItem;
     InputData1: TMenuItem;
-    rddeliveryrpt: TRvDataSetConnection;
-    rdbarangrpt: TRvDataSetConnection;
     HapusInvoice1: TMenuItem;
     N3: TMenuItem;
     N4: TMenuItem;
@@ -41,6 +33,10 @@ type
     rdwp: TRvDataSetConnection;
     rdbarangpajak: TRvDataSetConnection;
     Label2: TLabel;
+    Label3: TLabel;
+    lookcust: TDBLookupComboBox;
+    ImageList1: TImageList;
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure RefreshData1Click(Sender: TObject);
     procedure popinvPopup(Sender: TObject);
@@ -53,6 +49,10 @@ type
       Shift: TShiftState);
     procedure gridinvKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure gridinvDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure lookcustClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure insertToDelivery;
@@ -68,34 +68,11 @@ var
 
 implementation
 
-uses dmun,fungsi_merp,db,strUtils;
+uses dmun,fungsi_merp,db,strUtils, fakturdaninvoiceun;
 
 {$R *.dfm}
 
-procedure TInvoicelistfrm.cetakFakturPajak;
-var kodefaktur : string;
-begin
-  with dm.fakturpajakrpt do
-  begin
-    sql.Text := 'select * from fakturpajak where fp_ref = (:ref) ';
-    params.ParamByName('ref').Value := dm.invoice.fieldbyname('ju_kode').Value;
-    open;
-    kodefaktur := fieldbyname('fp_kode').Value;
-  end;
-
-  with dm.fakturpajakdetailrpt do
-  begin
-    sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
-    params.ParamByName('fk').Value := kodefaktur;
-    open;
-  end;
-
-  rpPajak.ProjectFile := 'fakturpajak.rav';
-  rpPajak.SelectReport('fakturpajak.rav',true);
-  rpPajak.Execute;
-end;
-
-procedure TInvoicelistfrm.cetakInvoice;
+procedure Tinvoicelistfrm.cetakInvoice;
 var getNo                 : integer;
     dbpo                  : string;
     getMonth              : integer;
@@ -107,6 +84,20 @@ var getNo                 : integer;
 begin
    getMonth := strToInt(AnsiMidStr(dateToStr(date),4,2)); //ambil digit bulan dan jadikan integer utk membandingkan bulan saat ini dgn bln pd dbase
    getYear  :=RightStr(DateToStr(date),4);
+   
+   if dm.invoice.FieldByName('ju_barang_sent').Value = 2 then
+   begin
+      messagedlg('Invoice Sudah Pernah Dicetak/Digenerate.'+#13+
+      'Untuk Mencetak Ulang Invoice, Silahkan Ke Menu Penjualan->Daftar Invoice',mtWarning,[mbOk],0);
+      abort;
+   end else if (dm.invoice.FieldByName('ju_barang_sent').Value = null) then
+   begin
+      messagedlg('Tidak Bisa Mencetak Invoice! Barang Belum Dikirim.'+#13+
+      'Silahkan Hubungi Bagian Delivery Untuk Mengirimkan Barang Sebelum mencetak Invoice',mtWarning,[mbOk],0);
+      abort;
+   end;
+
+
    with dm.tagihan do
    begin
       sql.Text := 'SELECT * FROM invoice ORDER BY in_id DESC LIMIT 1';
@@ -158,9 +149,25 @@ begin
      fieldbyname('in_kode').Value      := noPO;
      fieldbyname('in_kode_jual').Value := dm.invoice.fieldbyname('ju_kode').Value;
      fieldbyname('in_date').Value      := date;
+     fieldbyname('in_cust_kode').Value := dm.invoice.fieldbyname('ju_cust_kode').Value;
+     fieldbyname('in_amount').Value    := dm.invoice.fieldbyname('ju_total').Value;
+     fieldbyname('in_pic_id').Value    := dm.invoice.fieldbyname('ju_cust_pic').Value;
+     // cek apakah disertakan dengan ppn atau tidak
+     if (dm.invoice.FieldByName('ju_ppn').Value = 'Ya') then
+     begin
+     fieldbyname('in_tax').Value := dm.invoice.fieldbyname('ju_tax').Value;
+     end;
      post;
    end; // end of with   dm.tagihan
+
+
+   dm.invoice.Edit;
+   dm.invoice.FieldByName('ju_barang_sent').Value := 2; // invoice sudah terkirim
+   dm.invoice.Post;
+   dm.invoice.ApplyUpdates;
    showmessage('Invoice sudah digenerate...');
+
+    aktifkanform(invoicprintfrm,TInvoicprintfrm);
 
  {  with dm.deliveryrpt do
   begin
@@ -176,10 +183,36 @@ begin
    
 end;
 
+procedure TInvoicelistfrm.cetakFakturPajak;
+var kodefaktur : string;
+begin
+  with dm.fakturpajakrpt do
+  begin
+    sql.Text := 'select * from fakturpajak where fp_ref = (:ref) ';
+    params.ParamByName('ref').Value := dm.invoice.fieldbyname('ju_kode').Value;
+    open;
+    kodefaktur := fieldbyname('fp_kode').Value;
+  end;
+
+  with dm.fakturpajakdetailrpt do
+  begin
+    sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
+    params.ParamByName('fk').Value := kodefaktur;
+    open;
+  end;
+
+  rpPajak.ProjectFile := 'fakturpajak.rav';
+  rpPajak.SelectReport('fakturpajak.rav',true);
+  rpPajak.Execute;
+end;
+
+
+
 
 procedure Tinvoicelistfrm.FormCreate(Sender: TObject);
 begin
  aktifkandata(dm.invoice);
+ aktifkandata(dm.customer);
 end;
 
 procedure Tinvoicelistfrm.insertToDelivery;
@@ -240,7 +273,7 @@ end;
 
 procedure Tinvoicelistfrm.cetakinvClick(Sender: TObject);
 begin
- cetakInvoice;
+ cetakinvoice;
 end;
 
 procedure Tinvoicelistfrm.InputData1Click(Sender: TObject);
@@ -252,25 +285,32 @@ procedure Tinvoicelistfrm.HapusInvoice1Click(Sender: TObject);
 begin
  //semangaaaaaaaatttttt......
 
+  if dm.invoice.FieldByName('ju_kode').Value = 'JL0000000000' then
+  begin
+    messagedlg('Record system, tidak bisa dihapus!',mtWarning,[mbOk],0);
+    abort;
+  end;
+
  if messagedlg('Anda Yakin akan menghapus data ini?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
  begin
-    //hapus transaksi di tabel general ledger
-    aktifkandata(dm.gl_hapus);
-    if dm.gl_hapus.Locate('gl_ref',dm.invoice.fieldbyname('ju_kode').Value,[loCaseInsensitive])=true then
-    begin
-      //showmessage('tabel General_ledger : gl ref ditemukan dan dihapus...');
+
        with dm.gl_hapus do
        begin
-         close;
-         open;
-         sql.Text := 'delete  from general_ledger where gl_ref = (:ref) ';
+         sql.Text := 'select * from general_ledger where gl_ref = (:ref) ';
          params.ParamByName('ref').Value := dm.invoice.fieldbyname('ju_kode').Value;
-         execSQL;
+         open;
+         last;
+         while not bof do
+         begin
+          delete;
+          previous;
+         end; // end of while bof
        end; // end with dm gl}
 
-
+      showmessage('gl hapus done!');
         with dm.jualdetailhapus do
         begin
+          //close;
           sql.Text := 'select * from jualdetail where jd_kode = (:kd) ';
           params.ParamByName('kd').Value := dm.invoice.fieldbyname('ju_kode').Value;
           open;
@@ -291,15 +331,11 @@ begin
            delete;
            previous;
           end; // end of while not eof
-       // post;
-        applyupdates; 
         end; // end of jualdetail hapus
 
+        showmessage('judaldetail hapus done!');
          dm.invoice.Delete;
-         dm.invoice.ApplyUpdates;
-
-        
-     end;
+        showmessage('invoice hapus done!');
     end;
 end;
 
@@ -329,6 +365,101 @@ procedure Tinvoicelistfrm.gridinvKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
    if key=vk_return then insertToDelivery;
+end;
+
+procedure Tinvoicelistfrm.gridinvDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+  var
+   grid : TDBGrid;
+   row : integer;
+    bitmap : TBitmap;
+  FixRect : TRect;
+  bmpWidth : integer;   
+  imgIndex : integer;
+ begin
+ // membuat row zig zag
+   fixRect := Rect;
+   grid := sender as TDBGrid;
+ 
+   row := grid.DataSource.DataSet.RecNo;
+
+   if Odd(row) then
+     grid.Canvas.Brush.Color := $00FEF5F1
+     
+   else
+     grid.Canvas.Brush.Color := $00FEE2D8;
+
+  // membuat setting selected row
+
+    if  grid.Focused then
+    begin
+      if (gdSelected in State) then
+      begin
+        with grid.Canvas do
+        begin
+          Brush.Color := clHighlight;
+          Font.Style := Font.Style + [fsBold];
+          Font.Color := clHighlightText;
+        end;
+      end;
+    end;
+            
+  // sisipkan image untuk notifikasi biar lebih jelaaas
+  if (column.Field=dm.invoice.FieldByName('ju_kode')) then
+  begin
+    if dm.invoice.FieldByName('ju_barang_sent').Value = 1 then
+    begin
+      imgIndex := 0
+    end else if dm.invoice.FieldByName('ju_barang_sent').Value = 2 then
+    begin
+     imgIndex :=1;
+    end else  imgIndex :=2;
+
+    bitmap := TBitmap.Create;
+    try
+      //grab the image from the ImageList 
+      //(using the "Salary" field's value)
+      ImageList1.GetBitmap(imgIndex,bitmap);
+      //Fix the bitmap dimensions
+      bmpWidth := (Rect.Bottom - Rect.Top);
+      FixRect.Right := Rect.Left + bmpWidth;
+      //draw the bitmap
+      grid.Canvas.StretchDraw(FixRect,bitmap);
+    finally
+      bitmap.Free;
+    end;  // end of try
+
+    // reset the output rectangle, 
+    // add space for the graphics
+    fixRect := Rect;
+    fixRect.Left := fixRect.Left + bmpWidth;
+  end;   // end of columnfield
+ 
+   grid.DefaultDrawColumnCell(FixRect, DataCol, Column, State) ;
+
+ end;
+
+
+procedure Tinvoicelistfrm.lookcustClick(Sender: TObject);
+begin
+ 
+ 
+ with dm.invoice do
+ begin
+   sql.Text := 'select * from jual where ju_cust_kode = (:kd) order by ju_id desc ';
+   params.ParamByName('kd').Value := lookcust.KeyValue;
+   open;
+ end;
+end;
+
+procedure Tinvoicelistfrm.SpeedButton1Click(Sender: TObject);
+begin
+  with dm.invoice do
+  begin
+    sql.Text := 'select * from jual order by ju_id desc';
+    open;
+  end;
 end;
 
 end.

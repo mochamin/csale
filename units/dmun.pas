@@ -685,6 +685,9 @@ type
     invoiceju_barang_sent: TSmallintField;
     invoicegen: TZQuery;
     tagihan: TZQuery;
+    invoiceju_cust_kode: TStringField;
+    tagihanref: TZQuery;
+    tagihanrpt: TZQuery;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

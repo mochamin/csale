@@ -77,7 +77,9 @@ uses
   salaryrptun in '..\units\salaryrptun.pas' {salaryrptfrm},
   jurnalumumun in '..\units\jurnalumumun.pas' {jurnalumumfrm},
   akunviewun in '..\units\akunviewun.pas' {akunviewfrm},
-  dolistun in '..\units\dolistun.pas' {dolistfrm};
+  dolistun in '..\units\dolistun.pas' {dolistfrm},
+  cobagit in '..\units\cobagit.pas',
+  fakturdaninvoiceun in '..\units\fakturdaninvoiceun.pas' {invoicprintfrm};
 
 {$R *.res}
 
@@ -90,5 +92,6 @@ begin
   Application.CreateForm(Tprogressfrm, progressfrm);
   Application.CreateForm(Takunviewfrm, akunviewfrm);
   Application.CreateForm(Tdolistfrm, dolistfrm);
+  Application.CreateForm(Tinvoicprintfrm, invoicprintfrm);
   Application.Run;
 end.

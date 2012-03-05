@@ -88,6 +88,7 @@ begin
    end;
 
    dm.jual.Append;
+   dbtgl.Text := dateToStr(date);
    notrans.Text := 'JL'+format('%10.10d',[inctrans]);
    dm.jual.Post;
    dm.jualdetail.Append;
@@ -111,7 +112,8 @@ begin
       nofaktur := '010.000-'+formatdatetime('YY',date)+'.'+format('%8.8d',[noseri]) ;
       append;
       fieldbyname('fp_kode').Value    := nofaktur;
-      fieldbyname('fp_cust_id').Value := lookcust.KeyValue;
+    //  fieldbyname('fp_cust_id').Value := lookcust.KeyValue;
+      fieldbyname('fp_cust_kode').Value := lookcust.KeyValue;
       fieldbyname('fp_ref').Value     := notrans.Text;
       fieldbyname('fp_date').Value    := date;
       post;
@@ -341,12 +343,12 @@ end;
 
 procedure Tjualfrm.lookcustClick(Sender: TObject);
 begin
-  with dm.custpic do
+ { with dm.custpic do
   begin
     sql.Text := 'select * from custpic where cp_custid = (:id ) ';
     params.ParamByName('id').Value := lookcust.KeyValue;
     open;
-  end;
+  end;     }
 end;
 
 procedure Tjualfrm.btnsimpanClick(Sender: TObject);

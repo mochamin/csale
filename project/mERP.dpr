@@ -78,7 +78,8 @@ uses
   jurnalumumun in '..\units\jurnalumumun.pas' {jurnalumumfrm},
   akunviewun in '..\units\akunviewun.pas' {akunviewfrm},
   dolistun in '..\units\dolistun.pas' {dolistfrm},
-  cobagit in '..\units\cobagit.pas';
+  cobagit in '..\units\cobagit.pas',
+  fakturdaninvoiceun in '..\units\fakturdaninvoiceun.pas' {invoicprintfrm};
 
 {$R *.res}
 

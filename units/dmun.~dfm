@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
   Left = 509
-  Height = 687
+  Height = 703
   Width = 850
   object conerp: TZConnection
     Protocol = 'mysql-5'
@@ -170,6 +170,7 @@ object dm: Tdm
   object customer: TZQuery
     Connection = conerp
     CachedUpdates = True
+    Active = True
     SQL.Strings = (
       'SELECT * FROM customer  ORDER BY cu_id desc ')
     Params = <>
@@ -280,6 +281,7 @@ object dm: Tdm
   end
   object custpic: TZQuery
     Connection = conerp
+    Active = True
     SQL.Strings = (
       'SELECT * FROM custpic order by cp_id desc ')
     Params = <>
@@ -627,9 +629,9 @@ object dm: Tdm
       FieldKind = fkLookup
       FieldName = 'Customer'
       LookupDataSet = customer
-      LookupKeyFields = 'cu_id'
+      LookupKeyFields = 'cu_kode'
       LookupResultField = 'cu_nama'
-      KeyFields = 'ju_cust_id'
+      KeyFields = 'ju_cust_kode'
       Size = 30
       Lookup = True
     end
@@ -670,6 +672,10 @@ object dm: Tdm
     end
     object invoiceju_barang_sent: TSmallintField
       FieldName = 'ju_barang_sent'
+    end
+    object invoiceju_cust_kode: TStringField
+      FieldName = 'ju_cust_kode'
+      Size = 255
     end
   end
   object orderdetail: TZQuery
@@ -2236,7 +2242,6 @@ object dm: Tdm
   end
   object jualdetailhapus: TZQuery
     Connection = conerp
-    CachedUpdates = True
     SQL.Strings = (
       'select * from jualdetail order by jd_id desc limit 1')
     Params = <>
@@ -2357,7 +2362,7 @@ object dm: Tdm
   object fakturpajakrpt: TZQuery
     Connection = conerp
     SQL.Strings = (
-      'select * from fakturpajak')
+      'select * from fakturpajak order by fp_id desc')
     Params = <>
     Left = 736
     Top = 136
@@ -2398,6 +2403,7 @@ object dm: Tdm
   end
   object wp: TZQuery
     Connection = conerp
+    Active = True
     SQL.Strings = (
       'select * from customer')
     Params = <>
@@ -3223,7 +3229,31 @@ object dm: Tdm
     SQL.Strings = (
       'select * from invoice order by in_id desc limit 1')
     Params = <>
-    Left = 80
-    Top = 560
+    Left = 72
+    Top = 568
+  end
+  object tagihan: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 144
+    Top = 568
+  end
+  object tagihanref: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 200
+    Top = 568
+  end
+  object tagihanrpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice order by in_id desc')
+    Params = <>
+    Left = 264
+    Top = 568
   end
 end
