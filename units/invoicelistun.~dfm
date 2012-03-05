@@ -261,7 +261,7 @@ object invoicelistfrm: Tinvoicelistfrm
       Caption = '-'
     end
     object cetakinv: TMenuItem
-      Caption = 'Cetak Invoice'
+      Caption = 'Cetak/Kirim Invoice'
       OnClick = cetakinvClick
     end
     object N3: TMenuItem

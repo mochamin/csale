@@ -683,6 +683,8 @@ type
     deliverydo_cust_kode: TStringField;
     jualju_cust_kode: TStringField;
     invoiceju_barang_sent: TSmallintField;
+    invoicegen: TZQuery;
+    tagihan: TZQuery;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

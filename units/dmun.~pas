@@ -682,6 +682,8 @@ type
     jualflag: TZQuery;
     deliverydo_cust_kode: TStringField;
     jualju_cust_kode: TStringField;
+    invoiceju_barang_sent: TSmallintField;
+    invoicegen: TZQuery;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

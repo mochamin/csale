@@ -58,6 +58,7 @@ type
     procedure insertToDelivery;
     procedure cetakInvoice;
     procedure cetakFakturPajak;
+   // procedure generatePO;
   public
     { Public declarations }
   end;
@@ -67,7 +68,7 @@ var
 
 implementation
 
-uses dmun,fungsi_merp,db;
+uses dmun,fungsi_merp,db,strUtils;
 
 {$R *.dfm}
 
@@ -94,9 +95,74 @@ begin
   rpPajak.Execute;
 end;
 
-procedure Tinvoicelistfrm.cetakInvoice;
+procedure TInvoicelistfrm.cetakInvoice;
+var getNo                 : integer;
+    dbpo                  : string;
+    getMonth              : integer;
+    getMonthdb            : integer;
+    noPO                  : string;
+    zerofill,getYear      : string;
+    getyeardb             : string;
+    finalmonth            : string;
 begin
-  with dm.deliveryrpt do
+   getMonth := strToInt(AnsiMidStr(dateToStr(date),4,2)); //ambil digit bulan dan jadikan integer utk membandingkan bulan saat ini dgn bln pd dbase
+   getYear  :=RightStr(DateToStr(date),4);
+   with dm.tagihan do
+   begin
+      sql.Text := 'SELECT * FROM invoice ORDER BY in_id DESC LIMIT 1';
+      open;
+      dbpo       := fieldbyname('in_kode').Value;
+      getMonthdb := StrToInt(AnsiMidStr(fieldbyname('in_kode').Value,11,2));  //ambil digit bulan dari database untuk ditampilkan
+      getyeardb  := rightStr(dbpo,4);
+      getNo      := StrToInt(LeftStr(dbpo,3))+1;
+
+
+    case Length(intToStr(getNo))of
+    1 :  zerofill := '00';
+    2 :  zerofill := '0';
+    3 :  zerofill := '';
+    end;
+
+      if length(intToStr(getmonth))=1 then
+       begin
+          finalmonth := '0'+intToStr(getmonth);
+       end else
+       begin
+          finalmonth := intToStr(getmonth);
+       end;
+
+    if (getyear <> getyeardb) then
+    begin
+      noPO := '001/SV/IN/01/'+getYear;
+    end else
+    if (getmonth <> getmonthdb)  then   // bandingkan apakah bulan database tidak sama dgn bulan di tanggal system
+    begin
+       //showmessage('bulan di db tdk sama dgn sistem');
+
+       
+       noPO := '001'+'/'+'SV/IN/'+finalmonth+'/'+getYear;     // jika tdk sama maka sistem menganggap bulan baru
+    end else if (getmonth = getmonthdb) then
+    begin
+      noPO := zerofill+intToStr(getNo)+'/'+'SV/IN/'+finalMonth+'/'+getYear;  // jika sama maka
+    end;
+
+   //input ke database invoice
+    if locate('in_kode_jual',dm.invoice.fieldbyname('ju_kode').Value,[loCaseInsensitive])=true then
+    begin
+       messagedlg('Invoice sudah pernah dicetak/dikirimkan! Lihat pada daftar Invoice terkirim.'+#13+
+       'Hapus invoice bersangkutan jika ingin membuat invoice baru! ',mtWarning,[mbOK],0);
+       abort;
+    end;
+
+     append;           
+     fieldbyname('in_kode').Value      := noPO;
+     fieldbyname('in_kode_jual').Value := dm.invoice.fieldbyname('ju_kode').Value;
+     fieldbyname('in_date').Value      := date;
+     post;
+   end; // end of with   dm.tagihan
+   showmessage('Invoice sudah digenerate...');
+
+ {  with dm.deliveryrpt do
   begin
     sql.Text := 'select * from do where do_invoice = (:inv) '+
     'order by do_id desc limit 1 ';
@@ -106,8 +172,10 @@ begin
 
   rpinvoice.ProjectFile := 'invoice.rav';
   rpInvoice.SelectReport('inovice.rav',true);
-  rpInvoice.Execute;
+  rpInvoice.Execute;   }
+   
 end;
+
 
 procedure Tinvoicelistfrm.FormCreate(Sender: TObject);
 begin

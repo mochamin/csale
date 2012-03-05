@@ -1,8 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 553
-  Top = 137
-  Height = 649
+  Left = 509
+  Height = 703
   Width = 850
   object conerp: TZConnection
     Protocol = 'mysql-5'
@@ -3218,5 +3217,21 @@ object dm: Tdm
     Params = <>
     Left = 344
     Top = 496
+  end
+  object invoicegen: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice order by in_id desc limit 1')
+    Params = <>
+    Left = 72
+    Top = 568
+  end
+  object tagihan: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 144
+    Top = 568
   end
 end
