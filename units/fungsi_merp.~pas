@@ -12,14 +12,16 @@ procedure hapus(namaDataSet:TZQuery);
 procedure aktifkanchild(namafrm:Tform);
 
 
-var isInventory    : integer;
-    isDelivery     : integer;
-    isBeliLangsung : integer;
-    isPost         : integer;
-    isPenawaran    : integer;
+var isInventory      : integer;
+    isDelivery       : integer;
+    isBeliLangsung   : integer;
+    isPost           : integer;
+    isPenawaran      : integer;
     isTambahKaryawan : integer;
-    isbarangfrm : integer;
-    isJualfrm : integer;
+    isbarangfrm      : integer;
+    isJualfrm        : integer;
+    noinvoice        : string;
+    isdueclick       : integer;
 
 implementation
 

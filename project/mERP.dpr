@@ -79,7 +79,8 @@ uses
   akunviewun in '..\units\akunviewun.pas' {akunviewfrm},
   dolistun in '..\units\dolistun.pas' {dolistfrm},
   cobagit in '..\units\cobagit.pas',
-  fakturdaninvoiceun in '..\units\fakturdaninvoiceun.pas' {invoicprintfrm};
+  fakturdaninvoiceun in '..\units\fakturdaninvoiceun.pas' {invoicprintfrm},
+  tagihanun in '..\units\tagihanun.pas' {tagihanfrm};
 
 {$R *.res}
 
@@ -91,6 +92,5 @@ begin
   Application.CreateForm(Tds, ds);
   Application.CreateForm(Tprogressfrm, progressfrm);
   Application.CreateForm(Takunviewfrm, akunviewfrm);
-  Application.CreateForm(Tdolistfrm, dolistfrm);
   Application.Run;
 end.

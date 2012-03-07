@@ -146,12 +146,15 @@ begin
     end;
 
      append;           
-     fieldbyname('in_kode').Value      := noPO;
-     fieldbyname('in_kode_jual').Value := dm.invoice.fieldbyname('ju_kode').Value;
-     fieldbyname('in_date').Value      := date;
-     fieldbyname('in_cust_kode').Value := dm.invoice.fieldbyname('ju_cust_kode').Value;
-     fieldbyname('in_amount').Value    := dm.invoice.fieldbyname('ju_total').Value;
-     fieldbyname('in_pic_id').Value    := dm.invoice.fieldbyname('ju_cust_pic').Value;
+     fieldbyname('in_kode').Value           := noPO;
+     fieldbyname('in_kode_jual').Value      := dm.invoice.fieldbyname('ju_kode').Value;
+     fieldbyname('in_date').Value           := date;
+     fieldbyname('in_cust_kode').Value      := dm.invoice.fieldbyname('ju_cust_kode').Value;
+     fieldbyname('in_amount').Value         := dm.invoice.fieldbyname('ju_total').Value;
+     fieldbyname('in_pic_id').Value         := dm.invoice.fieldbyname('ju_cust_pic').Value;
+     fieldbyname('in_due').Value            := dm.invoice.fieldbyname('ju_due').Value;
+     fieldbyname('in_payment_method').Value := dm.invoice.fieldbyname('ju_bayar').Value;
+     fieldbyname('in_po').Value             := dm.invoice.fieldbyname('ju_po').Value;
      // cek apakah disertakan dengan ppn atau tidak
      if (dm.invoice.FieldByName('ju_ppn').Value = 'Ya') then
      begin
@@ -218,7 +221,7 @@ end;
 procedure Tinvoicelistfrm.insertToDelivery;
 begin
  // input ke delivery data customer
-   if dm.invoice.FieldByName('ju_barang_sent').Value = 1 then
+   if (dm.invoice.FieldByName('ju_barang_sent').Value = 1) or (dm.invoice.FieldByName('ju_barang_sent').Value = 2) then
    begin
       messagedlg('Barang Sudah Dikirim! Mohon cek ulang Daftar Pengiriman Barang',mtError,[mbOk],0);
       abort;

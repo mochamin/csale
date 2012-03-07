@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
   Left = 509
-  Height = 703
+  Height = 728
   Width = 850
   object conerp: TZConnection
     Protocol = 'mysql-5'
@@ -3255,5 +3255,68 @@ object dm: Tdm
     Params = <>
     Left = 264
     Top = 568
+  end
+  object tagihanview: TZQuery
+    Connection = conerp
+    Active = True
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 336
+    Top = 568
+    object tagihanviewin_kode: TStringField
+      FieldName = 'in_kode'
+      Size = 255
+    end
+    object tagihanviewin_cust_kode: TStringField
+      FieldName = 'in_cust_kode'
+      Size = 255
+    end
+    object tagihanviewin_order_kode: TStringField
+      FieldName = 'in_order_kode'
+      Size = 255
+    end
+    object tagihanviewin_amount: TFloatField
+      FieldName = 'in_amount'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_tax: TFloatField
+      FieldName = 'in_tax'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_date: TDateField
+      FieldName = 'in_date'
+    end
+    object tagihanviewin_kode_jual: TStringField
+      FieldName = 'in_kode_jual'
+      Size = 255
+    end
+    object tagihanviewin_delete: TSmallintField
+      FieldName = 'in_delete'
+    end
+    object tagihanviewin_pic_id: TSmallintField
+      FieldName = 'in_pic_id'
+    end
+    object tagihanviewin_paid: TSmallintField
+      FieldName = 'in_paid'
+    end
+    object tagihanviewCustomer: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Customer'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_nama'
+      KeyFields = 'in_cust_kode'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dorpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from do')
+    Params = <>
+    Left = 72
+    Top = 624
   end
 end

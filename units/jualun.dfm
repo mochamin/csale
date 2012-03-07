@@ -179,9 +179,9 @@ object jualfrm: Tjualfrm
     object Label7: TLabel
       Left = 703
       Top = 20
-      Width = 82
+      Width = 79
       Height = 16
-      Caption = 'Cash/Piutang:'
+      Caption = 'Cash/Hutang:'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -13
@@ -326,7 +326,7 @@ object jualfrm: Tjualfrm
       ItemHeight = 13
       Items.Strings = (
         'CASH'
-        'PIUTANG')
+        'HUTANG')
       ParentCtl3D = False
       TabOrder = 5
     end
@@ -378,7 +378,7 @@ object jualfrm: Tjualfrm
       TabOrder = 3
       OnClick = lookcustClick
     end
-    object DBComboBox1: TDBComboBox
+    object lookppn: TDBComboBox
       Left = 800
       Top = 85
       Width = 174

@@ -61,13 +61,14 @@ object deliveryfrm: Tdeliveryfrm
     ParentCtl3D = False
     TabOrder = 2
   end
-  object Panel2: TPanel
+  object pndo: TPanel
     Left = 0
     Top = 45
     Width = 763
     Height = 140
     Align = alTop
     Color = 14408667
+    Enabled = False
     TabOrder = 3
     object Label2: TLabel
       Left = 45
@@ -506,7 +507,7 @@ object deliveryfrm: Tdeliveryfrm
       OnClick = btnbatalClick
     end
   end
-  object DBGrid1: TDBGrid
+  object griddo: TDBGrid
     Left = 0
     Top = 185
     Width = 763
@@ -514,6 +515,7 @@ object deliveryfrm: Tdeliveryfrm
     Align = alClient
     Ctl3D = False
     DataSource = ds.deliverydetail
+    Enabled = False
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     ParentCtl3D = False
     TabOrder = 5

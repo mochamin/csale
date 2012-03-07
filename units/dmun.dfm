@@ -1,6 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 509
+  Left = 535
+  Top = 42
   Height = 703
   Width = 850
   object conerp: TZConnection
@@ -3255,5 +3256,118 @@ object dm: Tdm
     Params = <>
     Left = 264
     Top = 568
+    object tagihanrptin_kode: TStringField
+      FieldName = 'in_kode'
+      Size = 255
+    end
+    object tagihanrptin_cust_kode: TStringField
+      FieldName = 'in_cust_kode'
+      Size = 255
+    end
+    object tagihanrptin_order_kode: TStringField
+      FieldName = 'in_order_kode'
+      Size = 255
+    end
+    object tagihanrptin_amount: TFloatField
+      FieldName = 'in_amount'
+      DisplayFormat = '#,###'
+    end
+    object tagihanrptin_tax: TFloatField
+      FieldName = 'in_tax'
+      DisplayFormat = '#,###'
+    end
+    object tagihanrptin_date: TDateField
+      FieldName = 'in_date'
+    end
+    object tagihanrptin_kode_jual: TStringField
+      FieldName = 'in_kode_jual'
+      Size = 255
+    end
+    object tagihanrptin_delete: TSmallintField
+      FieldName = 'in_delete'
+    end
+    object tagihanrptin_pic_id: TSmallintField
+      FieldName = 'in_pic_id'
+    end
+    object tagihanrptin_paid: TSmallintField
+      FieldName = 'in_paid'
+    end
+    object tagihanrptin_due: TDateField
+      FieldName = 'in_due'
+      ReadOnly = True
+    end
+    object tagihanrptin_payment_method: TStringField
+      FieldName = 'in_payment_method'
+      ReadOnly = True
+      Size = 255
+    end
+    object tagihanrptin_po: TStringField
+      FieldName = 'in_po'
+      ReadOnly = True
+      Size = 255
+    end
+  end
+  object tagihanview: TZQuery
+    Connection = conerp
+    Active = True
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 336
+    Top = 568
+    object tagihanviewin_kode: TStringField
+      FieldName = 'in_kode'
+      Size = 255
+    end
+    object tagihanviewin_cust_kode: TStringField
+      FieldName = 'in_cust_kode'
+      Size = 255
+    end
+    object tagihanviewin_order_kode: TStringField
+      FieldName = 'in_order_kode'
+      Size = 255
+    end
+    object tagihanviewin_amount: TFloatField
+      FieldName = 'in_amount'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_tax: TFloatField
+      FieldName = 'in_tax'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_date: TDateField
+      FieldName = 'in_date'
+    end
+    object tagihanviewin_kode_jual: TStringField
+      FieldName = 'in_kode_jual'
+      Size = 255
+    end
+    object tagihanviewin_delete: TSmallintField
+      FieldName = 'in_delete'
+    end
+    object tagihanviewin_pic_id: TSmallintField
+      FieldName = 'in_pic_id'
+    end
+    object tagihanviewin_paid: TSmallintField
+      FieldName = 'in_paid'
+    end
+    object tagihanviewCustomer: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Customer'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_nama'
+      KeyFields = 'in_cust_kode'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object dorpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from do')
+    Params = <>
+    Left = 72
+    Top = 624
   end
 end

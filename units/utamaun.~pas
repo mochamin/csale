@@ -114,6 +114,7 @@ type
     procedure LaporanPenggajian1Click(Sender: TObject);
     procedure EntryJurnalUmum1Click(Sender: TObject);
     procedure ListDeliveryOrder1Click(Sender: TObject);
+    procedure ListDaftarInvoice1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -131,7 +132,7 @@ uses grouplistun, userlistun, passchangeun, barangmstrun,fungsi_merp,
   neracaun, projectun, penawaranun, foot_globalun, labarugiun, glun,
   karyawanun, jobdesun, salary_levelun, ptkpun, deptun, bankun, pphun,
   salaryinputun, salaryleveltambahun, penguranggajiun, salaryrptun,
-  jurnalumumun, dolistun;
+  jurnalumumun, dolistun, tagihanun;
 
 {$R *.dfm}
 
@@ -368,6 +369,12 @@ end;
 procedure Tutamafrm.ListDeliveryOrder1Click(Sender: TObject);
 begin
   aktifkanform(dolistfrm,TDolistfrm);
+end;
+
+procedure Tutamafrm.ListDaftarInvoice1Click(Sender: TObject);
+begin
+
+ aktifkanform(tagihanfrm,TTagihanfrm);
 end;
 
 end.

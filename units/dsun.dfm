@@ -1,7 +1,7 @@
 object ds: Tds
   OldCreateOrder = False
-  Left = 593
-  Top = 23
+  Left = 766
+  Top = 95
   Height = 687
   Width = 467
   object user: TDataSource
@@ -263,5 +263,10 @@ object ds: Tds
     DataSet = dm.deliveryview
     Left = 40
     Top = 600
+  end
+  object tagihanview: TDataSource
+    DataSet = dm.tagihanview
+    Left = 384
+    Top = 584
   end
 end

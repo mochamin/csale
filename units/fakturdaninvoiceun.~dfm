@@ -1,6 +1,6 @@
 object invoicprintfrm: Tinvoicprintfrm
-  Left = 388
-  Top = 217
+  Left = 595
+  Top = 250
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -12,8 +12,10 @@ object invoicprintfrm: Tinvoicprintfrm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -110,6 +112,7 @@ object invoicprintfrm: Tinvoicprintfrm
         FF7FFF7FFF7F}
       ParentFont = False
       Transparent = False
+      OnClick = btntambahClick
     end
   end
   object Panel2: TPanel
@@ -119,6 +122,62 @@ object invoicprintfrm: Tinvoicprintfrm
     Height = 108
     Align = alClient
     TabOrder = 4
+    object Label2: TLabel
+      Left = 24
+      Top = 5
+      Width = 80
+      Height = 18
+      Caption = 'No Invoice:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 24
+      Top = 53
+      Width = 96
+      Height = 18
+      Caption = 'No Transaksi:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object numinvoice: TEdit
+      Left = 24
+      Top = 24
+      Width = 353
+      Height = 22
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+    end
+    object numtransaksi: TEdit
+      Left = 24
+      Top = 72
+      Width = 353
+      Height = 22
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 1
+    end
   end
   object rpInvoice: TRvProject
     Engine = RvSystem1
@@ -144,13 +203,13 @@ object invoicprintfrm: Tinvoicprintfrm
   object rdincust: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DataSet = dm.customer
-    Left = 232
+    Left = 264
     Top = 8
   end
   object rdinvoice: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = dm.invoice
-    Left = 264
+    DataSet = dm.tagihanrpt
+    Left = 224
     Top = 8
   end
   object rdinvoicedetail: TRvDataSetConnection

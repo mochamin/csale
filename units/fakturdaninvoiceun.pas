@@ -23,6 +23,12 @@ type
     Panel3: TPanel;
     btntambah: TSpeedButton;
     Panel2: TPanel;
+    numinvoice: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    numtransaksi: TEdit;
+    procedure FormActivate(Sender: TObject);
+    procedure btntambahClick(Sender: TObject);
   private
     { Private declarations }
    
@@ -35,10 +41,38 @@ var
 
 implementation
 
-uses dmun,strutils,db;
+uses dmun,strutils,db,fungsi_merp;
 
 {$R *.dfm}
 
 
+
+procedure Tinvoicprintfrm.FormActivate(Sender: TObject);
+begin
+  numinvoice.Text := noinvoice; // ambil dari variabel global
+  numtransaksi.Text := notransaksi; // ambil dari variabel global
+end;
+
+procedure Tinvoicprintfrm.btntambahClick(Sender: TObject);
+begin
+  with dm.tagihanrpt do
+  begin
+    sql.Text := 'select * from invoice where in_kode = (:kd) ';
+    params.ParamByName('kd').Value := numinvoice.Text;
+    open;
+  end;
+
+  with dm.deliveryrpt do
+  begin
+    sql.Text := 'select * from do where do_ju_trans = (:dot) ';
+    params.ParamByName('dot').Value := numtransaksi.Text;
+    open;
+  end;
+
+  rpInvoice.ProjectFile := 'invoice.rav';
+  rpInvoice.SelectReport('invoice.rav',true);
+  rpInvoice.Execute;
+  close;
+end;
 
 end.

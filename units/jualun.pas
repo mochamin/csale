@@ -42,7 +42,7 @@ type
     Label10: TLabel;
     Button1: TButton;
     Label11: TLabel;
-    DBComboBox1: TDBComboBox;
+    lookppn: TDBComboBox;
     procedure gridjualKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btntambahClick(Sender: TObject);
@@ -359,6 +359,21 @@ begin
     dbcash.SetFocus;
     abort;
   end;
+
+  if (dbcash.ItemIndex=1) and (isdueclick=0) then
+  begin
+     messagedlg('Jatuh Tempo harap dipilih',mtWarning,[mbOk],0);
+     tgl.SetFocus;
+     abort;
+  end;
+
+  if lookppn.ItemIndex=-1 then
+  begin
+     messagedlg('PPN Ya/Tidak harap diisi!',mtWarning,[mbOk],0);
+    lookppn.SetFocus;
+    abort;
+  end;
+
   hitungTotal;
   kurangiStock;
   dm.jual.Edit;
@@ -373,13 +388,15 @@ begin
    btnbatal.Visible := false;
     pnheader.Enabled := false;
   gridjual.Enabled := false;
+  isdueclick :=0;
 end;
 
 procedure Tjualfrm.tglChange(Sender: TObject);
 begin
- dm.jual.Edit;
+  dm.jual.Edit;
   dm.jual.FieldByName('ju_due').Value := tgl.Date;
   dm.jual.Post;
+  isdueclick :=1;
 end;
 
 procedure Tjualfrm.SpeedButton1Click(Sender: TObject);
@@ -395,6 +412,7 @@ begin
    btnbatal.Visible := false;
    pnheader.Enabled := false;
   gridjual.Enabled := false;
+  isdueclick :=0;
 end;
 
 procedure Tjualfrm.SpeedButton2Click(Sender: TObject);

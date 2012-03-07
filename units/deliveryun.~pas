@@ -13,7 +13,7 @@ type
     Label1: TLabel;
     Panel4: TPanel;
     Panel5: TPanel;
-    Panel2: TPanel;
+    pndo: TPanel;
     Label2: TLabel;
     Label3: TLabel;
     SpeedButton6: TSpeedButton;
@@ -31,7 +31,7 @@ type
     btntambah: TSpeedButton;
     btnsimpan: TSpeedButton;
     btnbatal: TSpeedButton;
-    DBGrid1: TDBGrid;
+    griddo: TDBGrid;
     SpeedButton2: TSpeedButton;
     procedure notransKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -150,6 +150,8 @@ begin
   generateDO;
   btnsimpan.Visible := true;
   btnbatal.Visible  := true;
+   pndo.Enabled := true;
+  griddo.Enabled := true;
 end;
 
 procedure Tdeliveryfrm.btnsimpanClick(Sender: TObject);
@@ -158,6 +160,8 @@ if messagedlg('Simpan Transaksi?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
 begin
   btnsimpan.Visible := false;
   btnbatal.Visible  := false;
+  pndo.Enabled := false;
+  griddo.Enabled := false;
 
   dm.delivery.ApplyUpdates;
   dm.deliverydetail.ApplyUpdates;
@@ -174,6 +178,8 @@ begin
   dm.deliverydetail.CancelUpdates;
   btnsimpan.Visible := false;
   btnbatal.Visible  := false;
+   pndo.Enabled := false;
+  griddo.Enabled := false;
 end;
 end;
 

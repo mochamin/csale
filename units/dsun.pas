@@ -59,6 +59,7 @@ type
     akunview: TDataSource;
     jurnalumum: TDataSource;
     deliveryview: TDataSource;
+    tagihanview: TDataSource;
   private
     { Private declarations }
   public
