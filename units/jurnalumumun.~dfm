@@ -5,13 +5,14 @@ object jurnalumumfrm: Tjurnalumumfrm
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
   ClientHeight = 497
-  ClientWidth = 873
+  ClientWidth = 760
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
@@ -20,7 +21,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 873
+    Width = 760
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -41,7 +42,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object Panel4: TPanel
     Left = 0
     Top = 41
-    Width = 873
+    Width = 760
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -51,7 +52,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object Panel5: TPanel
     Left = 0
     Top = 49
-    Width = 873
+    Width = 760
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -63,7 +64,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object pntop: TPanel
     Left = 0
     Top = 53
-    Width = 873
+    Width = 760
     Height = 68
     Align = alTop
     TabOrder = 3
@@ -151,7 +152,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object DBGrid1: TDBGrid
     Left = 0
     Top = 121
-    Width = 873
+    Width = 760
     Height = 336
     Align = alClient
     Ctl3D = False
@@ -222,13 +223,13 @@ object jurnalumumfrm: Tjurnalumumfrm
       item
         Expanded = False
         FieldName = 'jl_amount'
-        Visible = True
+        Visible = False
       end>
   end
   object Panel3: TPanel
     Left = 0
     Top = 457
-    Width = 873
+    Width = 760
     Height = 40
     Align = alBottom
     TabOrder = 5
@@ -293,22 +294,6 @@ object jurnalumumfrm: Tjurnalumumfrm
       ParentFont = False
       Transparent = False
       OnClick = btntambahClick
-    end
-    object SpeedButton1: TSpeedButton
-      Left = 794
-      Top = 0
-      Width = 89
-      Height = 40
-      Cursor = crHandPoint
-      Caption = '&Simpan'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clOlive
-      Font.Height = -13
-      Font.Name = 'Arial Narrow'
-      Font.Style = []
-      ParentFont = False
-      Transparent = False
     end
     object btnbatal: TSpeedButton
       Left = 579

@@ -158,7 +158,10 @@ begin
      // cek apakah disertakan dengan ppn atau tidak
      if (dm.invoice.FieldByName('ju_ppn').Value = 'Ya') then
      begin
-     fieldbyname('in_tax').Value := dm.invoice.fieldbyname('ju_tax').Value;
+       fieldbyname('in_tax').Value := dm.invoice.fieldbyname('ju_tax').Value;
+     end else
+     begin
+       fieldbyname('in_tax').Value := 0;
      end;
      post;
    end; // end of with   dm.tagihan
@@ -189,6 +192,12 @@ end;
 procedure TInvoicelistfrm.cetakFakturPajak;
 var kodefaktur : string;
 begin
+  if dm.invoice.FieldByName('ju_ppn').Value = 'Tidak' then
+  begin
+    messagedlg('Tidak dapat mencetak faktur pajak, karena item ini tidak dikenakan PPN ',mtError,[mbOk],0);
+    abort;
+  end;
+
   with dm.fakturpajakrpt do
   begin
     sql.Text := 'select * from fakturpajak where fp_ref = (:ref) ';
@@ -245,7 +254,7 @@ begin
      begin
       
       dm.deliverydetail.Append;
-      dm.deliverydetail.FieldByName('dd_kd_barang').Value   := fieldbyname('jd_kd_barang').Value;
+      dm.deliverydetail.FieldByName('dd_kode_barang').Value   := fieldbyname('jd_kd_barang').Value;
       dm.deliverydetail.FieldByName('dd_nama_barang').Value := fieldbyname('jd_nama_barang').Value;
       //dm.deliverydetail.FieldByName('dd_type').Value        := fieldbyname('').Value;
       dm.deliverydetail.FieldByName('dd_qty').Value         := fieldbyname('jd_qty').Value;

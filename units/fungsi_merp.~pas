@@ -21,6 +21,7 @@ var isInventory      : integer;
     isbarangfrm      : integer;
     isJualfrm        : integer;
     noinvoice        : string;
+    notransaksi      : string;
     isdueclick       : integer;
 
 implementation

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Grids, DBGrids, Menus, RpCon, RpConDS,
-  RpBase, RpSystem, RpDefine, RpRave;
+  RpBase, RpSystem, RpDefine, RpRave, DBCtrls, Buttons;
 
 type
   Tdolistfrm = class(TForm)
@@ -27,10 +27,16 @@ type
     rddeliver: TRvDataSetConnection;
     N1: TMenuItem;
     HapusDeliveryOrder1: TMenuItem;
+    cbcust: TCheckBox;
+    lookcust: TDBLookupComboBox;
+    SpeedButton1: TSpeedButton;
+    rdbarangdelrpt: TRvDataSetConnection;
     procedure FormActivate(Sender: TObject);
     procedure cariChange(Sender: TObject);
     procedure CetakDeliveryOrder1Click(Sender: TObject);
     procedure HapusDeliveryOrder1Click(Sender: TObject);
+    procedure lookcustClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,22 +58,43 @@ end;
 
 procedure Tdolistfrm.cariChange(Sender: TObject);
 begin
+ if cbcust.Checked = true then
+ begin
+    with dm.deliveryview do
+    begin
+    sql.Text := 'select * from do  '+
+    'where (do_kode like (:opsi) or  '+
+    'do_ju_trans like (:opsi)) and do_cust_kode = (:ck)  order by do_id desc ';
+    params.ParamByName('opsi').Value := '%'+cari.Text+'%';
+    params.ParamByName('ck').Value   := lookcust.KeyValue;
+    open;
+   end; // end of dm.delivery
+ end else
+ begin
   with dm.deliveryview do
   begin
-    sql.Text := 'select * from do inner join customer on (do_cust_id=cu_id) '+
-    'where cu_nama like (:opsi) or do_kode like (:opsi) or  '+
-    'do_invoice like (:opsi) order by do_id desc ';
+    sql.Text := 'select * from do  '+
+    'where do_kode like (:opsi) or  '+
+    'do_ju_trans like (:opsi) order by do_id desc ';
     params.ParamByName('opsi').Value := '%'+cari.Text+'%';
     open;
   end;
+ end; // end of cbcust.checked
 end;
 
 procedure Tdolistfrm.CetakDeliveryOrder1Click(Sender: TObject);
 begin
-  with dm.delivery do
+  with dm.deliveryrpt do
   begin
     sql.Text :='select * from do where do_kode = (:kd) ';
-    params.ParamByName('kd').Value := griddo.Fields[0].Value;
+    params.ParamByName('kd').Value := dm.deliveryview.fieldbyname('do_kode').Value;
+    open;
+  end;
+
+   with dm.deliverydetailrpt do
+  begin
+    sql.Text :='select * from dodetail where dd_kode = (:dd) ';
+    params.ParamByName('dd').Value := dm.deliveryview.fieldbyname('do_kode').Value;
     open;
   end;
 
@@ -90,6 +117,31 @@ begin
  end;
  end; // end if messagedlg
  
+end;
+
+procedure Tdolistfrm.lookcustClick(Sender: TObject);
+begin
+ if cbcust.Checked = true then
+ begin
+   with dm.deliveryview do
+    begin
+    sql.Text := 'select * from do  '+
+    'where  do_cust_kode = (:ck)  order by do_id desc ';
+    params.ParamByName('ck').Value   := lookcust.KeyValue;
+    open;
+   end; // end of dm.delivery
+ end;
+end;
+
+procedure Tdolistfrm.SpeedButton1Click(Sender: TObject);
+begin
+  with dm.deliveryview do
+    begin
+    sql.Text := 'select * from do  '+
+    'order by do_id desc ';
+    open;
+   end; // end of dm.delivery
+   cbcust.Checked := false;
 end;
 
 end.

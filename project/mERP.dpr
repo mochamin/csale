@@ -80,7 +80,11 @@ uses
   dolistun in '..\units\dolistun.pas' {dolistfrm},
   cobagit in '..\units\cobagit.pas',
   fakturdaninvoiceun in '..\units\fakturdaninvoiceun.pas' {invoicprintfrm},
-  tagihanun in '..\units\tagihanun.pas' {tagihanfrm};
+  tagihanun in '..\units\tagihanun.pas' {tagihanfrm},
+  akuntansi in '..\units\akuntansi.pas',
+  lunaspiutangun in '..\units\lunaspiutangun.pas' {lunaspiutangfrm},
+  datacleanun in '..\units\datacleanun.pas' {datacleanfrm},
+  jurnalumumlistun in '..\units\jurnalumumlistun.pas' {jurnalumumlistfrm};
 
 {$R *.res}
 

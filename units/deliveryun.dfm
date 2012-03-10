@@ -527,7 +527,7 @@ object deliveryfrm: Tdeliveryfrm
     Columns = <
       item
         Expanded = False
-        FieldName = 'dd_kd_barang'
+        FieldName = 'dd_kode_barang'
         ReadOnly = True
         Title.Caption = 'Kd Barang'
         Width = 150

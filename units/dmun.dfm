@@ -1,8 +1,8 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 535
-  Top = 42
-  Height = 703
+  Left = 410
+  Top = 57
+  Height = 701
   Width = 850
   object conerp: TZConnection
     Protocol = 'mysql-5'
@@ -138,6 +138,7 @@ object dm: Tdm
   object supplier: TZQuery
     Connection = conerp
     CachedUpdates = True
+    Active = True
     SQL.Strings = (
       'SELECT * FROM supplier ORDER BY sp_id ASC')
     Params = <>
@@ -778,10 +779,6 @@ object dm: Tdm
       FieldName = 'dd_kode'
       Size = 255
     end
-    object deliverydetaildd_kd_barang: TStringField
-      FieldName = 'dd_kd_barang'
-      Size = 255
-    end
     object deliverydetaildd_nama_barang: TStringField
       FieldName = 'dd_nama_barang'
       Size = 255
@@ -796,6 +793,9 @@ object dm: Tdm
     object deliverydetaildd_satuan: TStringField
       FieldName = 'dd_satuan'
       Size = 255
+    end
+    object deliverydetaildd_kode_barang: TIntegerField
+      FieldName = 'dd_kode_barang'
     end
   end
   object barangdeliver: TZReadOnlyQuery
@@ -923,6 +923,48 @@ object dm: Tdm
     Params = <>
     Left = 136
     Top = 376
+    object barangrptbr_kode: TStringField
+      FieldName = 'br_kode'
+      Size = 255
+    end
+    object barangrptbr_barcode: TStringField
+      FieldName = 'br_barcode'
+      Size = 255
+    end
+    object barangrptbr_nama: TStringField
+      FieldName = 'br_nama'
+      Size = 255
+    end
+    object barangrptbr_kategori: TStringField
+      FieldName = 'br_kategori'
+      Size = 255
+    end
+    object barangrptbr_type: TStringField
+      FieldName = 'br_type'
+      Size = 255
+    end
+    object barangrptbr_vendor: TStringField
+      FieldName = 'br_vendor'
+      Size = 255
+    end
+    object barangrptbr_unit: TStringField
+      FieldName = 'br_unit'
+      Size = 255
+    end
+    object barangrptbr_id: TIntegerField
+      FieldName = 'br_id'
+      Required = True
+    end
+    object barangrptVendor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Vendor'
+      LookupDataSet = supplier
+      LookupKeyFields = 'sp_id'
+      LookupResultField = 'sp_name'
+      KeyFields = 'br_vendor'
+      Size = 100
+      Lookup = True
+    end
   end
   object invoicedetail: TZQuery
     Connection = conerp
@@ -3012,6 +3054,7 @@ object dm: Tdm
     end
     object jurnalumumju_amount: TFloatField
       FieldName = 'ju_amount'
+      DisplayFormat = '#,###'
     end
     object jurnalumumju_date: TDateField
       FieldName = 'ju_date'
@@ -3175,37 +3218,47 @@ object dm: Tdm
   object deliveryview: TZQuery
     Connection = conerp
     CachedUpdates = True
+    Active = True
     SQL.Strings = (
-      
-        'select * from do inner join customer on (do_cust_id=cu_id) order' +
-        ' by do_id desc ')
+      'select * from do'
+      '')
     Params = <>
     Left = 344
     Top = 368
-    object DateField22: TDateField
+    object deliveryviewdo_tgl: TDateField
       FieldName = 'do_tgl'
     end
-    object StringField88: TStringField
+    object deliveryviewdo_pic: TStringField
       FieldName = 'do_pic'
       Size = 255
     end
-    object StringField89: TStringField
-      FieldName = 'do_invoice'
+    object deliveryviewdo_ju_trans: TStringField
+      FieldName = 'do_ju_trans'
       Size = 255
     end
-    object StringField90: TStringField
+    object deliveryviewdo_kode: TStringField
       FieldName = 'do_kode'
       Size = 255
     end
-    object IntegerField52: TIntegerField
+    object deliveryviewdo_cust_id: TIntegerField
       FieldName = 'do_cust_id'
     end
-    object IntegerField53: TIntegerField
+    object deliveryviewdo_cust_pic: TIntegerField
       FieldName = 'do_cust_pic'
     end
-    object deliveryviewcu_nama: TStringField
-      FieldName = 'cu_nama'
+    object deliveryviewdo_cust_kode: TStringField
+      FieldName = 'do_cust_kode'
       Size = 255
+    end
+    object deliveryviewCustomer: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Customer'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_nama'
+      KeyFields = 'do_cust_kode'
+      Size = 100
+      Lookup = True
     end
   end
   object customeradd: TZQuery
@@ -3369,5 +3422,158 @@ object dm: Tdm
     Params = <>
     Left = 72
     Top = 624
+  end
+  object jurnaldetail: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    AfterPost = jurnal_umum_detailAfterPost
+    SQL.Strings = (
+      'select * from jurnal_umum_detail')
+    Params = <>
+    Left = 592
+    Top = 544
+    object IntegerField54: TIntegerField
+      FieldName = 'jl_id'
+    end
+    object StringField91: TStringField
+      FieldName = 'jl_kode'
+      Size = 255
+    end
+    object StringField92: TStringField
+      FieldName = 'jl_akun'
+      Size = 255
+    end
+    object StringField93: TStringField
+      FieldName = 'jl_desc'
+      Size = 255
+    end
+    object FloatField56: TFloatField
+      FieldName = 'jl_amount'
+    end
+    object FloatField57: TFloatField
+      FieldName = 'jl_kredit'
+      DisplayFormat = '#,###'
+    end
+    object FloatField58: TFloatField
+      FieldName = 'jl_debet'
+      DisplayFormat = '#,###'
+    end
+  end
+  object barangdeliverrpt: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM barang ORDER BY br_id ASC')
+    Params = <>
+    Left = 400
+    Top = 584
+    object barangdeliverrptbr_id: TIntegerField
+      FieldName = 'br_id'
+      Required = True
+    end
+    object barangdeliverrptbr_kode: TStringField
+      FieldName = 'br_kode'
+      Size = 255
+    end
+    object barangdeliverrptbr_barcode: TStringField
+      FieldName = 'br_barcode'
+      Size = 255
+    end
+    object barangdeliverrptbr_nama: TStringField
+      FieldName = 'br_nama'
+      Size = 255
+    end
+    object barangdeliverrptbr_kategori: TStringField
+      FieldName = 'br_kategori'
+      Size = 255
+    end
+    object barangdeliverrptbr_type: TStringField
+      FieldName = 'br_type'
+      Size = 255
+    end
+    object barangdeliverrptbr_vendor: TStringField
+      FieldName = 'br_vendor'
+      Size = 255
+    end
+    object barangdeliverrptbr_unit: TStringField
+      FieldName = 'br_unit'
+      Size = 255
+    end
+    object barangdeliverrptVendor: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Vendor'
+      LookupDataSet = supplier
+      LookupKeyFields = 'sp_id'
+      LookupResultField = 'sp_name'
+      KeyFields = 'br_vendor'
+      Size = 100
+      Lookup = True
+    end
+  end
+  object deliverydetailrpt: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from dodetail order by dd_id desc limit 1')
+    Params = <>
+    Left = 376
+    Top = 432
+    object StringField88: TStringField
+      FieldName = 'dd_kode'
+      Size = 255
+    end
+    object StringField90: TStringField
+      FieldName = 'dd_nama_barang'
+      Size = 255
+    end
+    object StringField94: TStringField
+      FieldName = 'dd_type'
+      Size = 255
+    end
+    object SmallintField9: TSmallintField
+      FieldName = 'dd_qty'
+    end
+    object StringField95: TStringField
+      FieldName = 'dd_satuan'
+      Size = 255
+    end
+    object deliverydetailrptdd_kode_barang: TIntegerField
+      FieldName = 'dd_kode_barang'
+    end
+  end
+  object supplierdelrpt: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM supplier ORDER BY sp_id ASC')
+    Params = <>
+    Left = 384
+    Top = 512
+    object IntegerField52: TIntegerField
+      FieldName = 'sp_id'
+    end
+    object StringField89: TStringField
+      FieldName = 'sp_name'
+      Size = 255
+    end
+    object StringField96: TStringField
+      FieldName = 'sp_address'
+      Size = 255
+    end
+    object StringField97: TStringField
+      FieldName = 'sp_kota'
+      Size = 255
+    end
+    object StringField98: TStringField
+      FieldName = 'sp_telp'
+      Size = 255
+    end
+    object StringField99: TStringField
+      FieldName = 'sp_refer'
+      ReadOnly = True
+      Size = 255
+    end
   end
 end

@@ -47,6 +47,7 @@ begin
      fieldbyname('jl_desc').Value := dm.akunview.fieldbyname('ak_desc').Value;
      post;    
    end;
+   
    close;
 end;
 

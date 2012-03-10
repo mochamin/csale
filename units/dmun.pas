@@ -145,7 +145,6 @@ type
     deliverydetail: TZQuery;
     barangdeliver: TZReadOnlyQuery;
     deliverydetaildd_kode: TStringField;
-    deliverydetaildd_kd_barang: TStringField;
     deliverydetaildd_nama_barang: TStringField;
     deliverydetaildd_type: TStringField;
     deliverydetaildd_qty: TSmallintField;
@@ -670,13 +669,6 @@ type
     invoiceju_invoice_sent: TSmallintField;
     invoiceju_ppn: TStringField;
     deliveryview: TZQuery;
-    DateField22: TDateField;
-    StringField88: TStringField;
-    StringField89: TStringField;
-    StringField90: TStringField;
-    IntegerField52: TIntegerField;
-    IntegerField53: TIntegerField;
-    deliveryviewcu_nama: TStringField;
     customeradd: TZQuery;
     deliverydo_ju_trans: TStringField;
     jualflag: TZQuery;
@@ -714,6 +706,56 @@ type
     tagihanrptin_due: TDateField;
     tagihanrptin_payment_method: TStringField;
     tagihanrptin_po: TStringField;
+    jurnaldetail: TZQuery;
+    IntegerField54: TIntegerField;
+    StringField91: TStringField;
+    StringField92: TStringField;
+    StringField93: TStringField;
+    FloatField56: TFloatField;
+    FloatField57: TFloatField;
+    FloatField58: TFloatField;
+    deliveryviewdo_tgl: TDateField;
+    deliveryviewdo_pic: TStringField;
+    deliveryviewdo_ju_trans: TStringField;
+    deliveryviewdo_kode: TStringField;
+    deliveryviewdo_cust_id: TIntegerField;
+    deliveryviewdo_cust_pic: TIntegerField;
+    deliveryviewdo_cust_kode: TStringField;
+    deliveryviewCustomer: TStringField;
+    barangdeliverrpt: TZQuery;
+    deliverydetailrpt: TZQuery;
+    StringField88: TStringField;
+    StringField90: TStringField;
+    StringField94: TStringField;
+    SmallintField9: TSmallintField;
+    StringField95: TStringField;
+    deliverydetailrptdd_kode_barang: TIntegerField;
+    barangrptbr_kode: TStringField;
+    barangrptbr_barcode: TStringField;
+    barangrptbr_nama: TStringField;
+    barangrptbr_kategori: TStringField;
+    barangrptbr_type: TStringField;
+    barangrptbr_vendor: TStringField;
+    barangrptbr_unit: TStringField;
+    barangrptbr_id: TIntegerField;
+    barangrptVendor: TStringField;
+    barangdeliverrptbr_id: TIntegerField;
+    barangdeliverrptbr_kode: TStringField;
+    barangdeliverrptbr_barcode: TStringField;
+    barangdeliverrptbr_nama: TStringField;
+    barangdeliverrptbr_kategori: TStringField;
+    barangdeliverrptbr_type: TStringField;
+    barangdeliverrptbr_vendor: TStringField;
+    barangdeliverrptbr_unit: TStringField;
+    barangdeliverrptVendor: TStringField;
+    supplierdelrpt: TZQuery;
+    IntegerField52: TIntegerField;
+    StringField89: TStringField;
+    StringField96: TStringField;
+    StringField97: TStringField;
+    StringField98: TStringField;
+    StringField99: TStringField;
+    deliverydetaildd_kode_barang: TIntegerField;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);
@@ -789,7 +831,10 @@ begin
 end;
 
 procedure Tdm.jurnal_umum_detailAfterPost(DataSet: TDataSet);
+
 begin
+
+
   with jurnal_umum_Detail do
  begin
    if (fieldbyname('jl_debet').AsFloat > 0) and  (fieldbyname('jl_kredit').AsFloat > 0)then
@@ -817,7 +862,7 @@ begin
 
 
 
-   
+
     // mendeteksi posting untuk klasifikasi hutang
    if (LeftStr(fieldbyname('jl_akun').Value,1))='2' then
    begin
@@ -836,7 +881,7 @@ begin
    end; // enf if leftstr
 
 
-   
+
     // mendeteksi posting untuk klasifikasi modal
    if (LeftStr(fieldbyname('jl_akun').Value,1))='3' then
    begin
@@ -905,7 +950,21 @@ begin
 
    end; // enf if leftstr
 
+  {  // isikan nol utk posting lawan
+    if fieldbyname('jl_debet').Value > 0 then
+    begin
+       fieldbyname('jl_kredit').Value = 0;
+    end;
+
+    if fieldbyname('jl_kredit').Value > 0 then
+    begin
+      fieldbyname('jl_debet').Value = 0;
+    end;                     }
+
  end;  // end of with jurnalumum detail
+
+
+
 end;
 
 end.

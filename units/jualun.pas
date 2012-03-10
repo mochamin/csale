@@ -74,7 +74,7 @@ var
   nofaktur   : string;
 
 implementation
-uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun;
+uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi;
 {$R *.dfm}
 
 procedure Tjualfrm.generateTrans;
@@ -192,8 +192,16 @@ begin
   BEGIN
    //jika penjualan bernilai piutang
     append;
-   fieldbyname('gl_amount').Value := totalntax;  // posting utk piutang
-   fieldbyname('gl_debet').Value := totalntax;  // piutang bertambah di debet
+   if lookppn.ItemIndex = 0 then
+   begin
+     fieldbyname('gl_amount').Value := totalntax;  // posting utk piutang
+     fieldbyname('gl_debet').Value := totalntax;  // piutang bertambah di debet
+   end else
+   begin
+     fieldbyname('gl_amount').Value := total;  // posting utk piutang
+     fieldbyname('gl_debet').Value := total;  // piutang bertambah di debet
+   end;
+
    fieldbyname('gl_akun').Value  := '130-20';
    fieldbyname('gl_tgl').Value   := date;
    fieldbyname('gl_ref').Value   := notrans.Text;
@@ -203,15 +211,19 @@ begin
  END; // end of dbcashitemindex
 
    //posting ke persediaan kurangkan nilai persediaan sejumlah barang yang terjual
-   append;
+  { append;
    fieldbyname('gl_amount').Value := hpp*-1;  // posting persediaan agar bernilai negatif alias persediaan berkurang
    fieldbyname('gl_kredit').Value := hpp;  // harta berkurang di kredit
    fieldbyname('gl_akun').Value  := '140-10';    // penyesuaian persediaan
    fieldbyname('gl_tgl').Value   := date;
    fieldbyname('gl_ref').Value   := notrans.Text;
    fieldbyname('gl_desc').Value := 'Penyesuaian Persediaan pada '+notrans.Text;
-   post;
+   post;  }
 
+   posting(hpp,0,'140-10',date,notrans.Text,'Penyesuaian Persediaan Pada '+notrans.Text,-1);
+
+   if lookppn.ItemIndex = 0 then
+   begin
      // posting ke hutang pajak penjualan
    append;
    fieldbyname('gl_amount').Value := tax;  // posting nilai ke akun hutang pajak penjualan
@@ -221,6 +233,7 @@ begin
    fieldbyname('gl_ref').Value   := notrans.Text;
    fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
    post;
+   end;
 
    // posting ke akun penjualan produk
    append;

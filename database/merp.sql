@@ -1481,15 +1481,52 @@ CREATE TABLE `customer` (
   `cu_telp` varchar(255) collate latin1_general_ci default NULL,
   `cu_npwp` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`cu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `customer` VALUES (2,'SVC-0000001','Tujuh Cahaya Mobil, PT.','Jl.Kebagusan No.72 Kebayoran Baru','Jakarta','021-754 33 441','3 1. 4 3 9. 4 0 6. 5 - 4 0 7. 0 0 0');
-INSERT INTO `customer` VALUES (3,'SVC-0000002','Batavia Bintang Berlian,PT.','Jl.Raya Bekasi Km.19 Pulogadung','Jakarta Timur','021-47863456',NULL);
-INSERT INTO `customer` VALUES (4,'SVC-0000003','Kreasi Auto Kencana','Jl.Boulevar Hijau Kelapa Gading','Jakarta',NULL,NULL);
-INSERT INTO `customer` VALUES (5,'SVC-0000004','HeavenBilly Auto Classic','Jl.Salemba Tengah 58','Jakarta','021-8876414/9923356',NULL);
-INSERT INTO `customer` VALUES (6,'SVC-0000005','Sigma Visualindo','Summer Festival','Bekasi',NULL,NULL);
-INSERT INTO `customer` VALUES (7,'SVC-0000006','AnekaYess!','Salemba Tengah','Jakarta',NULL,NULL);
-INSERT INTO `customer` VALUES (8,'SVC-0000007','Prisma Indah, PT.','Jl. Indah Kenangan Blok A9','Bogor','021-8845566','01 01 01');
-INSERT INTO `customer` VALUES (9,'SVC-0000008','YusMan','Tangerang',NULL,NULL,'123.456.789');
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `customer` VALUES (2,'SVC-0000001','PT. Coca - Cola Distribution Indonesia','Wisma Pondok Indah II, 14-15 Floor. Jl. Sultan Iskanda Muda Kav. V-TA. POndok Pinang, Kebayoran Lama','Jakarta Selatan','',NULL);
+INSERT INTO `customer` VALUES (3,'SVC-0000002','PT. Gobel DHarma Nusantara','Jl.Dewi Sartika 14, Cawang II','Jakarta Timur','021-8015666',NULL);
+INSERT INTO `customer` VALUES (4,'SVC-0000003','PT. Kramayudha Tiga Berlian Motor','JL. Jend. A. Yani Proyek Pulo Mas','Jakarta 13210',NULL,NULL);
+INSERT INTO `customer` VALUES (5,'SVC-0000004','PT. Tansri Madjid Energi','JL. Iman Bonjol No. 68-70','Jakarta Pusat 10310','021-3155066',NULL);
+INSERT INTO `customer` VALUES (6,'SVC-0000005','PT. Ching Luh Indonesia','Jl. Raya Pasar Kemis - Rajeg, Sindang Sari - Banten','Tangerang',NULL,NULL);
+INSERT INTO `customer` VALUES (7,'SVC-0000006','PT. Grand Puri Permai','JL. Kaimun Jaya I No. 9 Cilandak Barat','Jakarta Selatan','021-75902114',NULL);
+INSERT INTO `customer` VALUES (8,'SVC-0000007','PT. Panasonic Gobel Indonesia','Jl. Dewi Sartika Cawang II','Jakarta Timur','021-8015710',NULL);
+INSERT INTO `customer` VALUES (9,'SVC-0000008','PT. Agung Podomoro Land, Tbk','Jl. S.Parman Kav. 28','Jakarta Barat 11470',NULL,NULL);
+INSERT INTO `customer` VALUES (10,'SVC-0000009','PT. Pembangunan Perumahan (Persero), Tbk','Plaza PP, JL. Letjend. TB. Simatupang No. 57 Pasar Rebo','Jakarta Timur',NULL,NULL);
+INSERT INTO `customer` VALUES (11,'SVC-0000010','Xcell Visual Productions','JL. Anggrek Neli Murni VII No. 19-20','Slipi, Jakarta Barat','021-53690456',NULL);
+INSERT INTO `customer` VALUES (12,'SVC-0000011','PT. Energy Buana Persada Indonesia','Gedung Rabithah Alawiyah, Jl.TB.Simatuoang No. 7A Rt.010/003','Tanjung Barat, Jakarta Barat',NULL,NULL);
+INSERT INTO `customer` VALUES (13,'SVC-0000012','PT. Sari Burger Indonesia','Wisma BNI 46 - Kota BNI Lt.33, Jl. Jend. Sudirman Kav.1, Tanah Abang','Jakarta Pusat 10220',NULL,NULL);
+INSERT INTO `customer` VALUES (14,'SVC-0000013','PT. Imperium Happy Puppy','Jl. HR. Muhammad No. 73B','Surabaya','031-7343388',NULL);
+INSERT INTO `customer` VALUES (15,'SVC-0000014','PT. Adira Quantum Multifinance','Gedung Sentra Mulia Lt.9, Jl. HR.Rasuna Said Kav.X-6 No.8','Jakarta Selatan',NULL,NULL);
+INSERT INTO `customer` VALUES (16,'SVC-0000015','PT. Dom Pizza Indonesia','Wisma 46 - Kota BNI Lt.7, Jl. Jend.Sudirman Kav.1 Tanah Abang','Jakarta Pusat 10220',NULL,NULL);
+INSERT INTO `customer` VALUES (17,'SVC-0000016','Ibu Arie','Grand Wisata Summer Festival AE 07/2','Bekasi','021-82616101',NULL);
+INSERT INTO `customer` VALUES (18,'SVC-0000017','PT. Pramindo Ikat Nusantara','Plaza Kuningan, Annex Building Lt.7, Jl. HR.Rasuna Said Kav.C11-14','Jakarta Selatan','021-5202560',NULL);
+INSERT INTO `customer` VALUES (19,'SVC-0000018','Aston Tropicana Hotel && Premier PLaza','JL. Cihampelas No. 125 - 129','Bandung','022-2030101',NULL);
+INSERT INTO `customer` VALUES (20,'SVC-0000019','PT. Inov Perdana Teknologi','Panin Plaza, JL. Teuku Nyak Arief Blok C No. 6 Unit 03, Permata Hijau Kebayoran Lama','Jakarta Selatan','021-53664668',NULL);
+INSERT INTO `customer` VALUES (21,'SVC-0000020','PT. Wisma Nusantara International','WIsma Nusantara Lt.13, JL. MH.THamrin No. 59','Jakarta Pusat','021-3900909',NULL);
+INSERT INTO `customer` VALUES (22,'SVC-0000021','PT. Indomobil Group - Nissan','Gedung Wisma Indomobil 1 Lt.19, JL. MT. Haryono Kav. 8','Jakarta Timur','021-85918333',NULL);
+INSERT INTO `customer` VALUES (23,'SVC-0000022','PT. Cahaya Sakti Investindo Sukses','JL. Kaum Sari No. 1, Kedung Halang Talang','Bogor','0251-666873',NULL);
+INSERT INTO `customer` VALUES (24,'SVC-0000023','PT. MidPlaza Prima','MIdPlaza 2 Lt.25, JL. Jend.Sudirman Kav. 10-11','Jakarta Selatan','021-5737777',NULL);
+INSERT INTO `customer` VALUES (25,'SVC-0000024','PT. Grawita Indonesia Indah','Pintu 1 TMII','Jakarta Timur','021-46667000',NULL);
+INSERT INTO `customer` VALUES (26,'SVC-0000025','CV. Ikanindo Teknik','Jl. Raya Manyar Indah AA 15/65','Surabaya','031-5966951',NULL);
+INSERT INTO `customer` VALUES (27,'SVC-0000026','PT. Swara Indah Lestari','Ruki Sentra Latumenten Blok 1 No. 3A, Jl. Prof.Dr.Latumenten Raya No. 50','Jakarta',NULL,NULL);
+INSERT INTO `customer` VALUES (28,'SVC-0000027','PT. Complus Trimitra','Plaza De Lumina Blok B No. 5, Jl. Dharma Raya, Cengkareng ','Jakarta Barat','021-29030664',NULL);
+INSERT INTO `customer` VALUES (29,'SVC-0000028','PT. Bank Rabobank International Indonesia','Jl. Abdul Muis No. 28 Lt.2','Jakarta Pusat','021-2312021',NULL);
+INSERT INTO `customer` VALUES (30,'SVC-0000029','PT. Bank Mega, Tbk','Menara Bank Mega, Jl. Kapten Tendean Kav.12-14A','Jakarta','021-79175000',NULL);
+INSERT INTO `customer` VALUES (31,'SVC-0000030','PT. Greenland Rajawali Utama','Menara Rajawali Lt.21, Jl. Mega Kuningan Lot#5.2 Kawasan Mega Kuningan','Jakarta Selatan','021-5760808',NULL);
+INSERT INTO `customer` VALUES (32,'SVC-0000031','PT. Prima Sentris Saputra','Jl. Sukasari II No. 25 - 27','Bogor','0251-8372 648',NULL);
+INSERT INTO `customer` VALUES (33,'SVC-0000032','CV. Bina Guna','Jl. P. Jayakarta Komplek 141 Blok E No. 18','Jakarta Pusat','021-6009738',NULL);
+INSERT INTO `customer` VALUES (34,'SVC-0000033','PT. Graha Multi International','JL. Taman Mpu Sindok No. 41, Kebayoran Baru','Jakarta Selatan',NULL,NULL);
+INSERT INTO `customer` VALUES (35,'SVC-0000034','PT. Dian Ikrar Perkasa','Mediterania Garden Residence 1 Tower A Lt. 2, JL.Tanjung Duren Raya Kav. 5-9, Grogol Petamburan','Jakarta Barat','021-30047790',NULL);
+INSERT INTO `customer` VALUES (36,'SVC-0000035','PT. Star Reachers Indonesia','Menara Thamrin Lt.26, Jl. MH.Thamrin Kav.3','Jakarta','021-39830118',NULL);
+INSERT INTO `customer` VALUES (37,'SVC-0000036','RSUP Fatmawai Jakarta','Jl.RS.Fatmawati Cilandak','Jakarta Selatan 12430','021-7501524,7660552',NULL);
+INSERT INTO `customer` VALUES (38,'SVC-0000037','PT. Surya Semesta Internusa, Tbk','Graha Surya Internusa Lt.11, Jl. HR.Rasuna Said Kav.X-0 Kuningan','Jakarta 12950','021-5277788',NULL);
+INSERT INTO `customer` VALUES (39,'SVC-0000038','PT. Citra Putra Realty','The City Tower Lt.19, JL. MH.Thamrin No. 81 Gongangdia Menteng','Jakarta Pusat 10350','021-31996270',NULL);
+INSERT INTO `customer` VALUES (40,'SVC-0000039','PT. Citra Putra Mandiri','The City Tower Lt.19, Jl. MH.Thamrin No. 81 Gondang dia Menteng','Jakarta Pusata 10350','021-31996270',NULL);
+INSERT INTO `customer` VALUES (41,'SVC-0000040','Grand Hyatt Jakarta','Jl. MH. Thamrin PO.Box 4546/Jkt 10045','Jakarta Pusat 10350','021-3901234',NULL);
+INSERT INTO `customer` VALUES (42,'SVC-0000041','Trend Interior','Jakarta Design Center Lt.6 SR 06, Jl. Gatot Subroto Kav. 53','Jakarta Pusat 10260','021-5304710',NULL);
+INSERT INTO `customer` VALUES (43,'SVC-0000042','PT. Kianjaya Gemilang','Jl.Ruko Ventura III, Blok E No. 6, Lippo Cikarang','Bekasi 17550','021-89117633',NULL);
+INSERT INTO `customer` VALUES (44,'SVC-0000043','The Residence','The Sultan Hotel Complex, JL. Gatot Subroto','Jakarta 12040','021-5707070',NULL);
+INSERT INTO `customer` VALUES (45,'SVC-0000044','PT. Sejahtera Indoco','Nusadua Beach Hotel & Spa, Kawasan Wisata Nusadua - BTDC, Nusadua - Badung','Bali','0361-771210',NULL);
+INSERT INTO `customer` VALUES (46,'SVC-0000045','PT. Astra Sedaya Finance','Jl. TB.Simatupang No. 90','Jakarta 12530','021-78859000',NULL);
 
 #
 # Table structure for table custpic
@@ -1548,12 +1585,8 @@ CREATE TABLE `do` (
   `do_cust_pic` int(11) default NULL,
   `do_cust_kode` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`do_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `do` VALUES (1,NULL,NULL,NULL,'0000000000000000',NULL,NULL,NULL);
-INSERT INTO `do` VALUES (16,'2012-03-07',NULL,'JL0000000001','001/SV/DO/01/2012',NULL,10,'SVC-0000005');
-INSERT INTO `do` VALUES (17,'2012-03-07',NULL,'JL0000000002','001/SV/DO/03/2012',NULL,11,'SVC-0000007');
-INSERT INTO `do` VALUES (18,'2012-03-08',NULL,'JL0000000004','002/SV/DO/03/2012',NULL,12,'SVC-0000002');
-INSERT INTO `do` VALUES (19,'2012-03-10',NULL,'JL0000000002','003/SV/DO/03/2012',NULL,10,'SVC-0000004');
 
 #
 # Table structure for table dodetail
@@ -1562,17 +1595,13 @@ INSERT INTO `do` VALUES (19,'2012-03-10',NULL,'JL0000000002','003/SV/DO/03/2012'
 CREATE TABLE `dodetail` (
   `dd_id` int(11) NOT NULL auto_increment,
   `dd_kode` varchar(255) collate latin1_general_ci default NULL,
-  `dd_kd_barang` varchar(255) collate latin1_general_ci default NULL,
+  `dd_kode_barang` int(11) default NULL,
   `dd_nama_barang` varchar(255) collate latin1_general_ci default NULL,
   `dd_type` varchar(255) collate latin1_general_ci default NULL,
   `dd_qty` tinyint(5) default NULL,
   `dd_satuan` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`dd_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `dodetail` VALUES (18,'001/SV/DO/01/2012','41','LED TV 32\"',NULL,1,NULL);
-INSERT INTO `dodetail` VALUES (19,'001/SV/DO/03/2012','41','LED TV 32\"',NULL,2,NULL);
-INSERT INTO `dodetail` VALUES (20,'002/SV/DO/03/2012','32','LED TV 26\"',NULL,1,NULL);
-INSERT INTO `dodetail` VALUES (21,'003/SV/DO/03/2012','41','LED TV 32\"',NULL,1,NULL);
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 #
 # Table structure for table fakturpajak
@@ -1586,20 +1615,8 @@ CREATE TABLE `fakturpajak` (
   `fp_date` date default NULL,
   `fp_cust_kode` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`fp_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `fakturpajak` VALUES (1,'010.000-12.00000000',NULL,NULL,NULL,NULL);
-INSERT INTO `fakturpajak` VALUES (31,'010.000-12.00000021',NULL,'JL0000000001','2012-03-05','SVC-0000007');
-INSERT INTO `fakturpajak` VALUES (32,'010.000-12.00000022',NULL,'JL0000000002','2012-03-05','SVC-0000003');
-INSERT INTO `fakturpajak` VALUES (33,'010.000-12.00000023',NULL,'JL0000000003','2012-03-05','SVC-0000004');
-INSERT INTO `fakturpajak` VALUES (34,'010.000-12.00000024',NULL,'JL0000000001','2012-03-07','SVC-0000006');
-INSERT INTO `fakturpajak` VALUES (35,'010.000-12.00000025',NULL,'JL0000000001','2012-03-07','SVC-0000006');
-INSERT INTO `fakturpajak` VALUES (36,'010.000-12.00000026',NULL,'JL0000000002','2012-03-07','SVC-0000007');
-INSERT INTO `fakturpajak` VALUES (37,'010.000-12.00000027',NULL,'JL0000000001','2012-03-07','SVC-0000006');
-INSERT INTO `fakturpajak` VALUES (38,'010.000-12.00000028',NULL,'JL0000000002','2012-03-07','SVC-0000003');
-INSERT INTO `fakturpajak` VALUES (39,'010.000-12.00000029',NULL,'JL0000000003','2012-03-08','SVC-0000008');
-INSERT INTO `fakturpajak` VALUES (40,'010.000-12.00000030',NULL,'JL0000000004','2012-03-08','SVC-0000001');
-INSERT INTO `fakturpajak` VALUES (41,'010.000-12.00000031',NULL,'JL0000000001','2012-03-08','SVC-0000008');
-INSERT INTO `fakturpajak` VALUES (42,'010.000-12.00000032',NULL,'JL0000000002','2012-03-10','SVC-0000006');
 
 #
 # Table structure for table fakturpajakdetail
@@ -1614,37 +1631,7 @@ CREATE TABLE `fakturpajakdetail` (
   `fd_row_total` double default NULL,
   `fd_harga` double default NULL,
   PRIMARY KEY  (`fd_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `fakturpajakdetail` VALUES (10,'010.000-12.00000005',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (11,'010.000-12.00000006',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (12,'010.000-12.00000007',34,'PLASMA TV 42\"',1,11000000,11000000);
-INSERT INTO `fakturpajakdetail` VALUES (13,'010.000-12.00000008',34,'PLASMA TV 42\"',1,11000000,11000000);
-INSERT INTO `fakturpajakdetail` VALUES (14,'010.000-12.00000009',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (15,'010.000-12.00000010',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (16,'010.000-12.00000011',11,'COLOR TV 21\" SLIM',1,1500000,1500000);
-INSERT INTO `fakturpajakdetail` VALUES (17,'010.000-12.00000012',26,'COLOR TV 29\" SLIM',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (18,'010.000-12.00000013',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (19,'010.000-12.00000014',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (20,'010.000-12.00000015',26,'COLOR TV 29\" SLIM',1,2300000,2300000);
-INSERT INTO `fakturpajakdetail` VALUES (21,'010.000-12.00000015',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (22,'010.000-12.00000016',41,'LED TV 32\"',1,2600000,2600000);
-INSERT INTO `fakturpajakdetail` VALUES (23,'010.000-12.00000017',32,'LED TV 26\"',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (24,'010.000-12.00000017',11,'COLOR TV 21\" SLIM',1,1250000,1250000);
-INSERT INTO `fakturpajakdetail` VALUES (25,'010.000-12.00000018',32,'LED TV 26\"',1,2100000,2100000);
-INSERT INTO `fakturpajakdetail` VALUES (26,'010.000-12.00000019',26,'COLOR TV 29\" SLIM',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (27,'010.000-12.00000020',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (28,'010.000-12.00000021',11,'COLOR TV 21\" SLIM',1,1500000,1500000);
-INSERT INTO `fakturpajakdetail` VALUES (29,'010.000-12.00000022',30,'LED TV 22\"',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (30,'010.000-12.00000023',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (31,'010.000-12.00000024',26,'COLOR TV 29\" SLIM',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (32,'010.000-12.00000025',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (33,'010.000-12.00000026',11,'COLOR TV 21\" SLIM',1,1300000,1300000);
-INSERT INTO `fakturpajakdetail` VALUES (34,'010.000-12.00000027',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (35,'010.000-12.00000028',41,'LED TV 32\"',2,5000000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (36,'010.000-12.00000029',32,'LED TV 26\"',1,2000000,2000000);
-INSERT INTO `fakturpajakdetail` VALUES (37,'010.000-12.00000030',32,'LED TV 26\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (38,'010.000-12.00000031',41,'LED TV 32\"',1,2500000,2500000);
-INSERT INTO `fakturpajakdetail` VALUES (39,'010.000-12.00000032',41,'LED TV 32\"',1,3000000,3000000);
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 #
 # Table structure for table foot_note
@@ -1705,13 +1692,7 @@ CREATE TABLE `general_ledger` (
   `gl_kredit` double default NULL,
   `gl_ref` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`gl_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=348 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `general_ledger` VALUES (342,'130-20',3000000,'2012-03-10',NULL,'Penjualan,AnekaYess!',3000000,NULL,'JL0000000002');
-INSERT INTO `general_ledger` VALUES (343,'140-10',-2400000,'2012-03-10',NULL,'Penyesuaian Persediaan Pada JL0000000002',NULL,2400000,'JL0000000002');
-INSERT INTO `general_ledger` VALUES (344,'410-10',3000000,'2012-03-10',NULL,'Penjualan,AnekaYess!',NULL,3000000,'JL0000000002');
-INSERT INTO `general_ledger` VALUES (345,'510-10',2400000,'2012-03-10',NULL,'Penjualan,AnekaYess!',2400000,NULL,'JL0000000002');
-INSERT INTO `general_ledger` VALUES (346,'130-20',-3000000,'2012-03-10',NULL,'Pembayaran Piutang Untuk JL0000000002',NULL,3000000,'JL0000000002');
-INSERT INTO `general_ledger` VALUES (347,'110-20',3000000,'2012-03-10',NULL,'Pembayaran Piutang Untuk JL0000000002',3000000,NULL,'JL0000000002');
+) ENGINE=MyISAM AUTO_INCREMENT=371 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 #
 # Table structure for table group_access
@@ -1752,7 +1733,7 @@ CREATE TABLE `inventory` (
   PRIMARY KEY  (`in_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `inventory` VALUES (13,30,1,-2,1750000);
-INSERT INTO `inventory` VALUES (14,32,1,14,1900000);
+INSERT INTO `inventory` VALUES (14,32,1,12,1900000);
 INSERT INTO `inventory` VALUES (15,41,1,92,2400000);
 INSERT INTO `inventory` VALUES (16,11,1,0,1150000);
 INSERT INTO `inventory` VALUES (17,26,1,-1,1700000);
@@ -1801,12 +1782,9 @@ CREATE TABLE `invoice` (
   `in_po` varchar(255) collate latin1_general_ci default NULL,
   `in_paid_date` date default NULL,
   PRIMARY KEY  (`in_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `invoice` VALUES (1,'000/SV/IN/00/2012',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,1,NULL,NULL,NULL,NULL);
-INSERT INTO `invoice` VALUES (13,'001/SV/IN/03/2012','SVC-0000006',NULL,2500000,250000,'2012-03-07','JL0000000001',0,10,0,'2012-03-31','HUTANG','001/AY/03/2012',NULL);
-INSERT INTO `invoice` VALUES (14,'002/SV/IN/03/2012','SVC-0000003',NULL,5000000,NULL,'2012-03-07','JL0000000002',0,11,0,NULL,'CASH','005/KAK/03/2012',NULL);
-INSERT INTO `invoice` VALUES (15,'003/SV/IN/03/2012','SVC-0000001',NULL,2500000,0,'2012-03-08','JL0000000004',0,12,0,'2012-03-16','HUTANG','004/CP/03/2012',NULL);
-INSERT INTO `invoice` VALUES (16,'004/SV/IN/03/2012','SVC-0000006',NULL,3000000,0,'2012-03-10','JL0000000002',0,10,0,'2012-03-31','HUTANG','001/AY/03/2012',NULL);
+INSERT INTO `invoice` VALUES (17,'001/SV/IN/03/2012','SVC-0000007',NULL,2000000,0,'2012-03-10','JL0000000001',0,NULL,0,'2012-03-31','HUTANG',NULL,NULL);
 
 #
 # Table structure for table jobdes
@@ -1844,10 +1822,8 @@ CREATE TABLE `jual` (
   `ju_invoice_sent` tinyint(1) default NULL,
   `ju_barang_sent` tinyint(1) default NULL,
   PRIMARY KEY  (`ju_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `jual` VALUES (1,'JL0000000000',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `jual` VALUES (82,'JL0000000001','SVC-0000008','2012-03-08',NULL,12,'2012-03-29','HUTANG','003',NULL,NULL,2500000,250000,NULL,'Tidak',NULL,NULL);
-INSERT INTO `jual` VALUES (83,'JL0000000002','SVC-0000006','2012-03-10',NULL,10,'2012-03-31','HUTANG','001/AY/03/2012',NULL,NULL,3000000,300000,NULL,'Tidak',NULL,2);
 
 #
 # Table structure for table jualdetail
@@ -1868,9 +1844,7 @@ CREATE TABLE `jualdetail` (
   `jd_margin` double default NULL,
   `jd_satuan` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`jd_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `jualdetail` VALUES (91,'JL0000000001','2012-03-08',41,'LED TV 32\"',1,2400000,2500000,0,0,2500000,100000,'unit');
-INSERT INTO `jualdetail` VALUES (92,'JL0000000002','2012-03-10',41,'LED TV 32\"',1,2400000,3000000,0,0,3000000,600000,'unit');
+) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 #
 # Table structure for table jurnal_umum
@@ -1884,11 +1858,11 @@ CREATE TABLE `jurnal_umum` (
   `ju_pic` varchar(255) collate latin1_general_ci default NULL,
   `ju_note` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`ju_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `jurnal_umum` VALUES (1,'JU00000000',NULL,NULL,NULL,NULL);
-INSERT INTO `jurnal_umum` VALUES (10,'JU00000001',NULL,'2012-02-24',NULL,NULL);
-INSERT INTO `jurnal_umum` VALUES (11,'JU00000002',NULL,'2012-02-24',NULL,NULL);
-INSERT INTO `jurnal_umum` VALUES (12,'JU00000003',NULL,'2012-02-24',NULL,NULL);
+INSERT INTO `jurnal_umum` VALUES (15,'JU00000001',NULL,'2012-03-10',NULL,'Setoran Pribadi');
+INSERT INTO `jurnal_umum` VALUES (16,'JU00000002',NULL,'2012-03-10',NULL,'Investasi Pak Juandi');
+INSERT INTO `jurnal_umum` VALUES (17,'JU00000003',NULL,'2012-03-10',NULL,'sumbangan pak Nazar');
 
 #
 # Table structure for table jurnal_umum_detail
@@ -1903,12 +1877,13 @@ CREATE TABLE `jurnal_umum_detail` (
   `jl_kredit` double default NULL,
   `jl_debet` double default NULL,
   PRIMARY KEY  (`jl_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `jurnal_umum_detail` VALUES (10,'JU00000001','110-20','Kas',100000000,NULL,100000000);
-INSERT INTO `jurnal_umum_detail` VALUES (11,'JU00000002','170-10','Tanah',25000000,NULL,25000000);
-INSERT INTO `jurnal_umum_detail` VALUES (12,'JU00000002','110-20','Kas',-25000000,25000000,NULL);
-INSERT INTO `jurnal_umum_detail` VALUES (13,'JU00000003','510-40','Komisi Penjualan',150000,NULL,150000);
-INSERT INTO `jurnal_umum_detail` VALUES (14,'JU00000003','110-20','Kas',-150000,150000,NULL);
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `jurnal_umum_detail` VALUES (19,'JU00000001','110-20','Kas',100000000,NULL,100000000);
+INSERT INTO `jurnal_umum_detail` VALUES (20,'JU00000001','310-20','Modal Disetor',100000000,100000000,NULL);
+INSERT INTO `jurnal_umum_detail` VALUES (21,'JU00000002','110-20','Kas',25000000,NULL,25000000);
+INSERT INTO `jurnal_umum_detail` VALUES (22,'JU00000002','310-20','Modal Disetor',25000000,25000000,NULL);
+INSERT INTO `jurnal_umum_detail` VALUES (23,'JU00000003','110-20','Kas',4000000,0,15000000);
+INSERT INTO `jurnal_umum_detail` VALUES (24,'JU00000003','310-20','Modal Disetor',15000000,15000000,0);
 
 #
 # Table structure for table karyawan
@@ -2171,9 +2146,10 @@ CREATE TABLE `salary` (
   `sa_kode_level` varchar(255) collate latin1_general_ci default NULL,
   `sa_ref` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`sa_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 INSERT INTO `salary` VALUES (36,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'SL00000000');
 INSERT INTO `salary` VALUES (41,10,5000000,7550000,'2012-02-24','Februari 2012',NULL,NULL,281000,18480000,250000,67440000,NULL,7269000,390000,2800000,'BOD','SL00000001');
+INSERT INTO `salary` VALUES (42,10,5000000,7550000,'2012-03-10','Maret 2012',NULL,NULL,281000,18480000,250000,67440000,NULL,7269000,390000,2800000,'BOD','SL00000002');
 
 #
 # Table structure for table salary_level
@@ -2250,12 +2226,11 @@ CREATE TABLE `supplier` (
   `sp_refer` varchar(255) collate latin1_general_ci default NULL,
   `sp_npwp` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`sp_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `supplier` VALUES (2,'LG','Kawasan Industri Jababeka No.52 Cikarang','Bekasi',NULL,'2',NULL);
-INSERT INTO `supplier` VALUES (3,'Samsung','Kawasan Industri Ejip Cikarang','Bekasi',NULL,'3',NULL);
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `supplier` VALUES (3,'PT. Sharp Electronics Indonesia','Jln.Swadaya IV RT.14 RW.4, Rawaterate, Cakung','Jakarta Timur','021-46824070',NULL,NULL);
 INSERT INTO `supplier` VALUES (4,'PT.GOBEL DHARMA NUSANTARA','Jl Industri Kawanu','Bekasi',NULL,'4',NULL);
-INSERT INTO `supplier` VALUES (5,'Polytron',NULL,NULL,NULL,'5',NULL);
-INSERT INTO `supplier` VALUES (6,'Pitu Electronics','Kaliabang Tengah Raya','Bekasi',NULL,NULL,NULL);
+INSERT INTO `supplier` VALUES (5,'PT. Indovisual Sistem Integrasi','Komp. Perkantoran Multiguna Blok 1H , JL. Rajawali 8 LT Pademangan','Jakarta Utara','021-6412131 / Fax. 021-6412130',NULL,NULL);
+INSERT INTO `supplier` VALUES (6,'PT. Panasonic Gobel Indonesia','Jl. Dewi Sartika (Cawang II)','Jakarta Timur','021-8015710 / Fax.021-8015706',NULL,NULL);
 INSERT INTO `supplier` VALUES (7,'PT. Catur Mitra Sepakat','Royal Gading Square RG 10/20, Jl. Pegangsaan Dua','Jakarta Timur','021-45872249',NULL,NULL);
 INSERT INTO `supplier` VALUES (8,'PT. Saitech','Wisma Eka JIwa Lt.6 No.6, Jl. Alteri Mangga Dua Selatan, Sawah Besar','Jakarta Pusat','021-6250508 / Fax. 021-6252372',NULL,NULL);
 INSERT INTO `supplier` VALUES (9,'PT. Gobel Dharma Nusantara','Jl. Dewi Sartika 14, Cawang II','Jakarta Timur','021-8015666 / Fax. 021-8015675',NULL,NULL);
@@ -2263,6 +2238,8 @@ INSERT INTO `supplier` VALUES (10,'PT. Sigma Visualindo','Summer Festival','Beka
 INSERT INTO `supplier` VALUES (11,'CV. Techtron',NULL,'Jakarta',NULL,NULL,NULL);
 INSERT INTO `supplier` VALUES (12,'PT. Guna Logam',NULL,'Sukabumi',NULL,NULL,NULL);
 INSERT INTO `supplier` VALUES (13,'PT. IMS',NULL,'Jakarta',NULL,NULL,NULL);
+INSERT INTO `supplier` VALUES (14,'Taruna Tehnik','Jl. RA. Kartini No. 10 Rt.03/05 Kel. Margahayu ','Bekasi','021-98181547',NULL,NULL);
+INSERT INTO `supplier` VALUES (17,'PT. Puterako Inti Buana','Kompleks Ruko Atom Megah Jl. Gembong No 32H','Surabaya','031 - 3763278 ',NULL,NULL);
 
 #
 # Table structure for table supplier_pic
@@ -2276,21 +2253,29 @@ CREATE TABLE `supplier_pic` (
   `sp_email` varchar(255) character set latin1 default NULL,
   `sp_supplier` int(11) default NULL,
   PRIMARY KEY  (`sp_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-INSERT INTO `supplier_pic` VALUES (1,'Mochamad Amin',NULL,NULL,NULL,2);
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `supplier_pic` VALUES (1,'Deddy Mulyawan Godjali',NULL,'081586777787 / 087882582587','Deddy.godjali@lge.com',2);
 INSERT INTO `supplier_pic` VALUES (2,'Andi Wijaya','Jl Kebagusan No.17 Pulo Gadung - Jakarta','087 88 99123','dee_jo_cuy@yahoo.co.id',4);
-INSERT INTO `supplier_pic` VALUES (3,'Asep Saefudin','Perumahan Indah Permai I No.12 Jakarta','0776 55 443','dexact@yahoo.com',2);
+INSERT INTO `supplier_pic` VALUES (3,'','','','',2);
 INSERT INTO `supplier_pic` VALUES (4,'Deni Koswara, Bpk.','Jl Kemanggisan-Bogor','0812 334 557',NULL,4);
-INSERT INTO `supplier_pic` VALUES (5,'Ringgo Agus Permana',NULL,'0812 111 9999',NULL,4);
-INSERT INTO `supplier_pic` VALUES (6,'Ella Nursela','Jl Enggano 10 Jakarta Barat',NULL,NULL,4);
-INSERT INTO `supplier_pic` VALUES (7,'Johan Budi',NULL,NULL,NULL,3);
-INSERT INTO `supplier_pic` VALUES (8,'Busyro Muqqodas',NULL,NULL,NULL,3);
-INSERT INTO `supplier_pic` VALUES (9,'Samad Riyadhi',NULL,NULL,NULL,3);
-INSERT INTO `supplier_pic` VALUES (10,'',NULL,NULL,NULL,NULL);
-INSERT INTO `supplier_pic` VALUES (11,'Suryo Utomo',NULL,NULL,NULL,5);
-INSERT INTO `supplier_pic` VALUES (12,'Fredy Wahyu',NULL,NULL,NULL,5);
-INSERT INTO `supplier_pic` VALUES (13,'Aisyah, Ibu','Bekasi',NULL,NULL,6);
-INSERT INTO `supplier_pic` VALUES (14,'Bamabang Santoso, Bpk.','KA Tengah-Bekasi',NULL,NULL,6);
+INSERT INTO `supplier_pic` VALUES (5,'Rakka Nakula Saleh','Bekasi','087 88 66',NULL,4);
+INSERT INTO `supplier_pic` VALUES (6,'Mochamad Amin',NULL,NULL,NULL,4);
+INSERT INTO `supplier_pic` VALUES (7,'Edy',NULL,NULL,NULL,4);
+INSERT INTO `supplier_pic` VALUES (8,'Suryani Indri',NULL,NULL,'Suryani.indri@lge.com',2);
+INSERT INTO `supplier_pic` VALUES (9,NULL,NULL,NULL,NULL,2);
+INSERT INTO `supplier_pic` VALUES (10,'Yuvan Christofel',NULL,'0811902374','Yuvan@seid.sharp-world.com',NULL);
+INSERT INTO `supplier_pic` VALUES (11,'Nurhayati ( Bolly )',NULL,'085691677812','Nurhayati@seid.sharp-world.com',3);
+INSERT INTO `supplier_pic` VALUES (12,'Ranti',NULL,'085691668573','Pjs_adm@seid.sharp-world.com',3);
+INSERT INTO `supplier_pic` VALUES (13,'Ningsih ( Toci )',NULL,'081319519272','Ningsih@seid.sharp-world.com',3);
+INSERT INTO `supplier_pic` VALUES (14,'Yuvan Christofel',NULL,'0811902374','Yuvan@seid.sharp-world.com',3);
+INSERT INTO `supplier_pic` VALUES (15,NULL,NULL,NULL,NULL,3);
+INSERT INTO `supplier_pic` VALUES (16,'',NULL,NULL,NULL,NULL);
+INSERT INTO `supplier_pic` VALUES (17,'Ido',NULL,NULL,'Ido@indovisual.co.id',5);
+INSERT INTO `supplier_pic` VALUES (18,'Manoj',NULL,NULL,'Manoj@sai-tek.com',8);
+INSERT INTO `supplier_pic` VALUES (19,'Deepa',NULL,NULL,'Deepa@sai-tek.com',8);
+INSERT INTO `supplier_pic` VALUES (20,'Noori',NULL,NULL,'Noori@Sai-tek.com',8);
+INSERT INTO `supplier_pic` VALUES (21,'Pak Honggie',NULL,'0816966651',NULL,7);
+INSERT INTO `supplier_pic` VALUES (22,'Deni Koswara',NULL,'08129443242','Deni.koswara@gdn.co.id',9);
 
 #
 # Table structure for table user

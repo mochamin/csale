@@ -23,6 +23,7 @@ var isInventory      : integer;
     noinvoice        : string;
     notransaksi      : string;
     isdueclick       : integer;
+    bayarpiutang     : double;
 
 implementation
 

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ExtCtrls, ComCtrls, StdCtrls;
+  Dialogs, Menus, ExtCtrls, ComCtrls, StdCtrls, Buttons;
 
 type
   Tutamafrm = class(TForm)
@@ -76,6 +76,40 @@ type
     ListDeliveryOrder1: TMenuItem;
     N18: TMenuItem;
     ListDaftarInvoice1: TMenuItem;
+    pnshortcut: TPanel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
+    btninvoice: TSpeedButton;
+    SpeedButton10: TSpeedButton;
+    Bevel1: TBevel;
+    Bevel3: TBevel;
+    Bevel4: TBevel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Bevel5: TBevel;
+    SpeedButton11: TSpeedButton;
+    SpeedButton12: TSpeedButton;
+    SpeedButton13: TSpeedButton;
+    Label6: TLabel;
+    SpeedButton14: TSpeedButton;
+    pnclosebtn: TSpeedButton;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    ampilkanShortcut1: TMenuItem;
+    SpeedButton15: TSpeedButton;
+    SpeedButton16: TSpeedButton;
+    pnshow: TPanel;
+    SpeedButton17: TSpeedButton;
+    btnlistjual: TSpeedButton;
+    btndo: TSpeedButton;
+    btndolist: TSpeedButton;
+    DataClean1: TMenuItem;
+    N21: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure GroupSettings1Click(Sender: TObject);
     procedure UserSettings1Click(Sender: TObject);
@@ -115,6 +149,25 @@ type
     procedure EntryJurnalUmum1Click(Sender: TObject);
     procedure ListDeliveryOrder1Click(Sender: TObject);
     procedure ListDaftarInvoice1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure btninvoiceClick(Sender: TObject);
+    procedure SpeedButton13Click(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
+    procedure SpeedButton12Click(Sender: TObject);
+    procedure pnclosebtnClick(Sender: TObject);
+    procedure ampilkanShortcut1Click(Sender: TObject);
+    procedure SpeedButton17Click(Sender: TObject);
+    procedure btnlistjualClick(Sender: TObject);
+    procedure btndoClick(Sender: TObject);
+    procedure btndolistClick(Sender: TObject);
+    procedure DataClean1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -132,7 +185,7 @@ uses grouplistun, userlistun, passchangeun, barangmstrun,fungsi_merp,
   neracaun, projectun, penawaranun, foot_globalun, labarugiun, glun,
   karyawanun, jobdesun, salary_levelun, ptkpun, deptun, bankun, pphun,
   salaryinputun, salaryleveltambahun, penguranggajiun, salaryrptun,
-  jurnalumumun, dolistun, tagihanun;
+  jurnalumumun, dolistun, tagihanun, datacleanun, jurnalumumlistun;
 
 {$R *.dfm}
 
@@ -375,6 +428,110 @@ procedure Tutamafrm.ListDaftarInvoice1Click(Sender: TObject);
 begin
 
  aktifkanform(tagihanfrm,TTagihanfrm);
+end;
+
+procedure Tutamafrm.SpeedButton3Click(Sender: TObject);
+begin
+ aktifkanform(supplierfrm,Tsupplierfrm);
+end;
+
+procedure Tutamafrm.SpeedButton4Click(Sender: TObject);
+begin
+  aktifkanform(CustomerFrm,TCustomerFrm);
+end;
+
+procedure Tutamafrm.SpeedButton2Click(Sender: TObject);
+begin
+ aktifkanform(barangmstrfrm,Tbarangmstrfrm);
+end;
+
+procedure Tutamafrm.SpeedButton5Click(Sender: TObject);
+begin
+  aktifkanform(inventoryfrm,TInventoryfrm);
+end;
+
+procedure Tutamafrm.SpeedButton6Click(Sender: TObject);
+begin
+  isInventory :=1;
+  aktifkanform(polistfrm,TPolistfrm);
+end;
+
+procedure Tutamafrm.SpeedButton7Click(Sender: TObject);
+begin
+  isBeliLangsung :=0;
+  aktifkanform(belisupfrm,TBeliSupFrm);
+end;
+
+procedure Tutamafrm.SpeedButton8Click(Sender: TObject);
+begin
+  aktifkanform(polistfrm,TPOListfrm);
+end;
+
+procedure Tutamafrm.SpeedButton1Click(Sender: TObject);
+begin
+ aktifkanform(jualfrm,TJualfrm);
+end;
+
+procedure Tutamafrm.btninvoiceClick(Sender: TObject);
+begin
+  aktifkanform(tagihanfrm,TTagihanfrm);
+end;
+
+procedure Tutamafrm.SpeedButton13Click(Sender: TObject);
+begin
+  aktifkanform(jurnalUmumListfrm,TJurnalUmumListfrm);
+end;
+
+procedure Tutamafrm.SpeedButton11Click(Sender: TObject);
+begin
+   aktifkanform(akunfrm,TAkunfrm);
+end;
+
+procedure Tutamafrm.SpeedButton12Click(Sender: TObject);
+begin
+  aktifkanform(glfrm,TGlfrm);
+end;
+
+procedure Tutamafrm.pnclosebtnClick(Sender: TObject);
+begin
+  pnshow.Visible := true;
+  pnshortcut.Visible := false;
+end;
+
+procedure Tutamafrm.ampilkanShortcut1Click(Sender: TObject);
+begin
+ pnshortcut.Visible := true;
+end;
+
+procedure Tutamafrm.SpeedButton17Click(Sender: TObject);
+begin
+ pnshortcut.Visible := true;
+ pnshow.Visible := false;
+end;
+
+procedure Tutamafrm.btnlistjualClick(Sender: TObject);
+begin
+ aktifkanform(invoicelistfrm,TInvoiceListfrm);
+end;
+
+procedure Tutamafrm.btndoClick(Sender: TObject);
+begin
+ aktifkanform(deliveryfrm,TDeliveryfrm);
+end;
+
+procedure Tutamafrm.btndolistClick(Sender: TObject);
+begin
+   aktifkanform(dolistfrm,TDolistfrm);
+end;
+
+procedure Tutamafrm.DataClean1Click(Sender: TObject);
+begin
+  if messagedlg('Yakin Akan melakukan data Clean? Prosedure ini hanya untuk '+#13+
+  'Super User yang akan mengakibatkan data transaksi penjualan/pembelian serta seluruh '+#13+
+  'Data yang terkait akan dihapus!',mtWarning,[mbYes,mbNo],1) = mrYes then
+  begin
+    aktifkanform(dataCleanfrm,TDataCleanfrm);
+  end;
 end;
 
 end.

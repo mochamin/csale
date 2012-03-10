@@ -33,6 +33,7 @@ type
     procedure RefreshData1Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure Pembayaran1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +44,7 @@ var
   tagihanfrm: Ttagihanfrm;
 
 implementation
-uses dmun,fungsi_merp, fakturdaninvoiceun;
+uses dmun,fungsi_merp, fakturdaninvoiceun, lunaspiutangun;
 {$R *.dfm}
 
 procedure Ttagihanfrm.FormCreate(Sender: TObject);
@@ -178,5 +179,11 @@ procedure Ttagihanfrm.DBGrid1DrawColumnCell(Sender: TObject;
    grid.DefaultDrawColumnCell(FixRect, DataCol, Column, State) ;
 
  end;
+
+procedure Ttagihanfrm.Pembayaran1Click(Sender: TObject);
+begin
+ bayarpiutang := dm.tagihanview.fieldbyname('in_amount').Value+dm.tagihanview.fieldbyname('in_tax').Value;
+ aktifkanform(lunasPiutangfrm,TLunasPiutangfrm);
+end;
 
 end.

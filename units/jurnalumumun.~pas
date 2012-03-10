@@ -15,7 +15,6 @@ type
     pntop: TPanel;
     DBGrid1: TDBGrid;
     Panel3: TPanel;
-    SpeedButton1: TSpeedButton;
     btnbatal: TSpeedButton;
     btnsimpan: TSpeedButton;
     btntambah: TSpeedButton;
@@ -36,6 +35,7 @@ type
     { Private declarations }
     procedure generateRef;
     procedure prosesAkunting;
+    procedure cekEntry;
   public
     { Public declarations }
   end;
@@ -47,6 +47,43 @@ implementation
 
 uses dmun,fungsi_merp, akunviewun,strutils;
 {$R *.dfm}
+
+procedure Tjurnalumumfrm.cekEntry;
+var  totalKredit,totalDebet : double;
+begin
+  // periksa apakah entry sudah balance ???
+  totalKredit :=0;
+  totalDebet := 0;
+   with dm.jurnal_umum_detail do
+  begin
+    first;
+    while not eof do
+    begin
+    if fieldbyname('jl_kredit').Value = null then
+    begin
+       edit;
+       fieldbyname('jl_kredit').Value := 0;
+    end;
+
+    if fieldbyname('jl_debet').Value = null then
+    begin
+       edit;
+       fieldbyname('jl_debet').Value := 0;
+    end;
+
+    totalKredit := totalKredit+fieldbyname('jl_kredit').Value;
+    totalDebet  := totalDebet+fieldbyname('jl_debet').Value;
+    next;
+    end;
+  end;
+
+  if totalKredit <> totalDebet then
+  begin
+    messagedlg('Kredit dan Debet Tidak Balance, coba seimbangkan Kredit dan Debet.'+#13+
+    'Petunjuk -> Debet-Kredi harus bernilai 0 ',mtWarning,[mbOk],0);
+    abort;
+  end;
+end;
 
 procedure Tjurnalumumfrm.prosesAkunting;
 var exponen : double;
@@ -68,6 +105,7 @@ begin
       dm.general_ledger.fieldbyname('gl_debet').Value  := fieldbyname('jl_debet').Value;
       dm.general_ledger.fieldbyname('gl_kredit').Value := fieldbyname('jl_kredit').Value;
       dm.general_ledger.fieldbyname('gl_tgl').Value    := date;
+      dm.general_ledger.FieldByName('gl_desc').Value   := fieldbyname('jl_desc').Value+','+dm.jurnalumum.fieldbyname('ju_note').Value;
       dm.general_ledger.fieldbyname('gl_amount').Value := fieldbyname('jl_amount').Value;
       dm.general_ledger.post;
      next;
@@ -121,6 +159,7 @@ procedure Tjurnalumumfrm.btnsimpanClick(Sender: TObject);
 begin
  if messagedlg('Posting Jurnal?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
  begin
+    cekEntry;
     prosesakunting;
    dm.jurnalumum.edit;
    dm.jurnalumum.Post;

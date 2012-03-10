@@ -1,17 +1,18 @@
 object dolistfrm: Tdolistfrm
-  Left = 359
-  Top = 159
+  Left = 240
+  Top = 178
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
   ClientHeight = 442
-  ClientWidth = 833
+  ClientWidth = 864
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
@@ -20,7 +21,7 @@ object dolistfrm: Tdolistfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 833
+    Width = 864
     Height = 33
     Align = alTop
     TabOrder = 0
@@ -41,7 +42,7 @@ object dolistfrm: Tdolistfrm
   object Panel4: TPanel
     Left = 0
     Top = 33
-    Width = 833
+    Width = 864
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -51,7 +52,7 @@ object dolistfrm: Tdolistfrm
   object Panel5: TPanel
     Left = 0
     Top = 41
-    Width = 833
+    Width = 864
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -63,27 +64,35 @@ object dolistfrm: Tdolistfrm
   object Panel2: TPanel
     Left = 0
     Top = 45
-    Width = 833
+    Width = 864
     Height = 41
     Align = alTop
     TabOrder = 3
     object Label2: TLabel
       Left = 7
       Top = 10
-      Width = 259
-      Height = 16
-      Caption = 'Cari No Delivery/No Transaksi/ Customer:'
+      Width = 134
+      Height = 15
+      Caption = 'Cari #Delivery/#Transaki:'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -13
-      Font.Name = 'Arial'
+      Font.Name = 'Calibri'
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object cari: TEdit
-      Left = 280
+    object SpeedButton1: TSpeedButton
+      Left = 836
       Top = 8
-      Width = 521
+      Width = 23
+      Height = 22
+      Caption = '__'
+      OnClick = SpeedButton1Click
+    end
+    object cari: TEdit
+      Left = 144
+      Top = 8
+      Width = 313
       Height = 22
       Ctl3D = False
       Font.Charset = ANSI_CHARSET
@@ -94,14 +103,46 @@ object dolistfrm: Tdolistfrm
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 0
-      Text = 'cari'
       OnChange = cariChange
+    end
+    object cbcust: TCheckBox
+      Left = 472
+      Top = 10
+      Width = 113
+      Height = 17
+      Caption = 'Filter Customer'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+    object lookcust: TDBLookupComboBox
+      Left = 584
+      Top = 8
+      Width = 249
+      Height = 22
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      KeyField = 'cu_kode'
+      ListField = 'cu_nama'
+      ListSource = ds.customer
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 2
+      OnClick = lookcustClick
     end
   end
   object griddo: TDBGrid
     Left = 0
     Top = 86
-    Width = 833
+    Width = 864
     Height = 356
     Align = alClient
     Ctl3D = False
@@ -125,9 +166,9 @@ object dolistfrm: Tdolistfrm
       end
       item
         Expanded = False
-        FieldName = 'do_invoice'
+        FieldName = 'do_ju_trans'
         Title.Caption = 'No Transaksi'
-        Width = 200
+        Width = 150
         Visible = True
       end
       item
@@ -139,9 +180,8 @@ object dolistfrm: Tdolistfrm
       end
       item
         Expanded = False
-        FieldName = 'cu_nama'
-        Title.Caption = 'Customer'
-        Width = 300
+        FieldName = 'Customer'
+        Width = 350
         Visible = True
       end>
   end
@@ -149,6 +189,35 @@ object dolistfrm: Tdolistfrm
     Left = 176
     Top = 224
     object CetakDeliveryOrder1: TMenuItem
+      Bitmap.Data = {
+        62030000424D6203000000000000420000002800000014000000140000000100
+        10000300000020030000120B0000120B00000000000000000000007C0000E003
+        00001F000000FF7FFF7FFF7FFF7FFF7F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FDE7BF75EFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7FFF7F19639C73FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F7B6F
+        734EFF7FFF7FDE7BDE7BDE7BDE7BDE7BFF7FD65AD65AFF7FFF7FFF7FFF7FFF7F
+        FF7F9C739C731863534AFF7FDE7BDE7BDE7BDE7BDE7BDE7BFF7FD65A94529C73
+        9C73FF7FFF7FDE7BF75EF75EB5566B2D734EFF7FDE7BDE7BDE7BDE7BDE7BDE7B
+        FF7FD65A4A29734E1863D65ABD7739671863BD77B556E71C31469C737B6F7B6F
+        7B6F7B6F7B6F7B6F9C739452E71C3146BD775A6B1863F75E7B6F9C733967EF41
+        1042314631463146314631463146314631461042EF3DF75E9C739C7318631863
+        7B6F9C739C73DD7BBD779C77BC77BC77BC77BC77BC77BC779C77BD77DD7BBD77
+        9C739C73186318639C73BD77BD7B3A6334323432343234323432343234323432
+        34323432D852BD7BBD77BD77186318639C73DE7BDE7B553A3526772E762E762E
+        762E762E762E762E762E562A132A9C73DE7BBD7718631863BD77DE7BDE7B763A
+        1A433B473B473B473B473B473B473B473B473B4755329C73DE7BDE7B18631863
+        BD77FF7FDE7B963E3B435C4B5C4B5C4B5C4B5C4B5C4B5C4B5C4B7C4B76369D73
+        FF7FDE7B18631863BD77FF7FDE7B963E1B435C4B3B473B473B473B473B473B47
+        3B475C4B7636BD73FF7FFF7F18637B6F1863FF7FFF7F553A772E973277327732
+        773277327732773277329832342ABD77FF7F5A6B5A6BFF7F7B6FF75E17637546
+        F22954363436343634363436343634363436132E543EF75EF75E5A6BFF7FFF7F
+        FF7FFF7FFF7FFF7FF85EFE7FDE7BDE7BDE7BDE7BDE7BDE7BFF7F3967DE7BFF7F
+        FF7FFF7FFF7FFF7FFF7FFF7FFF7FDE7B1863FF7FDE7BDE7BDE7BDE7BDE7BDE7B
+        FF7F5A6BDE7BFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FDE7B1863FF7FFF7FFF7F
+        FF7FFF7FFF7FFF7FFF7F5A6BDE7BFF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7FDE7B
+        1863FF7FFF7FFF7FFF7FFF7FFF7FFF7FFF7F5A6BDE7BFF7FFF7FFF7FFF7FFF7F
+        FF7FFF7FFF7FFF7F1863F75EF75EF75EF75EF75EF75EF75EF75E1863FF7FFF7F
+        FF7FFF7FFF7F}
       Caption = 'Cetak Delivery Order'
       OnClick = CetakDeliveryOrder1Click
     end
@@ -195,14 +264,20 @@ object dolistfrm: Tdolistfrm
   end
   object rddeliverydetail: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = dm.deliverydetail
+    DataSet = dm.deliverydetailrpt
     Left = 688
     Top = 149
   end
   object rddeliver: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = dm.delivery
+    DataSet = dm.deliveryrpt
     Left = 656
+    Top = 149
+  end
+  object rdbarangdelrpt: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = dm.barangdeliverrpt
+    Left = 720
     Top = 149
   end
 end
