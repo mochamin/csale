@@ -145,7 +145,6 @@ type
     deliverydetail: TZQuery;
     barangdeliver: TZReadOnlyQuery;
     deliverydetaildd_kode: TStringField;
-    deliverydetaildd_kd_barang: TStringField;
     deliverydetaildd_nama_barang: TStringField;
     deliverydetaildd_type: TStringField;
     deliverydetaildd_qty: TSmallintField;
@@ -756,6 +755,7 @@ type
     StringField97: TStringField;
     StringField98: TStringField;
     StringField99: TStringField;
+    deliverydetaildd_kode_barang: TIntegerField;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

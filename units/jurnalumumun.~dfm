@@ -1,27 +1,27 @@
 object jurnalumumfrm: Tjurnalumumfrm
-  Left = 249
-  Top = 100
+  Left = 375
+  Top = 117
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 497
-  ClientWidth = 760
+  ClientHeight = 562
+  ClientWidth = 776
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 760
+    Width = 776
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -42,7 +42,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object Panel4: TPanel
     Left = 0
     Top = 41
-    Width = 760
+    Width = 776
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -52,7 +52,7 @@ object jurnalumumfrm: Tjurnalumumfrm
   object Panel5: TPanel
     Left = 0
     Top = 49
-    Width = 760
+    Width = 776
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -64,9 +64,10 @@ object jurnalumumfrm: Tjurnalumumfrm
   object pntop: TPanel
     Left = 0
     Top = 53
-    Width = 760
+    Width = 776
     Height = 68
     Align = alTop
+    Enabled = False
     TabOrder = 3
     OnExit = pntopExit
     object Label2: TLabel
@@ -137,7 +138,7 @@ object jurnalumumfrm: Tjurnalumumfrm
       ParentCtl3D = False
       TabOrder = 1
     end
-    object DBEdit3: TDBEdit
+    object ket: TDBEdit
       Left = 92
       Top = 38
       Width = 633
@@ -149,14 +150,15 @@ object jurnalumumfrm: Tjurnalumumfrm
       TabOrder = 2
     end
   end
-  object DBGrid1: TDBGrid
+  object gridjurnal: TDBGrid
     Left = 0
     Top = 121
-    Width = 760
-    Height = 336
+    Width = 776
+    Height = 401
     Align = alClient
     Ctl3D = False
     DataSource = ds.jurnalUmumDetail
+    Enabled = False
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     ParentCtl3D = False
     TabOrder = 4
@@ -165,11 +167,13 @@ object jurnalumumfrm: Tjurnalumumfrm
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
-    OnKeyDown = DBGrid1KeyDown
+    OnEnter = gridjurnalEnter
+    OnKeyDown = gridjurnalKeyDown
     Columns = <
       item
         Expanded = False
         FieldName = 'jl_akun'
+        ReadOnly = True
         Title.Alignment = taCenter
         Title.Caption = 'Kode'
         Title.Font.Charset = ANSI_CHARSET
@@ -228,13 +232,13 @@ object jurnalumumfrm: Tjurnalumumfrm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 457
-    Width = 760
+    Top = 522
+    Width = 776
     Height = 40
     Align = alBottom
     TabOrder = 5
     object btntambah: TSpeedButton
-      Left = 669
+      Left = 687
       Top = 0
       Width = 89
       Height = 38
@@ -296,7 +300,7 @@ object jurnalumumfrm: Tjurnalumumfrm
       OnClick = btntambahClick
     end
     object btnbatal: TSpeedButton
-      Left = 579
+      Left = 598
       Top = 0
       Width = 89
       Height = 38
@@ -359,7 +363,7 @@ object jurnalumumfrm: Tjurnalumumfrm
       OnClick = btnbatalClick
     end
     object btnsimpan: TSpeedButton
-      Left = 668
+      Left = 687
       Top = 0
       Width = 89
       Height = 38

@@ -102,18 +102,18 @@ object glfrm: Tglfrm
       TabOrder = 0
       Text = 'blnawal'
       Items.Strings = (
-        'Januari'
-        'Februari'
-        'Maret'
-        'April'
-        'Mei'
-        'Juni'
-        'Juli'
-        'Agustus'
-        'September'
-        'Oktober'
-        'Nopember'
-        'Desember')
+        'JANUARI'
+        'FEBRUARI'
+        'MARET'
+        'APRIL'
+        'MEI'
+        'JUNI'
+        'JULI'
+        'AGUSTUS'
+        'SEPTEMBER'
+        'OKTOBER'
+        'NOPEMBER'
+        'DESEMBER')
     end
     object thnawal: TComboBox
       Left = 257
@@ -132,18 +132,18 @@ object glfrm: Tglfrm
       TabOrder = 2
       Text = 'blnawal'
       Items.Strings = (
-        'Januari'
-        'Februari'
-        'Maret'
-        'April'
-        'Mei'
-        'Juni'
-        'Juli'
-        'Agustus'
-        'September'
-        'Oktober'
-        'Nopember'
-        'Desember')
+        'JANUARI'
+        'FEBRUARI'
+        'MARET'
+        'APRIL'
+        'MEI'
+        'JUNI'
+        'JULI'
+        'AGUSTUS'
+        'SEPTEMBER'
+        'OKTOBER'
+        'NOPEMBER'
+        'DESEMBER')
     end
     object thnakhir: TComboBox
       Left = 256
@@ -210,7 +210,7 @@ object glfrm: Tglfrm
   end
   object rpgl: TRvProject
     Engine = rsgl
-    Left = 113
+    Left = 153
     Top = 55
   end
   object rsgl: TRvSystem
@@ -226,61 +226,19 @@ object glfrm: Tglfrm
     SystemPrinter.StatusFormat = 'Printing page %p'
     SystemPrinter.Title = 'ReportPrinter Report'
     SystemPrinter.UnitsFactor = 1.000000000000000000
-    Left = 145
+    Left = 185
     Top = 55
-  end
-  object glkas: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glkas
-    Left = 193
-    Top = 55
-  end
-  object glpiutang: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glpiutang
-    Left = 225
-    Top = 55
-  end
-  object glpersediaan: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glpersediaan
-    Left = 257
-    Top = 55
-  end
-  object glhutangusaha: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glhutangusaha
-    Left = 289
-    Top = 55
-  end
-  object glhutangpp: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glhutangpp
-    Left = 321
-    Top = 55
-  end
-  object gljualproduk: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.gljualproduk
-    Left = 280
-    Top = 157
-  end
-  object glbiaya: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.glbiaya
-    Left = 248
-    Top = 157
   end
   object glpro: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DataSet = dm.gl
     Left = 216
-    Top = 157
+    Top = 54
   end
   object glchart: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DataSet = dm.chartofaccount
-    Left = 312
-    Top = 157
+    Left = 248
+    Top = 54
   end
 end

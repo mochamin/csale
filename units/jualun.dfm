@@ -1,11 +1,11 @@
 object jualfrm: Tjualfrm
-  Left = 191
-  Top = 86
+  Left = 141
+  Top = 89
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
   ClientHeight = 562
-  ClientWidth = 1000
+  ClientWidth = 1049
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -33,7 +33,7 @@ object jualfrm: Tjualfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1000
+    Width = 1049
     Height = 33
     Align = alTop
     TabOrder = 0
@@ -54,7 +54,7 @@ object jualfrm: Tjualfrm
   object Panel5: TPanel
     Left = 0
     Top = 41
-    Width = 1000
+    Width = 1049
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -66,7 +66,7 @@ object jualfrm: Tjualfrm
   object Panel4: TPanel
     Left = 0
     Top = 33
-    Width = 1000
+    Width = 1049
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -76,7 +76,7 @@ object jualfrm: Tjualfrm
   object pnheader: TPanel
     Left = 0
     Top = 45
-    Width = 1000
+    Width = 1049
     Height = 148
     Align = alTop
     Color = 14408667
@@ -360,7 +360,7 @@ object jualfrm: Tjualfrm
     object lookproj: TDBLookupComboBox
       Left = 77
       Top = 86
-      Width = 316
+      Width = 318
       Height = 21
       Ctl3D = False
       DataField = 'ju_project'
@@ -383,24 +383,26 @@ object jualfrm: Tjualfrm
       Top = 85
       Width = 174
       Height = 21
+      Ctl3D = False
       DataField = 'ju_ppn'
       DataSource = ds.jual
       ItemHeight = 13
       Items.Strings = (
         'Ya'
         'Tidak')
+      ParentCtl3D = False
       TabOrder = 8
     end
   end
   object Panel3: TPanel
     Left = 0
     Top = 522
-    Width = 1000
+    Width = 1049
     Height = 40
     Align = alBottom
     TabOrder = 4
     object btntambah: TSpeedButton
-      Left = 905
+      Left = 960
       Top = 0
       Width = 89
       Height = 37
@@ -462,7 +464,7 @@ object jualfrm: Tjualfrm
       OnClick = btntambahClick
     end
     object btnsimpan: TSpeedButton
-      Left = 905
+      Left = 960
       Top = -1
       Width = 89
       Height = 40
@@ -525,7 +527,7 @@ object jualfrm: Tjualfrm
       OnClick = btnsimpanClick
     end
     object btnbatal: TSpeedButton
-      Left = 815
+      Left = 871
       Top = -1
       Width = 89
       Height = 40
@@ -601,20 +603,26 @@ object jualfrm: Tjualfrm
   object gridjual: TDBGrid
     Left = 0
     Top = 193
-    Width = 1000
+    Width = 1049
     Height = 329
     Align = alClient
     Ctl3D = False
     DataSource = ds.jualdetail
     Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     ParentCtl3D = False
+    ParentFont = False
     TabOrder = 5
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clBlack
+    TitleFont.Height = -15
+    TitleFont.Name = 'Calibri'
+    TitleFont.Style = [fsBold]
     OnKeyDown = gridjualKeyDown
     Columns = <
       item

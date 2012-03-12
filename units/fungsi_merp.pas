@@ -50,12 +50,14 @@ begin
   if namaform = nil then
   begin
     Application.CreateForm(TnamaForm,namaForm);
-    namaform.Show;
+    namaform.ShowModal;
   end else
   begin
-    namaform.Show;
+    namaform.ShowModal;
   end;
 end;
+
+
 
 procedure hapus(namaDataSet:TZQuery);
 begin

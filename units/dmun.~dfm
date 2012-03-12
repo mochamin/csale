@@ -779,10 +779,6 @@ object dm: Tdm
       FieldName = 'dd_kode'
       Size = 255
     end
-    object deliverydetaildd_kd_barang: TStringField
-      FieldName = 'dd_kd_barang'
-      Size = 255
-    end
     object deliverydetaildd_nama_barang: TStringField
       FieldName = 'dd_nama_barang'
       Size = 255
@@ -797,6 +793,9 @@ object dm: Tdm
     object deliverydetaildd_satuan: TStringField
       FieldName = 'dd_satuan'
       Size = 255
+    end
+    object deliverydetaildd_kode_barang: TIntegerField
+      FieldName = 'dd_kode_barang'
     end
   end
   object barangdeliver: TZReadOnlyQuery

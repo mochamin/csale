@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, ExtCtrls;
-
+                            
 type
   Takunviewfrm = class(TForm)
     Panel1: TPanel;
@@ -22,6 +22,9 @@ type
       Shift: TShiftState);
     procedure gridakunKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure gridakunKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     procedure isiToJurnalUmum;
@@ -34,7 +37,7 @@ var
 
 implementation
 
-uses dmun,fungsi_merp;
+uses dmun,fungsi_merp, jurnalumumun;
 {$R *.dfm}
 
 procedure Takunviewfrm.isiToJurnalUmum;
@@ -47,8 +50,9 @@ begin
      fieldbyname('jl_desc').Value := dm.akunview.fieldbyname('ak_desc').Value;
      post;    
    end;
-   
+  //
    close;
+   
 end;
 
 procedure Takunviewfrm.FormActivate(Sender: TObject);
@@ -76,6 +80,8 @@ begin
     dm.akunview.Next
  end;
 
+ if key=vk_escape then close;
+
  if key=vk_return then
  begin
    isiToJurnalUmum;
@@ -90,6 +96,26 @@ begin
  begin
    isiToJurnalUmum;
  end;
+
+ if key=vk_escape then close;
+ 
+end;
+
+procedure Takunviewfrm.gridakunKeyPress(Sender: TObject; var Key: Char);
+begin
+   if  (key in['0'..'9']) or (key in['a'..'z','A'..'Z']) then
+begin
+  cari.SetFocus;
+  cari.Clear;
+  cari.text:=key;
+  cari.SelStart :=1;
+end;
+end;
+
+procedure Takunviewfrm.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key=vk_escape then close;
 end;
 
 end.

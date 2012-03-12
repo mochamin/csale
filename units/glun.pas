@@ -20,13 +20,6 @@ type
     SpeedButton2: TSpeedButton;
     rpgl: TRvProject;
     rsgl: TRvSystem;
-    glkas: TRvDataSetConnection;
-    glpiutang: TRvDataSetConnection;
-    glpersediaan: TRvDataSetConnection;
-    glhutangusaha: TRvDataSetConnection;
-    glhutangpp: TRvDataSetConnection;
-    gljualproduk: TRvDataSetConnection;
-    glbiaya: TRvDataSetConnection;
     glpro: TRvDataSetConnection;
     glchart: TRvDataSetConnection;
     blnakhir: TComboBox;
@@ -46,19 +39,31 @@ var
 
 implementation
 
+uses dmun,strutils;
+
 {$R *.dfm}
 
 procedure Tglfrm.SpeedButton2Click(Sender: TObject);
 begin
+
+ with dm.gl do
+ begin
+   sql.Text := 'select * from general_ledger where (mid(gl_tgl,6,2) between (:xBlnAwal) and (:xBlnAkhir)) '+
+   'and  (left(gl_tgl,4) between (:xThnAwal) and (:xThnAkhir)) ORDER BY gl_akun ASC ';
+   params.ParamByName('xBlnAwal').Value  := blnawal.ItemIndex+1;
+   params.ParamByName('xBlnAkhir').Value := blnakhir.ItemIndex+1;
+   params.ParamByName('xThnAwal').Value  := strToInt(thnawal.Text);
+   params.ParamByName('xThnAkhir').Value := strToInt(thnakhir.Text);
+   open;
+ end;//end of with dm.gl  
+
  rpgl.ProjectFile := 'glpro.rav';
  rpgl.SelectReport('glpro.rav',true);
  rpgl.Execute;
 end;
 
 procedure Tglfrm.FormCreate(Sender: TObject);
-var i: integer;
-    tgl : TDateTime;
-    curdate : TDateTime;
+var    blnaktif : integer;
 begin
 {    curDate := incmonth(date,0);
     for i:=0 to 11 do
@@ -69,6 +74,15 @@ begin
 
     cbperiode.Text :=  formatDateTime('mmmm yyyy',curdate);}
     thnawal.Items.Add(formatDateTime('yyyy',date));
+    thnakhir.Items.Add(formatDateTime('yyyy',date));
+
+   blnaktif := strToInt(AnsiMidStr(DateToStr(date),4,2));
+   blnawal.ItemIndex := blnaktif-1;
+   blnakhir.ItemIndex := blnaktif-1;
+
+   thnawal.ItemIndex := 0;
+   thnakhir.ItemIndex := 0;
+
 end;
 
 end.

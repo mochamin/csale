@@ -28,6 +28,7 @@ type
     coalr: TRvDataSetConnection;
     procedure FormActivate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,6 +56,14 @@ begin
    rplr.ProjectFile := 'lr.rav';
    rplr.SelectReport('lr.rav',true);
    rplr.Execute;
+end;
+
+procedure Tlabarugifrm.FormCreate(Sender: TObject);
+var thn : string;
+begin
+ thn := RightStr(dateToStr(date),4);
+ cbthn.Items.Append(thn);
+ cbthn.ItemIndex := 0;
 end;
 
 end.

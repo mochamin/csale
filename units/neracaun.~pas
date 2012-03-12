@@ -30,6 +30,7 @@ type
     chartofaccount: TRvDataSetConnection;
     labaneraca: TRvDataSetConnection;
     modalneraca: TRvDataSetConnection;
+    Label2: TLabel;
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -121,6 +122,7 @@ var thn : string;
 begin
  thn := RightStr(dateToStr(date),4);
  cbthn.Items.Append(thn);
+ cbthn.ItemIndex := 0;
 end;
 
 procedure Tneracafrm.FormActivate(Sender: TObject);

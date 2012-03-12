@@ -13,7 +13,7 @@ type
     Panel4: TPanel;
     Panel5: TPanel;
     pntop: TPanel;
-    DBGrid1: TDBGrid;
+    gridjurnal: TDBGrid;
     Panel3: TPanel;
     btnbatal: TSpeedButton;
     btnsimpan: TSpeedButton;
@@ -22,15 +22,16 @@ type
     Label2: TLabel;
     Label3: TLabel;
     dbtgl: TDBEdit;
-    DBEdit3: TDBEdit;
+    ket: TDBEdit;
     Label4: TLabel;
-    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word;
+    procedure gridjurnalKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btntambahClick(Sender: TObject);
     procedure pntopExit(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnsimpanClick(Sender: TObject);
     procedure btnbatalClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure generateRef;
@@ -124,11 +125,12 @@ begin
      noref := strToInt(RightStr(fieldbyname('ju_kode').Value,8))+1;
   end;
   dm.jurnalumum.Append;
+  dm.jurnal_umum_detail.Append;
   dbref.Text := 'JU'+format('%8.8d',[noref]);
   dbtgl.Text := dateToStr(date);
 end;
 
-procedure Tjurnalumumfrm.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+procedure Tjurnalumumfrm.gridjurnalKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
  if key=vk_Return then
@@ -140,8 +142,11 @@ end;
 procedure Tjurnalumumfrm.btntambahClick(Sender: TObject);
 begin
  generateRef;
- btnsimpan.Visible := true;
- btnbatal.Visible  := true;
+ btnsimpan.Visible  := true;
+ btnbatal.Visible   := true;
+ pntop.Enabled      := true;
+ gridjurnal.Enabled := true;
+ ket.SetFocus;
 end;
 
 procedure Tjurnalumumfrm.pntopExit(Sender: TObject);
@@ -172,6 +177,8 @@ begin
      
     btnsimpan.Visible  := false;
     btnbatal.Visible   := false;
+    pntop.Enabled := false;
+    gridjurnal.Enabled := false;
  end;
 end;
 
@@ -183,7 +190,14 @@ begin
    dm.jurnal_umum_detail.CancelUpdates;
    btnsimpan.Visible := false;
    btnbatal.Visible  := false;
+    pntop.Enabled := false;
+    gridjurnal.Enabled := false;
  end;
+end;
+
+procedure Tjurnalumumfrm.FormCreate(Sender: TObject);
+begin
+   aktifkandata(dm.jurnalumum);
 end;
 
 end.

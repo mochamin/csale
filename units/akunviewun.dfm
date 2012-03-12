@@ -16,6 +16,7 @@ object akunviewfrm: Takunviewfrm
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -122,6 +123,7 @@ object akunviewfrm: Takunviewfrm
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     OnKeyDown = gridakunKeyDown
+    OnKeyPress = gridakunKeyPress
     Columns = <
       item
         Expanded = False

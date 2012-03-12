@@ -1,6 +1,6 @@
 object labarugifrm: Tlabarugifrm
-  Left = 514
-  Top = 174
+  Left = 525
+  Top = 326
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -15,6 +15,7 @@ object labarugifrm: Tlabarugifrm
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel

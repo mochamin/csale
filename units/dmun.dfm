@@ -2996,7 +2996,6 @@ object dm: Tdm
   object akunview: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from akun order by ak_no asc')
     Params = <>
