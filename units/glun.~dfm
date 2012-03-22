@@ -1,6 +1,6 @@
 object glfrm: Tglfrm
-  Left = 373
-  Top = 168
+  Left = 652
+  Top = 198
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'

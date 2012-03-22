@@ -1,0 +1,11 @@
+Instaler prinsipnya package sistem menjadi satu kemasan single file mungkin mas..
+kalo mYSQL ato Portsgre tuh kan dbms yang bediri sendiri.. idealnya kan harusnya di letakan di komputer yang berbeda.. tapi kalo memang mo di buat desktop / 1 komputer. yang di buat batch command aja yang jalanin server sekaligus jalanin exe program. aman tapi sedkit langkah mudah (tanpa 3th party instaler program) :
+1. Buat Folder Namakan sembarang Applikasicontoh
+2. Siapkan file applikasi master.. jadikan satu dalam sub folder dari folder Applikasicontoh
+3. Siapkan file database + DBMS Sistem (my / Port / any) . jadikan satu folder juga tapi nama yang lain, masih dalam folder Applikasicontoh
+4. Harus punya file archiving .(Winzip / WinRAR / Etc)
+5. Setting Default Direktory To Extract.
+6. Buat Batch File untuk eksekusi File Exe DBMS + Exe Applikasi.
+7. Sertakan Batch File dalam Direktory Applikasicontoh
+8. Kompres Direktory Applikasi Contoh
+9. jadi deh.. 

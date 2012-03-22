@@ -1,11 +1,11 @@
 object jurnalumumlistfrm: Tjurnalumumlistfrm
-  Left = 273
-  Top = 175
+  Left = 269
+  Top = 108
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 516
-  ClientWidth = 780
+  ClientHeight = 555
+  ClientWidth = 905
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 780
+    Width = 905
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -42,7 +42,7 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
   object Panel4: TPanel
     Left = 0
     Top = 41
-    Width = 780
+    Width = 905
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -51,14 +51,14 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 474
-    Width = 780
+    Top = 513
+    Width = 905
     Height = 42
     Align = alBottom
     TabOrder = 2
     object SpeedButton4: TSpeedButton
-      Left = 691
-      Top = 2
+      Left = 817
+      Top = 1
       Width = 89
       Height = 38
       Cursor = crHandPoint
@@ -119,8 +119,8 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
       OnClick = SpeedButton4Click
     end
     object SpeedButton5: TSpeedButton
-      Left = 602
-      Top = 2
+      Left = 728
+      Top = 1
       Width = 89
       Height = 38
       Cursor = crHandPoint
@@ -184,7 +184,7 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
   object Panel2: TPanel
     Left = 0
     Top = 49
-    Width = 780
+    Width = 905
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -196,8 +196,8 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
   object DBGrid1: TDBGrid
     Left = 0
     Top = 53
-    Width = 780
-    Height = 421
+    Width = 905
+    Height = 460
     Align = alClient
     DataSource = ds.jurnalumum
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -274,7 +274,7 @@ object jurnalumumlistfrm: Tjurnalumumlistfrm
         Title.Font.Height = -15
         Title.Font.Name = 'Calibri'
         Title.Font.Style = [fsBold]
-        Width = 300
+        Width = 450
         Visible = True
       end>
   end

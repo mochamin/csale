@@ -1,10 +1,10 @@
 object utamafrm: Tutamafrm
-  Left = 22
-  Top = 181
+  Left = 233
+  Top = 106
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 422
-  ClientWidth = 1330
+  ClientHeight = 478
+  ClientWidth = 1048
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3239,7 +3239,7 @@ object utamafrm: Tutamafrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1330
+    Width = 1048
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -3251,7 +3251,7 @@ object utamafrm: Tutamafrm
   object Panel2: TPanel
     Left = 0
     Top = 8
-    Width = 1330
+    Width = 1048
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -3263,14 +3263,14 @@ object utamafrm: Tutamafrm
   object Panel3: TPanel
     Left = 0
     Top = 12
-    Width = 1330
-    Height = 410
+    Width = 1048
+    Height = 466
     Align = alClient
     Color = clWhite
     TabOrder = 2
     DesignSize = (
-      1330
-      410)
+      1048
+      466)
     object Label1: TLabel
       Left = 313
       Top = 120
@@ -3288,8 +3288,8 @@ object utamafrm: Tutamafrm
       WordWrap = True
     end
     object SpeedButton15: TSpeedButton
-      Left = 1282
-      Top = 1
+      Left = 1005
+      Top = 3
       Width = 46
       Height = 33
       Cursor = crHandPoint
@@ -3327,7 +3327,7 @@ object utamafrm: Tutamafrm
       OnClick = pnclosebtnClick
     end
     object SpeedButton16: TSpeedButton
-      Left = 1991
+      Left = 1709
       Top = 88
       Width = 41
       Height = 33
@@ -3335,20 +3335,20 @@ object utamafrm: Tutamafrm
     end
     object StatusBar1: TStatusBar
       Left = 1
-      Top = 390
-      Width = 1328
+      Top = 446
+      Width = 1046
       Height = 19
       Panels = <>
     end
     object pnshortcut: TPanel
       Left = 1
       Top = 1
-      Width = 1328
+      Width = 1046
       Height = 88
       Align = alTop
       TabOrder = 1
       DesignSize = (
-        1328
+        1046
         88)
       object SpeedButton1: TSpeedButton
         Left = 678
@@ -4775,7 +4775,7 @@ object utamafrm: Tutamafrm
         ParentFont = False
       end
       object pnclosebtn: TSpeedButton
-        Left = 1282
+        Left = 1000
         Top = 1
         Width = 46
         Height = 33
@@ -5181,7 +5181,7 @@ object utamafrm: Tutamafrm
     object pnshow: TPanel
       Left = 1
       Top = 89
-      Width = 1328
+      Width = 1046
       Height = 41
       Align = alTop
       BevelOuter = bvNone
@@ -5189,10 +5189,10 @@ object utamafrm: Tutamafrm
       TabOrder = 2
       Visible = False
       DesignSize = (
-        1328
+        1046
         41)
       object SpeedButton17: TSpeedButton
-        Left = 1282
+        Left = 1000
         Top = 1
         Width = 46
         Height = 33
@@ -5388,6 +5388,10 @@ object utamafrm: Tutamafrm
           FF7FFF7FFF7F}
         Caption = '&Barang'
         OnClick = Barang2Click
+      end
+      object Jasa1: TMenuItem
+        Caption = 'Jasa'
+        OnClick = Jasa1Click
       end
       object Gudang1: TMenuItem
         Bitmap.Data = {
@@ -5995,6 +5999,10 @@ object utamafrm: Tutamafrm
         Caption = 'Daftar Invoice'
         OnClick = ListDaftarInvoice1Click
       end
+      object DaftarFakturPajak1: TMenuItem
+        Caption = 'Daftar Faktur Pajak'
+        OnClick = DaftarFakturPajak1Click
+      end
     end
     object Keuangan1: TMenuItem
       Caption = '&Accounting'
@@ -6546,6 +6554,20 @@ object utamafrm: Tutamafrm
           FF7FFF7FFF7F}
         Caption = 'Laporan Penggajian'
         OnClick = LaporanPenggajian1Click
+      end
+    end
+    object Laporan1: TMenuItem
+      Caption = 'Laporan'
+      object Penjualan2: TMenuItem
+        Caption = 'Penjualan'
+        OnClick = Penjualan2Click
+      end
+      object N22: TMenuItem
+        Caption = '-'
+      end
+      object Project2: TMenuItem
+        Caption = 'Project'
+        OnClick = Project2Click
       end
     end
   end

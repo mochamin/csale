@@ -319,7 +319,7 @@ begin
          end; // end of while bof
        end; // end with dm gl}
 
-      showmessage('gl hapus done!');
+     // showmessage('gl hapus done!');
         with dm.jualdetailhapus do
         begin
           //close;
@@ -343,11 +343,12 @@ begin
            delete;
            previous;
           end; // end of while not eof
+        refresh;  
         end; // end of jualdetail hapus
 
-        showmessage('judaldetail hapus done!');
+        //showmessage('judaldetail hapus done!');
          dm.invoice.Delete;
-        showmessage('invoice hapus done!');
+       // showmessage('invoice hapus done!');
     end;
 end;
 

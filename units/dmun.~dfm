@@ -1,9 +1,9 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 410
-  Top = 57
+  Left = 207
+  Top = 8
   Height = 701
-  Width = 850
+  Width = 1158
   object conerp: TZConnection
     Protocol = 'mysql-5'
     HostName = 'localhost'
@@ -2335,7 +2335,6 @@ object dm: Tdm
   end
   object belidetailhapus: TZQuery
     Connection = conerp
-    CachedUpdates = True
     SQL.Strings = (
       'SELECT * FROM belidetail')
     Params = <>
@@ -2446,7 +2445,6 @@ object dm: Tdm
   end
   object wp: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from customer')
     Params = <>
@@ -2996,7 +2994,6 @@ object dm: Tdm
   object akunview: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from akun order by ak_no asc')
     Params = <>
@@ -3574,6 +3571,187 @@ object dm: Tdm
       FieldName = 'sp_refer'
       ReadOnly = True
       Size = 255
+    end
+  end
+  object jualrpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from jual')
+    Params = <>
+    Left = 752
+    Top = 360
+    object jualrptju_kode: TStringField
+      FieldName = 'ju_kode'
+      Size = 255
+    end
+    object jualrptju_cust_kode: TStringField
+      FieldName = 'ju_cust_kode'
+      Size = 255
+    end
+    object jualrptju_tgl: TDateField
+      FieldName = 'ju_tgl'
+    end
+    object jualrptju_cust_id: TIntegerField
+      FieldName = 'ju_cust_id'
+    end
+    object jualrptju_cust_pic: TIntegerField
+      FieldName = 'ju_cust_pic'
+    end
+    object jualrptju_due: TDateField
+      FieldName = 'ju_due'
+    end
+    object jualrptju_bayar: TStringField
+      FieldName = 'ju_bayar'
+      Size = 10
+    end
+    object jualrptju_po: TStringField
+      FieldName = 'ju_po'
+      Size = 255
+    end
+    object jualrptju_lunas: TSmallintField
+      FieldName = 'ju_lunas'
+    end
+    object jualrptju_project: TIntegerField
+      FieldName = 'ju_project'
+    end
+    object jualrptju_total: TFloatField
+      FieldName = 'ju_total'
+      DisplayFormat = '#,###'
+    end
+    object jualrptju_tax: TFloatField
+      FieldName = 'ju_tax'
+      DisplayFormat = '#,###'
+    end
+    object jualrptju_akun: TStringField
+      FieldName = 'ju_akun'
+      Size = 255
+    end
+    object jualrptju_ppn: TStringField
+      FieldName = 'ju_ppn'
+      Size = 5
+    end
+    object jualrptju_invoice_sent: TSmallintField
+      FieldName = 'ju_invoice_sent'
+    end
+    object jualrptju_barang_sent: TSmallintField
+      FieldName = 'ju_barang_sent'
+    end
+  end
+  object customerrpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'SELECT * FROM customer  ORDER BY cu_id desc ')
+    Params = <>
+    Left = 760
+    Top = 424
+  end
+  object jualdetailrpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from jualdetail')
+    Params = <>
+    Left = 768
+    Top = 552
+    object jualdetailrptjd_kode: TStringField
+      FieldName = 'jd_kode'
+      Size = 255
+    end
+    object jualdetailrptjd_tgl: TDateField
+      FieldName = 'jd_tgl'
+    end
+    object jualdetailrptjd_kd_barang: TIntegerField
+      FieldName = 'jd_kd_barang'
+    end
+    object jualdetailrptjd_nama_barang: TStringField
+      FieldName = 'jd_nama_barang'
+      Size = 255
+    end
+    object jualdetailrptjd_qty: TIntegerField
+      FieldName = 'jd_qty'
+    end
+    object jualdetailrptjd_harga_pokok: TFloatField
+      FieldName = 'jd_harga_pokok'
+      DisplayFormat = '#,###'
+    end
+    object jualdetailrptjd_harga_jual: TFloatField
+      FieldName = 'jd_harga_jual'
+      DisplayFormat = '#,###'
+    end
+    object jualdetailrptjd_discrp: TFloatField
+      FieldName = 'jd_discrp'
+    end
+    object jualdetailrptjd_disc_persen: TSmallintField
+      FieldName = 'jd_disc_persen'
+    end
+    object jualdetailrptjd_total: TFloatField
+      FieldName = 'jd_total'
+      DisplayFormat = '#,###'
+    end
+    object jualdetailrptjd_margin: TFloatField
+      FieldName = 'jd_margin'
+      DisplayFormat = '#,###'
+    end
+    object jualdetailrptjd_satuan: TStringField
+      FieldName = 'jd_satuan'
+      Size = 255
+    end
+  end
+  object fakturpajakview: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from fakturpajak order by fp_id desc')
+    Params = <>
+    Left = 760
+    Top = 480
+    object fakturpajakviewfp_kode: TStringField
+      FieldName = 'fp_kode'
+      Size = 255
+    end
+    object fakturpajakviewfp_cust_id: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object fakturpajakviewfp_ref: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object fakturpajakviewfp_date: TDateField
+      FieldName = 'fp_date'
+    end
+    object fakturpajakviewfp_cust_kode: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object fakturpajakviewCustomer: TStringField
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'Customer'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_nama'
+      KeyFields = 'fp_cust_kode'
+      Size = 100
+      Lookup = True
+    end
+  end
+  object jasa: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from jasa')
+    Params = <>
+    Left = 936
+    Top = 488
+    object jasajs_nama: TStringField
+      FieldName = 'js_nama'
+      Size = 255
+    end
+    object jasajs_unit: TStringField
+      FieldName = 'js_unit'
+      Size = 255
+    end
+    object jasajs_tarif: TFloatField
+      FieldName = 'js_tarif'
+      DisplayFormat = '#,###'
     end
   end
 end

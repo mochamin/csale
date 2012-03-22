@@ -5,7 +5,7 @@ object barangviewfrm: Tbarangviewfrm
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
   ClientHeight = 457
-  ClientWidth = 617
+  ClientWidth = 626
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object barangviewfrm: Tbarangviewfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 617
+    Width = 626
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -42,7 +42,7 @@ object barangviewfrm: Tbarangviewfrm
   object Panel4: TPanel
     Left = 0
     Top = 41
-    Width = 617
+    Width = 626
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -52,7 +52,7 @@ object barangviewfrm: Tbarangviewfrm
   object Panel5: TPanel
     Left = 0
     Top = 49
-    Width = 617
+    Width = 626
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -64,7 +64,7 @@ object barangviewfrm: Tbarangviewfrm
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 617
+    Width = 626
     Height = 41
     Align = alTop
     Color = 14869218
@@ -157,7 +157,7 @@ object barangviewfrm: Tbarangviewfrm
   object gridview: TDBGrid
     Left = 0
     Top = 94
-    Width = 617
+    Width = 626
     Height = 363
     Align = alClient
     Ctl3D = False

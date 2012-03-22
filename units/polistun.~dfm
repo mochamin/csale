@@ -403,4 +403,16 @@ object polistfrm: Tpolistfrm
       0000E007000000008001F01F0000000000000000000000000000000000000000
       000000000000}
   end
+  object RvDataSetConnection1: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = dm.supplierpic
+    Left = 240
+    Top = 5
+  end
+  object rdbarangmstr: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = dm.barangrpt
+    Left = 560
+    Top = 69
+  end
 end

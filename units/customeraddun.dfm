@@ -1,5 +1,5 @@
 inherited customeraddfrm: Tcustomeraddfrm
-  ClientHeight = 262
+  ClientHeight = 305
   OldCreateOrder = True
   OnActivate = FormActivate
   PixelsPerInch = 96
@@ -12,7 +12,7 @@ inherited customeraddfrm: Tcustomeraddfrm
   end
   inherited Panel2: TPanel
     Width = 508
-    Height = 169
+    Height = 212
     Align = alClient
     object Label2: TLabel
       Left = 21
@@ -91,6 +91,20 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 21
+      Top = 156
+      Width = 86
+      Height = 32
+      Caption = 'Alamat Faktur Pajak:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      WordWrap = True
     end
     object namadepan: TDBEdit
       Left = 141
@@ -195,9 +209,26 @@ inherited customeraddfrm: Tcustomeraddfrm
       ParentFont = False
       TabOrder = 0
     end
+    object DBEdit5: TDBEdit
+      Left = 141
+      Top = 165
+      Width = 345
+      Height = 22
+      Ctl3D = False
+      DataField = 'cu_alamatfp'
+      DataSource = ds.customer
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 6
+    end
   end
   inherited Panel3: TPanel
-    Top = 222
+    Top = 265
     inherited SpeedButton1: TSpeedButton
       Height = 38
     end

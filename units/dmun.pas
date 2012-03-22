@@ -756,6 +756,49 @@ type
     StringField98: TStringField;
     StringField99: TStringField;
     deliverydetaildd_kode_barang: TIntegerField;
+    jualrpt: TZQuery;
+    customerrpt: TZQuery;
+    jualrptju_kode: TStringField;
+    jualrptju_cust_kode: TStringField;
+    jualrptju_tgl: TDateField;
+    jualrptju_cust_id: TIntegerField;
+    jualrptju_cust_pic: TIntegerField;
+    jualrptju_due: TDateField;
+    jualrptju_bayar: TStringField;
+    jualrptju_po: TStringField;
+    jualrptju_lunas: TSmallintField;
+    jualrptju_project: TIntegerField;
+    jualrptju_total: TFloatField;
+    jualrptju_tax: TFloatField;
+    jualrptju_akun: TStringField;
+    jualrptju_ppn: TStringField;
+    jualrptju_invoice_sent: TSmallintField;
+    jualrptju_barang_sent: TSmallintField;
+    jualdetailrpt: TZQuery;
+    jualdetailrptjd_kode: TStringField;
+    jualdetailrptjd_tgl: TDateField;
+    jualdetailrptjd_kd_barang: TIntegerField;
+    jualdetailrptjd_nama_barang: TStringField;
+    jualdetailrptjd_qty: TIntegerField;
+    jualdetailrptjd_harga_pokok: TFloatField;
+    jualdetailrptjd_harga_jual: TFloatField;
+    jualdetailrptjd_discrp: TFloatField;
+    jualdetailrptjd_disc_persen: TSmallintField;
+    jualdetailrptjd_total: TFloatField;
+    jualdetailrptjd_margin: TFloatField;
+    jualdetailrptjd_satuan: TStringField;
+    fakturpajakview: TZQuery;
+    fakturpajakviewfp_kode: TStringField;
+    fakturpajakviewfp_cust_id: TIntegerField;
+    fakturpajakviewfp_ref: TStringField;
+    fakturpajakviewfp_date: TDateField;
+    fakturpajakviewfp_cust_kode: TStringField;
+    fakturpajakviewCustomer: TStringField;
+    jasa: TZQuery;
+    jasajs_nama: TStringField;
+    jasajs_unit: TStringField;
+    jasajs_tarif: TFloatField;
+    jasajs_id: TIntegerField;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);
@@ -806,7 +849,7 @@ begin
 
   jd := jualdetail;
   jd.FieldByName('jd_tgl').Value   := date;
-  jd.FieldByName('jd_margin').Value := jd.fieldbyname('jd_harga_jual').Value-jd.fieldbyname('jd_discrp').Value-jd.fieldbyname('jd_harga_pokok').Value;
+  jd.FieldByName('jd_margin').Value := (jd.fieldbyname('jd_harga_jual').Value-jd.fieldbyname('jd_discrp').Value-jd.fieldbyname('jd_harga_pokok').Value)*(jd.fieldbyname('jd_qty').Value);
   jd.FieldByName('jd_total').Value := (jd.fieldbyname('jd_harga_jual').Value-
                                       ((jd.fieldbyname('jd_harga_jual').Value)*(jd.fieldbyname('jd_disc_persen').Value/100))-
                                       jd.fieldbyname('jd_discrp').Value)
@@ -831,7 +874,6 @@ begin
 end;
 
 procedure Tdm.jurnal_umum_detailAfterPost(DataSet: TDataSet);
-
 begin
 
 
@@ -950,16 +992,6 @@ begin
 
    end; // enf if leftstr
 
-  {  // isikan nol utk posting lawan
-    if fieldbyname('jl_debet').Value > 0 then
-    begin
-       fieldbyname('jl_kredit').Value = 0;
-    end;
-
-    if fieldbyname('jl_kredit').Value > 0 then
-    begin
-      fieldbyname('jl_debet').Value = 0;
-    end;                     }
 
  end;  // end of with jurnalumum detail
 

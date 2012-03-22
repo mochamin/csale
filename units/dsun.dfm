@@ -1,9 +1,9 @@
 object ds: Tds
   OldCreateOrder = False
   Left = 766
-  Top = 95
+  Top = 41
   Height = 687
-  Width = 467
+  Width = 538
   object user: TDataSource
     DataSet = dm.user
     Left = 24
@@ -166,7 +166,7 @@ object ds: Tds
   end
   object ptkp: TDataSource
     DataSet = dm.ptkp
-    Left = 344
+    Left = 312
     Top = 264
   end
   object bank: TDataSource
@@ -268,5 +268,15 @@ object ds: Tds
     DataSet = dm.tagihanview
     Left = 384
     Top = 584
+  end
+  object fakturpajakview: TDataSource
+    DataSet = dm.fakturpajakview
+    Left = 384
+    Top = 456
+  end
+  object jasa: TDataSource
+    DataSet = dm.jasa
+    Left = 360
+    Top = 264
   end
 end

@@ -1,6 +1,6 @@
 object glfrm: Tglfrm
-  Left = 373
-  Top = 168
+  Left = 652
+  Top = 198
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -102,18 +102,18 @@ object glfrm: Tglfrm
       TabOrder = 0
       Text = 'blnawal'
       Items.Strings = (
-        'JANUARI'
-        'FEBRUARI'
-        'MARET'
-        'APRIL'
-        'MEI'
-        'JUNI'
-        'JULI'
-        'AGUSTUS'
-        'SEPTEMBER'
-        'OKTOBER'
-        'NOPEMBER'
-        'DESEMBER')
+        'Januari'
+        'Februari'
+        'Maret'
+        'April'
+        'Mei'
+        'Juni'
+        'Juli'
+        'Agustus'
+        'September'
+        'Oktober'
+        'Nopember'
+        'Desember')
     end
     object thnawal: TComboBox
       Left = 257
@@ -132,18 +132,18 @@ object glfrm: Tglfrm
       TabOrder = 2
       Text = 'blnawal'
       Items.Strings = (
-        'JANUARI'
-        'FEBRUARI'
-        'MARET'
-        'APRIL'
-        'MEI'
-        'JUNI'
-        'JULI'
-        'AGUSTUS'
-        'SEPTEMBER'
-        'OKTOBER'
-        'NOPEMBER'
-        'DESEMBER')
+        'Januari'
+        'Februari'
+        'Maret'
+        'April'
+        'Mei'
+        'Juni'
+        'Juli'
+        'Agustus'
+        'September'
+        'Oktober'
+        'Nopember'
+        'Desember')
     end
     object thnakhir: TComboBox
       Left = 256

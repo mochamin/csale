@@ -1,7 +1,7 @@
 object ds: Tds
   OldCreateOrder = False
-  Left = 921
-  Top = 195
+  Left = 766
+  Top = 41
   Height = 687
   Width = 467
   object user: TDataSource
@@ -268,5 +268,10 @@ object ds: Tds
     DataSet = dm.tagihanview
     Left = 384
     Top = 584
+  end
+  object fakturpajakview: TDataSource
+    DataSet = dm.fakturpajakview
+    Left = 384
+    Top = 456
   end
 end

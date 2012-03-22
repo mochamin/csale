@@ -53,7 +53,7 @@ begin
 
   dm.belidetail.edit;
   dm.belidetail.FieldByName('bd_kd_barang').Value        :=  dm.barang.fieldbyname('br_id').Value;
-  dm.belidetail.FieldByName('bd_nama_barang').Value := dm.barang.fieldbyname('br_nama').Value;
+  dm.belidetail.FieldByName('bd_nama_barang').Value      := dm.barang.fieldbyname('br_nama').Value;
   dm.belidetail.Post;
   close;
 end;

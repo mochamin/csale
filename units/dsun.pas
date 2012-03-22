@@ -60,6 +60,8 @@ type
     jurnalumum: TDataSource;
     deliveryview: TDataSource;
     tagihanview: TDataSource;
+    fakturpajakview: TDataSource;
+    jasa: TDataSource;
   private
     { Private declarations }
   public

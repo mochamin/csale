@@ -32,7 +32,6 @@ type
     procedure btnsimpanClick(Sender: TObject);
     procedure btnbatalClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure gridjurnalEnter(Sender: TObject);
   private
     { Private declarations }
     procedure generateRef;
@@ -129,6 +128,7 @@ begin
   dm.jurnal_umum_detail.Append;
   dbref.Text := 'JU'+format('%8.8d',[noref]);
   dbtgl.Text := dateToStr(date);
+  dm.jurnalumum.Post;
 end;
 
 procedure Tjurnalumumfrm.gridjurnalKeyDown(Sender: TObject; var Key: Word;
@@ -199,11 +199,6 @@ end;
 procedure Tjurnalumumfrm.FormCreate(Sender: TObject);
 begin
    aktifkandata(dm.jurnalumum);
-end;
-
-procedure Tjurnalumumfrm.gridjurnalEnter(Sender: TObject);
-begin
-  gridjurnal.Fields[2].FocusControl;
 end;
 
 end.

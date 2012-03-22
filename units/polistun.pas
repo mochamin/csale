@@ -34,6 +34,8 @@ type
     imagelist: TImageList;
     N2: TMenuItem;
     HapusData1: TMenuItem;
+    RvDataSetConnection1: TRvDataSetConnection;
+    rdbarangmstr: TRvDataSetConnection;
     procedure cariChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -221,10 +223,16 @@ begin
     begin
        with dm.gl_hapus do
        begin
-         open;
-         sql.Text := 'delete  from general_ledger where gl_ref = (:ref) ';
+         sql.Text := 'select * from general_ledger where gl_ref = (:ref) ';
          params.ParamByName('ref').Value := dm.polist.fieldbyname('be_kode').Value;
-         execSQL;
+         open;
+         last;
+         while not bof do
+         begin
+         delete;
+         previous;
+         end;
+         applyupdates;
        end;
     end;
 
@@ -254,6 +262,7 @@ begin
     
     dm.polist.Delete;
     dm.polist.ApplyUpdates;
+    dm.belidetail.Refresh;
  end;
 end;
 

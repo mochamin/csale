@@ -84,7 +84,12 @@ uses
   akuntansi in '..\units\akuntansi.pas',
   lunaspiutangun in '..\units\lunaspiutangun.pas' {lunaspiutangfrm},
   datacleanun in '..\units\datacleanun.pas' {datacleanfrm},
-  jurnalumumlistun in '..\units\jurnalumumlistun.pas' {jurnalumumlistfrm};
+  jurnalumumlistun in '..\units\jurnalumumlistun.pas' {jurnalumumlistfrm},
+  penjualanrptun in '..\units\penjualanrptun.pas' {jualrptfrm},
+  projectlapun in '..\units\projectlapun.pas' {projectlapfrm},
+  fakturpajakviewun in '..\units\fakturpajakviewun.pas' {fakturpajakviewfrm},
+  jasaun in '..\units\jasaun.pas' {jasafrm},
+  jasaaddun in '..\units\jasaaddun.pas' {jasaaddfrm};
 
 {$R *.res}
 
@@ -95,6 +100,7 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tds, ds);
   Application.CreateForm(Tprogressfrm, progressfrm);
-  Application.CreateForm(Takunviewfrm, akunviewfrm);
+  Application.CreateForm(Tjasafrm, jasafrm);
+  Application.CreateForm(Tjasaaddfrm, jasaaddfrm);
   Application.Run;
 end.

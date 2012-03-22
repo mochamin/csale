@@ -311,6 +311,13 @@ object barangmstrfrm: Tbarangmstrfrm
         end
         item
           Expanded = False
+          FieldName = 'br_unit'
+          Title.Caption = 'Unit'
+          Width = 100
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'br_type'
           Title.Caption = 'Type'
           Title.Font.Charset = ANSI_CHARSET

@@ -4,7 +4,7 @@ object salaryprosesfrm: Tsalaryprosesfrm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 227
+  ClientHeight = 167
   ClientWidth = 372
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object salaryprosesfrm: Tsalaryprosesfrm
   TextHeight = 13
   object Label2: TLabel
     Left = 16
-    Top = 80
+    Top = 57
     Width = 54
     Height = 16
     Caption = 'Periode:'
@@ -32,7 +32,7 @@ object salaryprosesfrm: Tsalaryprosesfrm
   end
   object cbperiode: TComboBox
     Left = 16
-    Top = 104
+    Top = 81
     Width = 337
     Height = 24
     Font.Charset = ANSI_CHARSET
@@ -89,7 +89,7 @@ object salaryprosesfrm: Tsalaryprosesfrm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 187
+    Top = 127
     Width = 372
     Height = 40
     Align = alBottom

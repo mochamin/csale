@@ -24,6 +24,7 @@ var isInventory      : integer;
     notransaksi      : string;
     isdueclick       : integer;
     bayarpiutang     : double;
+    isJual           : integer;
 
 implementation
 

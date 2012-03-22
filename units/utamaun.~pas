@@ -110,6 +110,12 @@ type
     btndolist: TSpeedButton;
     DataClean1: TMenuItem;
     N21: TMenuItem;
+    Laporan1: TMenuItem;
+    Penjualan2: TMenuItem;
+    N22: TMenuItem;
+    Project2: TMenuItem;
+    DaftarFakturPajak1: TMenuItem;
+    Jasa1: TMenuItem;
     procedure Exit1Click(Sender: TObject);
     procedure GroupSettings1Click(Sender: TObject);
     procedure UserSettings1Click(Sender: TObject);
@@ -168,6 +174,10 @@ type
     procedure btndoClick(Sender: TObject);
     procedure btndolistClick(Sender: TObject);
     procedure DataClean1Click(Sender: TObject);
+    procedure Penjualan2Click(Sender: TObject);
+    procedure Project2Click(Sender: TObject);
+    procedure DaftarFakturPajak1Click(Sender: TObject);
+    procedure Jasa1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -185,7 +195,8 @@ uses grouplistun, userlistun, passchangeun, barangmstrun,fungsi_merp,
   neracaun, projectun, penawaranun, foot_globalun, labarugiun, glun,
   karyawanun, jobdesun, salary_levelun, ptkpun, deptun, bankun, pphun,
   salaryinputun, salaryleveltambahun, penguranggajiun, salaryrptun,
-  jurnalumumun, dolistun, tagihanun, datacleanun, jurnalumumlistun;
+  jurnalumumun, dolistun, tagihanun, datacleanun, jurnalumumlistun,
+  penjualanrptun, projectlapun, fakturpajakviewun, jasaun;
 
 {$R *.dfm}
 
@@ -276,6 +287,7 @@ end;
 
 procedure Tutamafrm.Ritel1Click(Sender: TObject);
 begin
+   isJual := 1;
    aktifkanform(jualfrm,TJualfrm);
 end;
 
@@ -532,6 +544,26 @@ begin
   begin
     aktifkanform(dataCleanfrm,TDataCleanfrm);
   end;
+end;
+
+procedure Tutamafrm.Penjualan2Click(Sender: TObject);
+begin
+ aktifkanform(jualrptfrm,TJualRptfrm);
+end;
+
+procedure Tutamafrm.Project2Click(Sender: TObject);
+begin
+  aktifkanform(projectlapfrm,TProjectlapfrm);
+end;
+
+procedure Tutamafrm.DaftarFakturPajak1Click(Sender: TObject);
+begin
+ aktifkanform(fakturpajakviewfrm,TFakturPajakViewfrm);
+end;
+
+procedure Tutamafrm.Jasa1Click(Sender: TObject);
+begin
+ aktifkanform(Jasafrm,TJasafrm);
 end;
 
 end.

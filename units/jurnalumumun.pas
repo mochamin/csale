@@ -128,6 +128,7 @@ begin
   dm.jurnal_umum_detail.Append;
   dbref.Text := 'JU'+format('%8.8d',[noref]);
   dbtgl.Text := dateToStr(date);
+  dm.jurnalumum.Post;
 end;
 
 procedure Tjurnalumumfrm.gridjurnalKeyDown(Sender: TObject; var Key: Word;

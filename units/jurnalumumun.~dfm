@@ -167,7 +167,6 @@ object jurnalumumfrm: Tjurnalumumfrm
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
-    OnEnter = gridjurnalEnter
     OnKeyDown = gridjurnalKeyDown
     Columns = <
       item

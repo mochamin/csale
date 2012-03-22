@@ -802,4 +802,10 @@ object belisupfrm: Tbelisupfrm
     Left = 464
     Top = 93
   end
+  object rdbarangbelimstr: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = dm.barangrpt
+    Left = 512
+    Top = 125
+  end
 end

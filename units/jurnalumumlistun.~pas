@@ -35,7 +35,9 @@ uses dmun,fungsi_merp, jurnalumumun;
 {$R *.dfm}
 
 procedure Tjurnalumumlistfrm.hapusJurnalUmum;
+var kodetrans : string;
 begin
+  kodetrans := dm.jurnalumum.fieldbyname('ju_kode').AsString;
 
   with dm.jurnaldetail do
   begin
@@ -51,7 +53,23 @@ begin
     applyupdates;
   end;
 
+  with dm.gl_hapus do
+  begin
+    sql.Text := 'select * from general_ledger where gl_ref = (:ref)';
+    params.ParamByName('ref').Value := kodetrans;
+    open;
+    last;
+    while not bof do
+    begin
+    delete;
+    previous;
+    end;
+    applyupdates;
+  end;
+
   dm.jurnalumum.Delete;
+  dm.jurnalumum.ApplyUpdates;
+
 
 end;
 

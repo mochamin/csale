@@ -44,6 +44,7 @@ uses dmun,strutils;
 {$R *.dfm}
 
 procedure Tglfrm.SpeedButton2Click(Sender: TObject);
+var pPeriode : string;
 begin
 
  with dm.gl do
@@ -55,8 +56,18 @@ begin
    params.ParamByName('xThnAwal').Value  := strToInt(thnawal.Text);
    params.ParamByName('xThnAkhir').Value := strToInt(thnakhir.Text);
    open;
- end;//end of with dm.gl  
+ end;//end of with dm.gl
 
+ if blnawal.ItemIndex = blnakhir.ItemIndex then
+ begin
+  pPeriode := blnawal.Text+' '+thnawal.Text;
+ end else
+ begin
+  pPeriode := blnawal.Text+' '+thnawal.Text+'-'+blnakhir.Text+' '+thnakhir.Text; 
+ end;
+
+
+ rpgl.SetParam('Periode',pPeriode);
  rpgl.ProjectFile := 'glpro.rav';
  rpgl.SelectReport('glpro.rav',true);
  rpgl.Execute;

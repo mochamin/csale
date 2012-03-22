@@ -66,7 +66,7 @@ begin
        //showmessage(fieldbyname('kr_id').AsString+' '+fieldbyname('kr_Cek').AsString);
        if (fieldbyname('kr_cek').Value = 'X') then
        begin
-
+          showmessage('x category exist');
           //cek data gaji pokok karyawan pada database karyawan detail
           if dm.karyawan_detail.Locate('kd_no_induk',fieldbyname('kr_no_induk').Value,[loCaseInsensitive])=true then
           begin
@@ -75,7 +75,7 @@ begin
               // cari id dari salary id
              if dm.salary_level.locate('sl_kode',salaryid,[loCaseInsensitive])=true then
              begin
-
+               showmessage('Salary id found - Basic Salary diketahui');
 
               //ambil faktor pengurang dan penambah dalam salary detail
               with dm.salarytambahcount do
@@ -97,6 +97,7 @@ begin
                   penambahGaji := 0;
                 end;
 
+                showmessage('penambah gaji : '+floatToStr(penambahgaji));
                 //cari hasil gaji brutto
                  gapok        := dm.salary_level.fieldbyname('sl_amount').Value;
                  gajibrutto   := gapok+penambahGaji;

@@ -40,9 +40,10 @@ type
     lookproj: TDBLookupComboBox;
     SpeedButton2: TSpeedButton;
     Label10: TLabel;
-    Button1: TButton;
     Label11: TLabel;
     lookppn: TDBComboBox;
+    Label12: TLabel;
+    Label13: TLabel;
     procedure gridjualKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btntambahClick(Sender: TObject);
@@ -54,6 +55,7 @@ type
     procedure btnbatalClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure generatePO;
@@ -74,7 +76,8 @@ var
   nofaktur   : string;
 
 implementation
-uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi;
+uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi,
+  jasaun;
 {$R *.dfm}
 
 procedure Tjualfrm.generateTrans;
@@ -159,13 +162,14 @@ procedure Tjualfrm.hitungTotal;
 begin
  total:=0;
  tax :=0;
+ hpp := 0;
   with dm.jualdetail do
   begin
     first;
     while not eof do
     begin
      total := total+fieldbyname('jd_total').Value;
-     hpp   := hpp+fieldbyname('jd_harga_pokok').Value;
+     hpp   := hpp+(fieldbyname('jd_harga_pokok').Value*fieldbyname('jd_qty').Value);
     next;
     end;
     tax := (total*10/100);
@@ -178,10 +182,19 @@ begin
   open;
   if dbcash.ItemIndex = 0 THEN
   BEGIN
+  
    //jika penjualan bernilai cash
    append;
-   fieldbyname('gl_amount').Value := totalntax;  // posting utk kas
-   fieldbyname('gl_debet').Value := totalntax;  // kas bertambah di debet
+    if lookppn.ItemIndex = 0 then
+   begin
+     fieldbyname('gl_amount').Value := totalntax;  // posting utk piutang
+     fieldbyname('gl_debet').Value := totalntax;  // piutang bertambah di debet
+   end else
+   begin
+     fieldbyname('gl_amount').Value := total;  // posting utk piutang
+     fieldbyname('gl_debet').Value := total;  // piutang bertambah di debet
+   end;
+ 
    fieldbyname('gl_akun').Value  := '110-20';
    fieldbyname('gl_tgl').Value   := date;
    fieldbyname('gl_ref').Value   := notrans.Text;
@@ -210,15 +223,7 @@ begin
 
  END; // end of dbcashitemindex
 
-   //posting ke persediaan kurangkan nilai persediaan sejumlah barang yang terjual
-  { append;
-   fieldbyname('gl_amount').Value := hpp*-1;  // posting persediaan agar bernilai negatif alias persediaan berkurang
-   fieldbyname('gl_kredit').Value := hpp;  // harta berkurang di kredit
-   fieldbyname('gl_akun').Value  := '140-10';    // penyesuaian persediaan
-   fieldbyname('gl_tgl').Value   := date;
-   fieldbyname('gl_ref').Value   := notrans.Text;
-   fieldbyname('gl_desc').Value := 'Penyesuaian Persediaan pada '+notrans.Text;
-   post;  }
+ 
 
    posting(hpp,0,'140-10',date,notrans.Text,'Penyesuaian Persediaan Pada '+notrans.Text,-1);
 
@@ -329,6 +334,11 @@ begin
  begin
    hapus(dm.jualdetail);
  end;
+
+ if key=vk_f5 then
+ begin
+   aktifkanform(jasafrm,TJasafrm);
+ end;
 end;
 
 procedure Tjualfrm.btntambahClick(Sender: TObject);
@@ -436,6 +446,11 @@ end;
 procedure Tjualfrm.Button1Click(Sender: TObject);
 begin
   fakturpajak;
+end;
+
+procedure Tjualfrm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ isJual := 0;
 end;
 
 end.

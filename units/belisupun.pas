@@ -50,6 +50,7 @@ type
     Label1: TLabel;
     DBLookupComboBox1: TDBLookupComboBox;
     SpeedButton4: TSpeedButton;
+    rdbarangbelimstr: TRvDataSetConnection;
     procedure btntambahClick(Sender: TObject);
     procedure btnsimpanClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -80,7 +81,7 @@ var
 implementation
 
 uses dmun,fungsi_merp,strutils, supplierun, barangviewun, custandcpun,
-  calendarun, projectun;
+     calendarun, projectun;
 {$R *.dfm}
 
 procedure Tbelisupfrm.prosesAkunting;
@@ -109,34 +110,34 @@ begin
    BEGIN
      //tambahkan ke akun hutang lancar
     append;
-    fieldbyname('gl_akun').Value := '210-20';  // akun hutang usaha
+    fieldbyname('gl_akun').Value   := '210-20';  // akun hutang usaha
     fieldbyname('gl_amount').Value := total;
     fieldbyname('gl_kredit').Value := total;   // hutang bertambah di kredit
-    fieldbyname('gl_ref').Value := po.Text;
-    fieldbyname('gl_tgl').Value := date;
-    fieldbyname('gl_desc').Value := 'Pembelian,'+looksupp.Text;
+    fieldbyname('gl_ref').Value    := po.Text;
+    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;
    END ELSE
    BEGIN
     // jika pembelian cash
     append;
-    fieldbyname('gl_akun').Value := '110-20'; // akun kas
+    fieldbyname('gl_akun').Value   := '110-20'; // akun kas
     fieldbyname('gl_amount').Value := total*-1;
     fieldbyname('gl_kredit').Value := total;   // kas berkurang di kredit
-    fieldbyname('gl_ref').Value := po.Text;
-    fieldbyname('gl_tgl').Value := date;
-    fieldbyname('gl_desc').Value := 'Pembelian,'+looksupp.Text;
+    fieldbyname('gl_ref').Value    := po.Text;
+    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;
    END;
 
      // tambahkan ke akun persediaan
     append;
-    fieldbyname('gl_akun').Value := '140-10';   // akun persediaan
+    fieldbyname('gl_akun').Value   := '140-10';   // akun persediaan
     fieldbyname('gl_amount').Value := total;
-    fieldbyname('gl_debet').Value := total;  // persediaan bertambah di debet
-    fieldbyname('gl_ref').Value := po.Text;
-    fieldbyname('gl_tgl').Value := date;
-    fieldbyname('gl_desc').Value := 'Pembelian,'+looksupp.Text;
+    fieldbyname('gl_debet').Value  := total;  // persediaan bertambah di debet
+    fieldbyname('gl_ref').Value    := po.Text;
+    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;          
     
     applyupdates;

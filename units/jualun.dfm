@@ -1,6 +1,6 @@
 object jualfrm: Tjualfrm
-  Left = 141
-  Top = 89
+  Left = 185
+  Top = 86
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -14,6 +14,7 @@ object jualfrm: Tjualfrm
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -589,15 +590,31 @@ object jualfrm: Tjualfrm
       Visible = False
       OnClick = btnbatalClick
     end
-    object Button1: TButton
-      Left = 32
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 0
-      Visible = False
-      OnClick = Button1Click
+    object Label12: TLabel
+      Left = 16
+      Top = 10
+      Width = 138
+      Height = 18
+      Caption = '[ENTER] - Input Barang'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 168
+      Top = 10
+      Width = 96
+      Height = 18
+      Caption = '[F5] - Input Jasa'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object gridjual: TDBGrid
@@ -629,7 +646,7 @@ object jualfrm: Tjualfrm
         Expanded = False
         FieldName = 'jd_kd_barang'
         ReadOnly = True
-        Title.Caption = 'Kd Barang'
+        Title.Caption = 'Kd Barang - Jasa'
         Width = 100
         Visible = True
       end
@@ -637,7 +654,7 @@ object jualfrm: Tjualfrm
         Expanded = False
         FieldName = 'jd_nama_barang'
         ReadOnly = True
-        Title.Caption = 'Nama Barang'
+        Title.Caption = 'Nama Barang - Jasa'
         Width = 250
         Visible = True
       end
