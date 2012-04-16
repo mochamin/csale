@@ -4,7 +4,7 @@ object barangaddfrm: Tbarangaddfrm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 289
+  ClientHeight = 306
   ClientWidth = 509
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -62,7 +62,7 @@ object barangaddfrm: Tbarangaddfrm
   end
   object Panel3: TPanel
     Left = 0
-    Top = 249
+    Top = 266
     Width = 509
     Height = 40
     Align = alBottom
@@ -244,7 +244,7 @@ object barangaddfrm: Tbarangaddfrm
     Left = 0
     Top = 53
     Width = 509
-    Height = 196
+    Height = 213
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clOlive
@@ -307,7 +307,7 @@ object barangaddfrm: Tbarangaddfrm
     end
     object Label6: TLabel
       Left = 21
-      Top = 125
+      Top = 148
       Width = 52
       Height = 16
       Caption = 'Kategori:'
@@ -320,7 +320,7 @@ object barangaddfrm: Tbarangaddfrm
     end
     object Label7: TLabel
       Left = 21
-      Top = 149
+      Top = 172
       Width = 51
       Height = 16
       Caption = 'Supplier:'
@@ -333,7 +333,7 @@ object barangaddfrm: Tbarangaddfrm
     end
     object SpeedButton5: TSpeedButton
       Left = 462
-      Top = 122
+      Top = 145
       Width = 23
       Height = 22
       Caption = '...'
@@ -342,12 +342,25 @@ object barangaddfrm: Tbarangaddfrm
     end
     object SpeedButton6: TSpeedButton
       Left = 462
-      Top = 146
+      Top = 169
       Width = 23
       Height = 22
       Caption = '...'
       Flat = True
       OnClick = SpeedButton6Click
+    end
+    object Label8: TLabel
+      Left = 21
+      Top = 122
+      Width = 27
+      Height = 16
+      Caption = 'Unit:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
     end
     object namadepan: TDBEdit
       Left = 141
@@ -420,7 +433,7 @@ object barangaddfrm: Tbarangaddfrm
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 141
-      Top = 122
+      Top = 145
       Width = 318
       Height = 21
       Ctl3D = False
@@ -436,11 +449,11 @@ object barangaddfrm: Tbarangaddfrm
       ListSource = ds.kategori
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 5
     end
     object DBLookupComboBox2: TDBLookupComboBox
       Left = 141
-      Top = 146
+      Top = 169
       Width = 318
       Height = 21
       Ctl3D = False
@@ -456,7 +469,24 @@ object barangaddfrm: Tbarangaddfrm
       ListSource = ds.supplier
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
+    end
+    object dbunit: TDBEdit
+      Left = 141
+      Top = 121
+      Width = 345
+      Height = 22
+      Ctl3D = False
+      DataField = 'br_unit'
+      DataSource = ds.barang
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 4
     end
   end
 end

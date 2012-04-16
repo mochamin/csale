@@ -177,7 +177,7 @@ inherited customeraddfrm: Tcustomeraddfrm
     object DBEdit4: TDBEdit
       Left = 141
       Top = 130
-      Width = 345
+      Width = 343
       Height = 22
       Ctl3D = False
       DataField = 'cu_npwp'
@@ -187,6 +187,7 @@ inherited customeraddfrm: Tcustomeraddfrm
       Font.Height = -13
       Font.Name = 'Arial'
       Font.Style = []
+      MaxLength = 20
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 5

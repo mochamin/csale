@@ -1,22 +1,44 @@
 inherited customerfrm: Tcustomerfrm
-  Left = 386
-  Top = 61
+  Left = 269
+  Top = 66
+  ClientHeight = 616
+  ClientWidth = 885
   OldCreateOrder = True
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel3: TPanel
+    Top = 576
+    Width = 885
+    inherited SpeedButton2: TSpeedButton
+      Left = 65
+      Visible = False
+    end
+    inherited SpeedButton1: TSpeedButton
+      Left = 34
+      Visible = False
+    end
+    inherited btncari: TSpeedButton
+      Left = 16
+      Visible = False
+    end
     inherited SpeedButton3: TSpeedButton
+      Left = 700
       OnClick = SpeedButton3Click
     end
     inherited SpeedButton4: TSpeedButton
+      Left = 789
       OnClick = SpeedButton4Click
     end
+    inherited SpeedButton5: TSpeedButton
+      Left = 615
+    end
     inherited SpeedButton6: TSpeedButton
+      Left = 526
       Visible = False
     end
     object SpeedButton9: TSpeedButton
-      Left = 98
+      Left = 450
       Top = -1
       Width = 76
       Height = 40
@@ -62,7 +84,11 @@ inherited customerfrm: Tcustomerfrm
     end
   end
   inherited Panel2: TPanel
+    Width = 885
+    Height = 471
     inherited DBGrid1: TDBGrid
+      Width = 883
+      Height = 469
       DataSource = ds.customer
       Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       OnDblClick = DBGrid1DblClick
@@ -71,14 +97,14 @@ inherited customerfrm: Tcustomerfrm
           Expanded = False
           FieldName = 'cu_nama'
           Title.Caption = 'Customer'
-          Width = 200
+          Width = 300
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cu_alamat'
           Title.Caption = 'Alamat'
-          Width = 200
+          Width = 300
           Visible = True
         end
         item
@@ -102,11 +128,54 @@ inherited customerfrm: Tcustomerfrm
         end>
     end
   end
+  inherited caripn: TPanel
+    Width = 885
+    Visible = True
+    inherited SpeedButton7: TSpeedButton
+      Visible = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Top = 16
+      Width = 91
+      Height = 18
+      Caption = 'Cari Customer:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object cari: TEdit
+      Left = 104
+      Top = 14
+      Width = 753
+      Height = 24
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Calibri'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+      OnChange = cariChange
+    end
+  end
   inherited Panel1: TPanel
+    Width = 885
     inherited Label1: TLabel
       Top = 11
       Width = 99
       Caption = 'Customer List'
     end
+  end
+  inherited Panel4: TPanel
+    Width = 885
+  end
+  inherited Panel5: TPanel
+    Width = 885
   end
 end

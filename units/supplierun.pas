@@ -50,8 +50,13 @@ end;
 
 procedure Tsupplierfrm.cariChange(Sender: TObject);
 begin
-  inherited;
-  dm.supplier.Locate('sp_name',cari.Text,[loCaseInsensitive,loPartialKey]);
+  //inherited;
+  with dm.supplier do
+  begin
+   sql.Text := 'select * from supplier where sp_name like (:sp) order by sp_id ASC ';
+   params.ParamByName('sp').Value := '%'+cari.Text+'%';
+   open;
+  end;
 end;
 
 procedure Tsupplierfrm.FormCreate(Sender: TObject);

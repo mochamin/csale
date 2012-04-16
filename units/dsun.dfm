@@ -279,4 +279,19 @@ object ds: Tds
     Left = 360
     Top = 264
   end
+  object wpview: TDataSource
+    DataSet = dm.wpview
+    Left = 392
+    Top = 16
+  end
+  object pajakinsert: TDataSource
+    DataSet = dm.pajakinsert
+    Left = 392
+    Top = 72
+  end
+  object fakturpajaklist: TDataSource
+    DataSet = dm.fakturpajaklist
+    Left = 408
+    Top = 136
+  end
 end

@@ -196,7 +196,7 @@ uses grouplistun, userlistun, passchangeun, barangmstrun,fungsi_merp,
   karyawanun, jobdesun, salary_levelun, ptkpun, deptun, bankun, pphun,
   salaryinputun, salaryleveltambahun, penguranggajiun, salaryrptun,
   jurnalumumun, dolistun, tagihanun, datacleanun, jurnalumumlistun,
-  penjualanrptun, projectlapun, fakturpajakviewun, jasaun;
+  penjualanrptun, projectlapun, fakturpajakviewun, jasaun, fakturpajakun;
 
 {$R *.dfm}
 
@@ -481,6 +481,7 @@ end;
 
 procedure Tutamafrm.SpeedButton1Click(Sender: TObject);
 begin
+ isJual := 1;
  aktifkanform(jualfrm,TJualfrm);
 end;
 
@@ -558,7 +559,8 @@ end;
 
 procedure Tutamafrm.DaftarFakturPajak1Click(Sender: TObject);
 begin
- aktifkanform(fakturpajakviewfrm,TFakturPajakViewfrm);
+ //aktifkanform(fakturpajakviewfrm,TFakturPajakViewfrm);
+  aktifkanform(fakturpajakfrm,TFakturPajakfrm);
 end;
 
 procedure Tutamafrm.Jasa1Click(Sender: TObject);

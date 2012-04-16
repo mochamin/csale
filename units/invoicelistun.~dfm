@@ -1,6 +1,6 @@
 object invoicelistfrm: Tinvoicelistfrm
-  Left = 326
-  Top = 80
+  Left = 297
+  Top = 143
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -12,7 +12,6 @@ object invoicelistfrm: Tinvoicelistfrm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
@@ -196,6 +195,18 @@ object invoicelistfrm: Tinvoicelistfrm
       end
       item
         Expanded = False
+        FieldName = 'custnpwp'
+        Title.Caption = 'NPWP'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Calibri'
+        Title.Font.Style = [fsBold]
+        Width = 120
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'PIC'
         Title.Font.Charset = ANSI_CHARSET
         Title.Font.Color = clBlack
@@ -255,6 +266,13 @@ object invoicelistfrm: Tinvoicelistfrm
     object N1: TMenuItem
       Caption = '-'
     end
+    object LihatDetail1: TMenuItem
+      Caption = 'Lihat Detail'
+      OnClick = LihatDetail1Click
+    end
+    object N5: TMenuItem
+      Caption = '-'
+    end
     object cetakinv: TMenuItem
       Caption = 'Cetak/Kirim Invoice'
       OnClick = cetakinvClick
@@ -264,7 +282,6 @@ object invoicelistfrm: Tinvoicelistfrm
     end
     object FakturPajak1: TMenuItem
       Caption = 'Faktur Pajak'
-      OnClick = FakturPajak1Click
     end
     object N4: TMenuItem
       Caption = '-'
@@ -280,51 +297,6 @@ object invoicelistfrm: Tinvoicelistfrm
       Caption = 'Insert to DO'
       OnClick = InputData1Click
     end
-  end
-  object rpPajak: TRvProject
-    Engine = rspajak
-    Left = 112
-    Top = 360
-  end
-  object rdpajak: TRvDataSetConnection
-    RuntimeVisibility = rtDeveloper
-    DataSet = dm.fakturpajakrpt
-    Left = 240
-    Top = 360
-  end
-  object rspajak: TRvSystem
-    TitleSetup = 'Output Options'
-    TitleStatus = 'Report Status'
-    TitlePreview = 'Report Preview'
-    SystemSetups = [ssAllowCopies, ssAllowCollate, ssAllowDuplex, ssAllowDestPreview, ssAllowDestPrinter, ssAllowDestFile, ssAllowPrinterSetup, ssAllowPreviewSetup]
-    SystemFiler.StatusFormat = 'Generating page %p'
-    SystemPreview.FormState = wsMaximized
-    SystemPreview.ZoomFactor = 100.000000000000000000
-    SystemPrinter.ScaleX = 100.000000000000000000
-    SystemPrinter.ScaleY = 100.000000000000000000
-    SystemPrinter.StatusFormat = 'Printing page %p'
-    SystemPrinter.Title = 'ReportPrinter Report'
-    SystemPrinter.UnitsFactor = 1.000000000000000000
-    Left = 152
-    Top = 360
-  end
-  object rdpajakdetail: TRvDataSetConnection
-    RuntimeVisibility = rtEndUser
-    DataSet = dm.fakturpajakdetailrpt
-    Left = 280
-    Top = 360
-  end
-  object rdwp: TRvDataSetConnection
-    RuntimeVisibility = rtEndUser
-    DataSet = dm.wp
-    Left = 328
-    Top = 360
-  end
-  object rdbarangpajak: TRvDataSetConnection
-    RuntimeVisibility = rtEndUser
-    DataSet = dm.barangpajakrpt
-    Left = 360
-    Top = 360
   end
   object ImageList1: TImageList
     Left = 128

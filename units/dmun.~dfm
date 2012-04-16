@@ -1,12 +1,12 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 207
-  Top = 8
+  Left = 200
+  Top = 32
   Height = 701
   Width = 1158
   object conerp: TZConnection
     Protocol = 'mysql-5'
-    HostName = 'localhost'
+    HostName = 'sigmavisualindo'
     Database = 'merp'
     User = 'mocha'
     Password = 'yaallah'
@@ -110,7 +110,6 @@ object dm: Tdm
   object barang: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'SELECT * FROM barang ORDER BY br_id ASC')
     Params = <>
@@ -172,12 +171,43 @@ object dm: Tdm
   object customer: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'SELECT * FROM customer  ORDER BY cu_id desc ')
     Params = <>
     Left = 136
     Top = 120
+    object customercu_id: TIntegerField
+      FieldName = 'cu_id'
+    end
+    object customercu_kode: TStringField
+      FieldName = 'cu_kode'
+      Size = 255
+    end
+    object customercu_nama: TStringField
+      FieldName = 'cu_nama'
+      Size = 255
+    end
+    object customercu_alamat: TStringField
+      FieldName = 'cu_alamat'
+      Size = 255
+    end
+    object customercu_kota: TStringField
+      FieldName = 'cu_kota'
+      Size = 255
+    end
+    object customercu_telp: TStringField
+      FieldName = 'cu_telp'
+      Size = 255
+    end
+    object customercu_npwp: TStringField
+      FieldName = 'cu_npwp'
+      EditMask = '00\.000\.000\.0\-000\.000;1;_'
+      Size = 255
+    end
+    object customercu_alamatfp: TStringField
+      FieldName = 'cu_alamatfp'
+      Size = 255
+    end
   end
   object beli: TZQuery
     Connection = conerp
@@ -283,7 +313,6 @@ object dm: Tdm
   end
   object custpic: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'SELECT * FROM custpic order by cp_id desc ')
     Params = <>
@@ -423,6 +452,10 @@ object dm: Tdm
       FieldName = 'ju_cust_kode'
       Size = 255
     end
+    object jualju_downpayment: TFloatField
+      FieldName = 'ju_downpayment'
+      DisplayFormat = '#,###'
+    end
   end
   object jualdetail: TZQuery
     Connection = conerp
@@ -471,6 +504,7 @@ object dm: Tdm
     end
     object jualdetailjd_discrp: TFloatField
       FieldName = 'jd_discrp'
+      DisplayFormat = '#,###'
     end
     object jualdetailjd_margin: TFloatField
       FieldName = 'jd_margin'
@@ -479,10 +513,13 @@ object dm: Tdm
       FieldName = 'jd_satuan'
       Size = 255
     end
+    object jualdetailjd_type: TStringField
+      FieldName = 'jd_type'
+      Size = 255
+    end
   end
   object gudang: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from gudang')
     Params = <>
@@ -520,6 +557,7 @@ object dm: Tdm
       LookupKeyFields = 'br_id'
       LookupResultField = 'br_nama'
       KeyFields = 'in_kd_barang'
+      Size = 150
       Lookup = True
     end
     object inventoryType: TStringField
@@ -679,6 +717,16 @@ object dm: Tdm
       FieldName = 'ju_cust_kode'
       Size = 255
     end
+    object invoicecustnpwp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'custnpwp'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_npwp'
+      KeyFields = 'ju_cust_kode'
+      Size = 50
+      Lookup = True
+    end
   end
   object orderdetail: TZQuery
     Connection = conerp
@@ -787,15 +835,15 @@ object dm: Tdm
       FieldName = 'dd_type'
       Size = 255
     end
-    object deliverydetaildd_qty: TSmallintField
-      FieldName = 'dd_qty'
-    end
     object deliverydetaildd_satuan: TStringField
       FieldName = 'dd_satuan'
       Size = 255
     end
     object deliverydetaildd_kode_barang: TIntegerField
       FieldName = 'dd_kode_barang'
+    end
+    object deliverydetaildd_qty: TIntegerField
+      FieldName = 'dd_qty'
     end
   end
   object barangdeliver: TZReadOnlyQuery
@@ -805,6 +853,52 @@ object dm: Tdm
     Params = <>
     Left = 425
     Top = 240
+    object barangdeliverjd_id: TIntegerField
+      FieldName = 'jd_id'
+    end
+    object barangdeliverjd_kode: TStringField
+      FieldName = 'jd_kode'
+      Size = 255
+    end
+    object barangdeliverjd_tgl: TDateField
+      FieldName = 'jd_tgl'
+    end
+    object barangdeliverjd_kd_barang: TIntegerField
+      FieldName = 'jd_kd_barang'
+    end
+    object barangdeliverjd_nama_barang: TStringField
+      FieldName = 'jd_nama_barang'
+      Size = 255
+    end
+    object barangdeliverjd_qty: TIntegerField
+      FieldName = 'jd_qty'
+    end
+    object barangdeliverjd_harga_pokok: TFloatField
+      FieldName = 'jd_harga_pokok'
+    end
+    object barangdeliverjd_harga_jual: TFloatField
+      FieldName = 'jd_harga_jual'
+    end
+    object barangdeliverjd_discrp: TFloatField
+      FieldName = 'jd_discrp'
+    end
+    object barangdeliverjd_disc_persen: TSmallintField
+      FieldName = 'jd_disc_persen'
+    end
+    object barangdeliverjd_total: TFloatField
+      FieldName = 'jd_total'
+    end
+    object barangdeliverjd_margin: TFloatField
+      FieldName = 'jd_margin'
+    end
+    object barangdeliverjd_satuan: TStringField
+      FieldName = 'jd_satuan'
+      Size = 255
+    end
+    object barangdeliverjd_type: TStringField
+      FieldName = 'jd_type'
+      Size = 255
+    end
   end
   object project: TZQuery
     Connection = conerp
@@ -841,7 +935,6 @@ object dm: Tdm
   object akun: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from akun order by ak_no asc')
     Params = <>
@@ -884,7 +977,6 @@ object dm: Tdm
   end
   object akun_klas: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from akun_klas')
     Params = <>
@@ -893,7 +985,6 @@ object dm: Tdm
   end
   object akun_subklas: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from akun_subklas')
     Params = <>
@@ -970,11 +1061,8 @@ object dm: Tdm
     Connection = conerp
     CachedUpdates = True
     SQL.Strings = (
-      'select * from jualdetail order by jd_id desc')
+      'select * from jualdetail order by jd_id asc')
     Params = <>
-    MasterFields = 'ju_kode'
-    MasterSource = ds.invoice
-    LinkedFields = 'jd_kode'
     Left = 208
     Top = 376
     object StringField11: TStringField
@@ -1011,12 +1099,17 @@ object dm: Tdm
     end
     object FloatField6: TFloatField
       FieldName = 'jd_discrp'
+      DisplayFormat = '#,###'
     end
     object FloatField7: TFloatField
       FieldName = 'jd_margin'
     end
     object StringField13: TStringField
       FieldName = 'jd_satuan'
+      Size = 255
+    end
+    object invoicedetailjd_type: TStringField
+      FieldName = 'jd_type'
       Size = 255
     end
   end
@@ -1969,7 +2062,6 @@ object dm: Tdm
   end
   object jobdes: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from jobdes')
     Params = <>
@@ -2055,7 +2147,6 @@ object dm: Tdm
   end
   object payadjustment: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from pay_adjustment')
     Params = <>
@@ -2155,7 +2246,6 @@ object dm: Tdm
   end
   object ptkp: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from ptkp')
     Params = <>
@@ -2179,7 +2269,6 @@ object dm: Tdm
   end
   object dept: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from departement')
     Params = <>
@@ -2384,6 +2473,7 @@ object dm: Tdm
   end
   object fakturpajak: TZQuery
     Connection = conerp
+    CachedUpdates = True
     SQL.Strings = (
       'select * from fakturpajak')
     Params = <>
@@ -2598,7 +2688,6 @@ object dm: Tdm
   object salary_level_tambah: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from salary_level_tambah')
     Params = <>
@@ -2660,7 +2749,6 @@ object dm: Tdm
   object salary_level_detail_k: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from salary_level_detail'
       'where sd_jenis='#39'kurang'#39)
@@ -3215,7 +3303,6 @@ object dm: Tdm
   object deliveryview: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'select * from do'
       '')
@@ -3359,7 +3446,6 @@ object dm: Tdm
   end
   object tagihanview: TZQuery
     Connection = conerp
-    Active = True
     SQL.Strings = (
       'select * from invoice')
     Params = <>
@@ -3407,6 +3493,16 @@ object dm: Tdm
       LookupDataSet = customer
       LookupKeyFields = 'cu_kode'
       LookupResultField = 'cu_nama'
+      KeyFields = 'in_cust_kode'
+      Size = 50
+      Lookup = True
+    end
+    object tagihanviewcustnpwp: TStringField
+      FieldKind = fkLookup
+      FieldName = 'custnpwp'
+      LookupDataSet = customer
+      LookupKeyFields = 'cu_kode'
+      LookupResultField = 'cu_npwp'
       KeyFields = 'in_cust_kode'
       Size = 50
       Lookup = True
@@ -3459,54 +3555,11 @@ object dm: Tdm
   object barangdeliverrpt: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
-      'SELECT * FROM barang ORDER BY br_id ASC')
+      'SELECT * FROM dodetail ORDER BY dd_id ASC')
     Params = <>
     Left = 400
     Top = 584
-    object barangdeliverrptbr_id: TIntegerField
-      FieldName = 'br_id'
-      Required = True
-    end
-    object barangdeliverrptbr_kode: TStringField
-      FieldName = 'br_kode'
-      Size = 255
-    end
-    object barangdeliverrptbr_barcode: TStringField
-      FieldName = 'br_barcode'
-      Size = 255
-    end
-    object barangdeliverrptbr_nama: TStringField
-      FieldName = 'br_nama'
-      Size = 255
-    end
-    object barangdeliverrptbr_kategori: TStringField
-      FieldName = 'br_kategori'
-      Size = 255
-    end
-    object barangdeliverrptbr_type: TStringField
-      FieldName = 'br_type'
-      Size = 255
-    end
-    object barangdeliverrptbr_vendor: TStringField
-      FieldName = 'br_vendor'
-      Size = 255
-    end
-    object barangdeliverrptbr_unit: TStringField
-      FieldName = 'br_unit'
-      Size = 255
-    end
-    object barangdeliverrptVendor: TStringField
-      FieldKind = fkLookup
-      FieldName = 'Vendor'
-      LookupDataSet = supplier
-      LookupKeyFields = 'sp_id'
-      LookupResultField = 'sp_name'
-      KeyFields = 'br_vendor'
-      Size = 100
-      Lookup = True
-    end
   end
   object deliverydetailrpt: TZQuery
     Connection = conerp
@@ -3542,7 +3595,6 @@ object dm: Tdm
   object supplierdelrpt: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'SELECT * FROM supplier ORDER BY sp_id ASC')
     Params = <>
@@ -3752,6 +3804,248 @@ object dm: Tdm
     object jasajs_tarif: TFloatField
       FieldName = 'js_tarif'
       DisplayFormat = '#,###'
+    end
+    object jasajs_id: TIntegerField
+      FieldName = 'js_id'
+    end
+  end
+  object wpview: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM customer  ORDER BY cu_id desc ')
+    Params = <>
+    Left = 488
+    Top = 592
+    object IntegerField53: TIntegerField
+      FieldName = 'cu_id'
+    end
+    object StringField100: TStringField
+      FieldName = 'cu_kode'
+      Size = 255
+    end
+    object StringField101: TStringField
+      FieldName = 'cu_nama'
+      Size = 255
+    end
+    object StringField102: TStringField
+      FieldName = 'cu_alamat'
+      Size = 255
+    end
+    object StringField103: TStringField
+      FieldName = 'cu_kota'
+      Size = 255
+    end
+    object StringField104: TStringField
+      FieldName = 'cu_telp'
+      Size = 255
+    end
+    object StringField105: TStringField
+      FieldName = 'cu_npwp'
+      EditMask = '00\.000\.000\.0\-000\.000;1;_'
+      Size = 255
+    end
+    object StringField106: TStringField
+      FieldName = 'cu_alamatfp'
+      Size = 255
+    end
+  end
+  object pajakinsert: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from fakturpajak')
+    Params = <>
+    Left = 792
+    Top = 24
+    object pajakinsertfp_id: TIntegerField
+      FieldName = 'fp_id'
+    end
+    object pajakinsertfp_kode: TStringField
+      FieldName = 'fp_kode'
+      EditMask = '000\.000\-00\.00000000;1;_'
+      Size = 255
+    end
+    object pajakinsertfp_cust_id: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object pajakinsertfp_ref: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object pajakinsertfp_date: TDateField
+      FieldName = 'fp_date'
+    end
+    object pajakinsertfp_cust_kode: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object pajakinsertfp_nama_cust: TStringField
+      FieldName = 'fp_nama_cust'
+      Size = 255
+    end
+    object pajakinsertfp_npwp: TStringField
+      FieldName = 'fp_npwp'
+      EditMask = '00\.000\.000\.0\-000\.000;1;_'
+      Size = 255
+    end
+    object pajakinsertfp_dpp: TFloatField
+      FieldName = 'fp_dpp'
+      DisplayFormat = '#,###'
+      EditFormat = '###'
+    end
+    object pajakinsertfp_ppn: TFloatField
+      FieldName = 'fp_ppn'
+      DisplayFormat = '#,###'
+      EditFormat = '###'
+    end
+    object pajakinsertfp_ppnbm: TFloatField
+      FieldName = 'fp_ppnbm'
+      DisplayFormat = '#,###'
+      EditFormat = '###'
+    end
+  end
+  object fakturpajaklist: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from fakturpajak')
+    Params = <>
+    Left = 856
+    Top = 496
+    object fakturpajaklistfp_id: TIntegerField
+      FieldName = 'fp_id'
+    end
+    object fakturpajaklistfp_kode: TStringField
+      FieldName = 'fp_kode'
+      Required = True
+      Size = 255
+    end
+    object fakturpajaklistfp_cust_id: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object fakturpajaklistfp_ref: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object fakturpajaklistfp_date: TDateField
+      FieldName = 'fp_date'
+    end
+    object fakturpajaklistfp_cust_kode: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object fakturpajaklistfp_nama_cust: TStringField
+      FieldName = 'fp_nama_cust'
+      Size = 255
+    end
+    object fakturpajaklistfp_npwp: TStringField
+      FieldName = 'fp_npwp'
+      Size = 255
+    end
+    object fakturpajaklistfp_dpp: TFloatField
+      FieldName = 'fp_dpp'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajaklistfp_ppn: TFloatField
+      FieldName = 'fp_ppn'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajaklistfp_ppnbm: TFloatField
+      FieldName = 'fp_ppnbm'
+      DisplayFormat = '#,###'
+    end
+  end
+  object fakturpajakcari: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from fakturpajak')
+    Params = <>
+    Left = 856
+    Top = 552
+    object IntegerField55: TIntegerField
+      FieldName = 'fp_id'
+    end
+    object StringField107: TStringField
+      FieldName = 'fp_kode'
+      Required = True
+      Size = 255
+    end
+    object IntegerField56: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object StringField108: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object DateField22: TDateField
+      FieldName = 'fp_date'
+    end
+    object StringField109: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object StringField110: TStringField
+      FieldName = 'fp_nama_cust'
+      Size = 255
+    end
+    object StringField111: TStringField
+      FieldName = 'fp_npwp'
+      Size = 255
+    end
+    object FloatField59: TFloatField
+      FieldName = 'fp_dpp'
+      DisplayFormat = '#,###'
+    end
+    object FloatField60: TFloatField
+      FieldName = 'fp_ppn'
+      DisplayFormat = '#,###'
+    end
+    object FloatField61: TFloatField
+      FieldName = 'fp_ppnbm'
+      DisplayFormat = '#,###'
+    end
+  end
+  object customerview: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM customer  ORDER BY cu_id desc ')
+    Params = <>
+    Left = 384
+    Top = 16
+    object IntegerField57: TIntegerField
+      FieldName = 'cu_id'
+    end
+    object StringField112: TStringField
+      FieldName = 'cu_kode'
+      Size = 255
+    end
+    object StringField113: TStringField
+      FieldName = 'cu_nama'
+      Size = 255
+    end
+    object StringField114: TStringField
+      FieldName = 'cu_alamat'
+      Size = 255
+    end
+    object StringField115: TStringField
+      FieldName = 'cu_kota'
+      Size = 255
+    end
+    object StringField116: TStringField
+      FieldName = 'cu_telp'
+      Size = 255
+    end
+    object StringField117: TStringField
+      FieldName = 'cu_npwp'
+      EditMask = '00\.000\.000\.0\-000\.000;1;_'
+      Size = 255
+    end
+    object StringField118: TStringField
+      FieldName = 'cu_alamatfp'
+      Size = 255
     end
   end
 end

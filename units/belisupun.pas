@@ -114,7 +114,7 @@ begin
     fieldbyname('gl_amount').Value := total;
     fieldbyname('gl_kredit').Value := total;   // hutang bertambah di kredit
     fieldbyname('gl_ref').Value    := po.Text;
-    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_tgl').Value    := StrToDate(dbtgl.Text);
     fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;
    END ELSE
@@ -125,7 +125,7 @@ begin
     fieldbyname('gl_amount').Value := total*-1;
     fieldbyname('gl_kredit').Value := total;   // kas berkurang di kredit
     fieldbyname('gl_ref').Value    := po.Text;
-    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_tgl').Value    := StrToDate(dbtgl.Text);
     fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;
    END;
@@ -136,7 +136,7 @@ begin
     fieldbyname('gl_amount').Value := total;
     fieldbyname('gl_debet').Value  := total;  // persediaan bertambah di debet
     fieldbyname('gl_ref').Value    := po.Text;
-    fieldbyname('gl_tgl').Value    := date;
+    fieldbyname('gl_tgl').Value    := StrToDate(dbtgl.Text);
     fieldbyname('gl_desc').Value   := 'Pembelian,'+looksupp.Text;
     post;          
     

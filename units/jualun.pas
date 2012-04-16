@@ -44,11 +44,12 @@ type
     lookppn: TDBComboBox;
     Label12: TLabel;
     Label13: TLabel;
+    Label14: TLabel;
+    dbdp: TDBEdit;
     procedure gridjualKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btntambahClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure lookcustClick(Sender: TObject);
     procedure btnsimpanClick(Sender: TObject);
     procedure tglChange(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -74,6 +75,8 @@ var
   totalntax  : double;
   tax        : double;
   nofaktur   : string;
+  downpayment : double;
+  downpaymentntax : double;
 
 implementation
 uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi,
@@ -163,6 +166,20 @@ begin
  total:=0;
  tax :=0;
  hpp := 0;
+ downpayment :=0;
+
+  //periksa apakah ada dp atau tidak
+    if dbdp.Text = null then
+    begin
+     downpayment :=0;
+     downpaymentntax :=0;
+    end else
+    begin
+     downpayment := dm.jual.fieldbyname('ju_downpayment').Value;
+     downpaymentntax := downpayment+(downpayment*10/100);
+    end;
+
+    
   with dm.jualdetail do
   begin
     first;
@@ -196,7 +213,7 @@ begin
    end;
  
    fieldbyname('gl_akun').Value  := '110-20';
-   fieldbyname('gl_tgl').Value   := date;
+   fieldbyname('gl_tgl').Value   := strToDate(dbtgl.Text);
    fieldbyname('gl_ref').Value   := notrans.Text;
    fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
    post;
@@ -205,39 +222,58 @@ begin
   BEGIN
    //jika penjualan bernilai piutang
     append;
+
+   // cek apakah opsi ppn 10% diaktifkan
    if lookppn.ItemIndex = 0 then
    begin
-     fieldbyname('gl_amount').Value := totalntax;  // posting utk piutang
-     fieldbyname('gl_debet').Value := totalntax;  // piutang bertambah di debet
+     fieldbyname('gl_amount').Value := totalntax;  // posting utk piutang tanpa downpayment karena downpayment dikreditkan lihat PIUTANG-2
+     fieldbyname('gl_debet').Value  := totalntax;  // piutang bertambah di debet
    end else
    begin
-     fieldbyname('gl_amount').Value := total;  // posting utk piutang
-     fieldbyname('gl_debet').Value := total;  // piutang bertambah di debet
+     fieldbyname('gl_amount').Value := total;  // posting utk piutang tanpa dikurangi downpayment karena besar downpayment nanti akan di kreditkan lihat di bawah
+     fieldbyname('gl_debet').Value  := total;  // piutang bertambah di debet
    end;
 
    fieldbyname('gl_akun').Value  := '130-20';
-   fieldbyname('gl_tgl').Value   := date;
+   fieldbyname('gl_tgl').Value   := strToDate(dbtgl.Text);
    fieldbyname('gl_ref').Value   := notrans.Text;
-   fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
+   fieldbyname('gl_desc').Value  := 'Penjualan,'+lookcust.Text;
    post;
 
  END; // end of dbcashitemindex
 
- 
 
-   posting(hpp,0,'140-10',date,notrans.Text,'Penyesuaian Persediaan Pada '+notrans.Text,-1);
+   //posting di uang muka penjualan dicek apakah ada downpayment atau tidak
+   if downpayment > 0 then
+   begin
+   // PIUTANG-2
+
+
+   //posting di akun cash karena dp itu bernilai cash
+   //tapi cek dahulu apakah opsi ppn diaktifkan atau tidak
+    if lookppn.ItemIndex = 0 then  //apabila penjualan dgn ppn
+    begin
+     // posting di akun cash
+      posting(downpaymentntax,1,'110-20',strToDate(dbtgl.Text),notrans.Text,'Uang Muka Penjualan Pada'+notrans.Text,1);
+      //posting kredit di akun piutang karena downpayment mengurangi total piutang
+      posting(downpaymentntax,0,'130-20',strToDate(dbtgl.Text),notrans.Text,'Uang Muka Penjualan pada '+notrans.Text,-1);
+    end else
+    begin
+     // posting di akun cash
+     posting(downpayment,1,'110-20',strToDate(dbtgl.Text),notrans.Text,'Uang Muka Penjualan Pada'+notrans.Text,1);
+     //posting kredit di akun piutang karena downpayment mengurangi total piutang
+     posting(downpayment,0,'130-20',strToDate(dbtgl.Text),notrans.Text,'Uang Muka Penjualan pada '+notrans.Text,-1);
+    end;
+
+   end; // end of downpayment
+
+   //penyesuaian persediaan
+   posting(hpp,0,'140-10',strToDate(dbtgl.Text),notrans.Text,'Penyesuaian Persediaan Pada '+notrans.Text,-1);
 
    if lookppn.ItemIndex = 0 then
    begin
      // posting ke hutang pajak penjualan
-   append;
-   fieldbyname('gl_amount').Value := tax;  // posting nilai ke akun hutang pajak penjualan
-   fieldbyname('gl_kredit').Value := tax;  // harta berkurang di kredit
-   fieldbyname('gl_akun').Value  := '210-80';    // hutang pajak penjualan
-   fieldbyname('gl_tgl').Value   := date;
-   fieldbyname('gl_ref').Value   := notrans.Text;
-   fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
-   post;
+     posting(tax,0,'210-80',strToDate(dbtgl.Text),notrans.Text,'Penjualan '+lookcust.Text,1);  
    end;
 
    // posting ke akun penjualan produk
@@ -245,7 +281,7 @@ begin
    fieldbyname('gl_amount').Value := total;  // posting nilai ke akun penjualan produk - tanpa nilai pajak
    fieldbyname('gl_kredit').Value := total;  // pendapatan bertambah di kredit
    fieldbyname('gl_akun').Value  := '410-10';    // akun penjualan produk
-   fieldbyname('gl_tgl').Value   := date;
+   fieldbyname('gl_tgl').Value   := strToDate(dbtgl.Text);
    fieldbyname('gl_ref').Value   := notrans.Text;
    fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
    post;
@@ -255,7 +291,7 @@ begin
    fieldbyname('gl_amount').Value := hpp;  // posting nilai ke akun penjualan produk
    fieldbyname('gl_debet').Value := hpp;  // biaya/beban bertambah di debet
    fieldbyname('gl_akun').Value  := '510-10';    // akun biaya
-   fieldbyname('gl_tgl').Value   := date;
+   fieldbyname('gl_tgl').Value   := strToDate(dbtgl.Text);
    fieldbyname('gl_ref').Value   := notrans.Text;
    fieldbyname('gl_desc').Value := 'Penjualan,'+lookcust.Text;
    post;
@@ -349,6 +385,7 @@ begin
   btnbatal.Visible  := true;
   dbtgl.Enabled := false;
   generateTrans;
+  dbdp.Text :='0';
 end;
 
 procedure Tjualfrm.FormCreate(Sender: TObject);
@@ -364,16 +401,6 @@ begin
  tgl.Date := date;
 end;
 
-procedure Tjualfrm.lookcustClick(Sender: TObject);
-begin
- { with dm.custpic do
-  begin
-    sql.Text := 'select * from custpic where cp_custid = (:id ) ';
-    params.ParamByName('id').Value := lookcust.KeyValue;
-    open;
-  end;     }
-end;
-
 procedure Tjualfrm.btnsimpanClick(Sender: TObject);
 begin
   if dbcash.ItemIndex = -1 then
@@ -383,6 +410,7 @@ begin
     abort;
   end;
 
+  if dbdp.Text = '' then dbdp.Text := '0';
   if (dbcash.ItemIndex=1) and (isdueclick=0) then
   begin
      messagedlg('Jatuh Tempo harap dipilih',mtWarning,[mbOk],0);
@@ -397,12 +425,16 @@ begin
     abort;
   end;
 
+ if messagedlg('Simpan Transaksi ini?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+ begin
   hitungTotal;
   kurangiStock;
   dm.jual.Edit;
   dm.jual.FieldByName('ju_total').Value := total;
   dm.jual.FieldByName('ju_tax').Value   := tax;
-  simpan(dm.jual);
+  //simpan(dm.jual);
+  dm.jual.Post;
+  dm.jual.ApplyUpdates;
   dm.jualdetail.Edit;
   dm.jualdetail.Post;
   dm.jualdetail.ApplyUpdates;
@@ -412,6 +444,7 @@ begin
     pnheader.Enabled := false;
   gridjual.Enabled := false;
   isdueclick :=0;
+ end; // end of messagedlg  
 end;
 
 procedure Tjualfrm.tglChange(Sender: TObject);

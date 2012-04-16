@@ -36,6 +36,8 @@ type
     HapusData1: TMenuItem;
     RvDataSetConnection1: TRvDataSetConnection;
     rdbarangmstr: TRvDataSetConnection;
+    lookfilter: TComboBox;
+    Label3: TLabel;
     procedure cariChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -46,10 +48,14 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure LihatDetail1Click(Sender: TObject);
     procedure HapusData1Click(Sender: TObject);
+    procedure lookfilterClick(Sender: TObject);
   private
     { Private declarations }
     procedure Purchasingdetail;
     procedure InventoryDetail;
+    procedure filterSemua;
+    procedure filterLangsung;
+    procedure filterVendor;
   public
     { Public declarations }
   end;
@@ -61,6 +67,33 @@ implementation
 
 uses dmun,fungsi_merp, gudangpickun, jatuhtempoun, orderdetailun,db;
 {$R *.dfm}
+
+procedure Tpolistfrm.filterSemua;
+begin
+  with dm.polist do
+  begin
+    sql.Text := 'select * from beli ORDER BY be_id DESC ';
+    open;
+  end;
+end;
+
+procedure Tpolistfrm.filterLangsung;
+begin
+  with dm.polist do
+  begin
+    sql.Text := 'select * from beli where be_islangsung=1 ORDER BY be_id DESC ';
+    open;
+  end;
+end;
+
+procedure Tpolistfrm.filterVendor;
+begin
+   with dm.polist do
+  begin
+    sql.Text := 'select * from beli where be_islangsung=0 ORDER BY be_id DESC ';
+    open;
+  end;
+end;
 
 procedure Tpolistfrm.Purchasingdetail;
 begin
@@ -264,6 +297,15 @@ begin
     dm.polist.ApplyUpdates;
     dm.belidetail.Refresh;
  end;
+end;
+
+procedure Tpolistfrm.lookfilterClick(Sender: TObject);
+begin
+  case lookfilter.ItemIndex of
+  0 : filterSemua;
+  1 : filterLangsung;
+  2 : filterVendor;
+  end;
 end;
 
 end.

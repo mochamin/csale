@@ -69,19 +69,29 @@ inherited supplierfrm: Tsupplierfrm
   end
   inherited Panel3: TPanel
     inherited SpeedButton3: TSpeedButton
+      Top = 0
+      Height = 38
       OnClick = SpeedButton3Click
     end
     inherited SpeedButton4: TSpeedButton
+      Top = 0
+      Height = 38
       OnClick = SpeedButton4Click
     end
+    inherited SpeedButton5: TSpeedButton
+      Top = 0
+      Height = 38
+    end
     inherited SpeedButton6: TSpeedButton
+      Top = 0
+      Height = 38
       Visible = False
     end
     object SpeedButton9: TSpeedButton
       Left = 99
       Top = 0
       Width = 76
-      Height = 40
+      Height = 38
       Cursor = crHandPoint
       Caption = 'PIC'
       Flat = True
@@ -126,7 +136,7 @@ inherited supplierfrm: Tsupplierfrm
       Left = 23
       Top = 0
       Width = 76
-      Height = 40
+      Height = 38
       Cursor = crHandPoint
       Caption = 'Footnote'
       Flat = True
@@ -181,6 +191,7 @@ inherited supplierfrm: Tsupplierfrm
     end
   end
   inherited caripn: TPanel
+    Visible = True
     object Label2: TLabel
       Left = 10
       Top = 19

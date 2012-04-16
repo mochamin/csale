@@ -191,6 +191,10 @@ inherited supplierfrm: Tsupplierfrm
     end
   end
   inherited caripn: TPanel
+    Visible = True
+    inherited SpeedButton7: TSpeedButton
+      Visible = False
+    end
     object Label2: TLabel
       Left = 10
       Top = 19

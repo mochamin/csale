@@ -9,12 +9,15 @@ uses
 type
   Tcustomerfrm = class(Tlistrepfrm)
     SpeedButton9: TSpeedButton;
+    cari: TEdit;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton9Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure cariChange(Sender: TObject);
   private
     { Private declarations }
     procedure showCP;
@@ -94,6 +97,17 @@ procedure Tcustomerfrm.DBGrid1DblClick(Sender: TObject);
 begin
   inherited;
   showCP;
+end;
+
+procedure Tcustomerfrm.cariChange(Sender: TObject);
+begin
+  //inherited;
+  with dm.customer do
+  begin
+    sql.Text := 'select * from customer where cu_nama like (:nama) order by cu_nama asc ';
+    params.ParamByName('nama').Value := '%'+cari.Text+'%';
+    open;
+  end;
 end;
 
 end.

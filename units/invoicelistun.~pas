@@ -26,24 +26,19 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     FakturPajak1: TMenuItem;
-    rpPajak: TRvProject;
-    rdpajak: TRvDataSetConnection;
-    rspajak: TRvSystem;
-    rdpajakdetail: TRvDataSetConnection;
-    rdwp: TRvDataSetConnection;
-    rdbarangpajak: TRvDataSetConnection;
     Label2: TLabel;
     Label3: TLabel;
     lookcust: TDBLookupComboBox;
     ImageList1: TImageList;
     SpeedButton1: TSpeedButton;
+    N5: TMenuItem;
+    LihatDetail1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure RefreshData1Click(Sender: TObject);
     procedure popinvPopup(Sender: TObject);
     procedure cetakinvClick(Sender: TObject);
     procedure InputData1Click(Sender: TObject);
     procedure HapusInvoice1Click(Sender: TObject);
-    procedure FakturPajak1Click(Sender: TObject);
     procedure cariChange(Sender: TObject);
     procedure cariKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -53,24 +48,27 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure lookcustClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure LihatDetail1Click(Sender: TObject);
   private
     { Private declarations }
     procedure insertToDelivery;
     procedure cetakInvoice;
-    procedure cetakFakturPajak;
-   // procedure generatePO;
+
   public
     { Public declarations }
   end;
 
 var
   invoicelistfrm: Tinvoicelistfrm;
+  pNofaktur : string;
 
 implementation
 
-uses dmun,fungsi_merp,db,strUtils, fakturdaninvoiceun;
+uses dmun,fungsi_merp,db,strUtils, fakturdaninvoiceun, pajakaddun, jualun;
 
 {$R *.dfm}
+
+
 
 procedure Tinvoicelistfrm.cetakInvoice;
 var getNo                 : integer;
@@ -189,34 +187,6 @@ begin
    
 end;
 
-procedure TInvoicelistfrm.cetakFakturPajak;
-var kodefaktur : string;
-begin
-  if dm.invoice.FieldByName('ju_ppn').Value = 'Tidak' then
-  begin
-    messagedlg('Tidak dapat mencetak faktur pajak, karena item ini tidak dikenakan PPN ',mtError,[mbOk],0);
-    abort;
-  end;
-
-  with dm.fakturpajakrpt do
-  begin
-    sql.Text := 'select * from fakturpajak where fp_ref = (:ref) ';
-    params.ParamByName('ref').Value := dm.invoice.fieldbyname('ju_kode').Value;
-    open;
-    kodefaktur := fieldbyname('fp_kode').Value;
-  end;
-
-  with dm.fakturpajakdetailrpt do
-  begin
-    sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
-    params.ParamByName('fk').Value := kodefaktur;
-    open;
-  end;
-
-  rpPajak.ProjectFile := 'fakturpajak.rav';
-  rpPajak.SelectReport('fakturpajak.rav',true);
-  rpPajak.Execute;
-end;
 
 
 
@@ -225,6 +195,7 @@ procedure Tinvoicelistfrm.FormCreate(Sender: TObject);
 begin
  aktifkandata(dm.invoice);
  aktifkandata(dm.customer);
+// aktifkandata(dm.barang);
 end;
 
 procedure Tinvoicelistfrm.insertToDelivery;
@@ -252,12 +223,13 @@ begin
      first;
      while not eof do
      begin
-      
+
       dm.deliverydetail.Append;
       dm.deliverydetail.FieldByName('dd_kode_barang').Value   := fieldbyname('jd_kd_barang').Value;
-      dm.deliverydetail.FieldByName('dd_nama_barang').Value := fieldbyname('jd_nama_barang').Value;
-      //dm.deliverydetail.FieldByName('dd_type').Value        := fieldbyname('').Value;
-      dm.deliverydetail.FieldByName('dd_qty').Value         := fieldbyname('jd_qty').Value;
+      dm.deliverydetail.FieldByName('dd_nama_barang').Value   := fieldbyname('jd_nama_barang').Value;
+      dm.deliverydetail.FieldByName('dd_qty').Value           := fieldbyname('jd_qty').Value;
+      dm.deliverydetail.FieldByName('dd_satuan').Value        := fieldbyname('jd_satuan').Value;
+      dm.deliverydetail.FieldByName('dd_type').Value          := fieldbyname('jd_type').Value;
       dm.deliverydetail.Post;
       next;
      end;
@@ -350,11 +322,6 @@ begin
          dm.invoice.Delete;
        // showmessage('invoice hapus done!');
     end;
-end;
-
-procedure Tinvoicelistfrm.FakturPajak1Click(Sender: TObject);
-begin
- cetakFakturPajak;
 end;
 
 procedure Tinvoicelistfrm.cariChange(Sender: TObject);
@@ -473,6 +440,25 @@ begin
     sql.Text := 'select * from jual order by ju_id desc';
     open;
   end;
+end;
+
+procedure Tinvoicelistfrm.LihatDetail1Click(Sender: TObject);
+begin
+  with dm.jual do
+  begin
+    sql.Text := 'select * from jual where ju_kode = (:kd) ';
+    params.ParamByName('kd').Value := dm.invoice.fieldbyname('ju_kode').Value;
+    open;
+  end;
+
+  with dm.jualdetail do
+  begin
+   sql.Text := 'select * from jualdetail where jd_kode = (:jdkd) ';
+   params.ParamByName('jdkd').Value := dm.invoice.fieldbyname('ju_kode').Value;
+   open;
+  end;
+
+  aktifkanform(jualfrm,TJualfrm);
 end;
 
 end.

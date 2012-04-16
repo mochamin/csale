@@ -25,15 +25,17 @@ type
     N2: TMenuItem;
     RefreshData1: TMenuItem;
     ImageList1: TImageList;
+    FakturPajak1: TMenuItem;
+    N3: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure cariChange(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure lookcustClick(Sender: TObject);
     procedure CetakInvoice1Click(Sender: TObject);
     procedure RefreshData1Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure Pembayaran1Click(Sender: TObject);
+    procedure FakturPajak1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,12 +46,13 @@ var
   tagihanfrm: Ttagihanfrm;
 
 implementation
-uses dmun,fungsi_merp, fakturdaninvoiceun, lunaspiutangun;
+uses dmun,fungsi_merp, fakturdaninvoiceun, lunaspiutangun, pajakaddun;
 {$R *.dfm}
 
 procedure Ttagihanfrm.FormCreate(Sender: TObject);
 begin
   aktifkandata(dm.tagihanview);
+  aktifkandata(dm.customer);
 end;
 
 procedure Ttagihanfrm.cariChange(Sender: TObject);
@@ -77,11 +80,6 @@ end;
 
 end;
 
-procedure Ttagihanfrm.FormActivate(Sender: TObject);
-begin
- aktifkandata(dm.customer);
-end;
-
 procedure Ttagihanfrm.lookcustClick(Sender: TObject);
 begin
 if cbfilter.Checked = true then
@@ -97,8 +95,8 @@ end;
 
 procedure Ttagihanfrm.CetakInvoice1Click(Sender: TObject);
 begin
-  noinvoice := dm.tagihanview.fieldbyname('in_kode').AsString; // variabel global dari fungsi_merp unit
-  notransaksi := dm.tagihanview.fieldbyname('in_kode_jual').AsString;
+//  noinvoice := dm.tagihanview.fieldbyname('in_kode').AsString; // variabel global dari fungsi_merp unit
+ // notransaksi := dm.tagihanview.fieldbyname('in_kode_jual').AsString;
   aktifkanform(invoicprintfrm,TInvoicprintfrm);
 end;
 
@@ -184,6 +182,22 @@ procedure Ttagihanfrm.Pembayaran1Click(Sender: TObject);
 begin
  bayarpiutang := dm.tagihanview.fieldbyname('in_amount').Value+dm.tagihanview.fieldbyname('in_tax').Value;
  aktifkanform(lunasPiutangfrm,TLunasPiutangfrm);
+end;
+
+procedure Ttagihanfrm.FakturPajak1Click(Sender: TObject);
+begin
+ isViewfromJual :=1;
+ generatefakturpajak;
+ aktifkandata(dm.pajakinsert);
+ dm.pajakinsert.Append;
+ dm.pajakinsert.FieldByName('fp_npwp').Value      := dm.tagihanview.fieldbyname('custnpwp').AsString;
+ dm.pajakinsert.FieldByName('fp_nama_cust').Value := dm.tagihanview.fieldbyname('customer').AsString;
+ dm.pajakinsert.FieldByName('fp_dpp').Value       := dm.tagihanview.fieldbyname('in_amount').AsString;
+ dm.pajakinsert.FieldByName('fp_ppn').Value       := dm.tagihanview.fieldbyname('in_tax').Value;
+ dm.pajakinsert.FieldByName('fp_kode').Value      := gNofaktur;
+ dm.pajakinsert.FieldByName('fp_cust_kode').Value := dm.tagihanview.fieldbyname('in_cust_kode').Value;
+ dm.pajakinsert.FieldByName('fp_ref').Value       := dm.tagihanview.fieldbyname('in_kode_jual').Value;
+ aktifkanform(pajakAddfrm,TPajakAddfrm);
 end;
 
 end.

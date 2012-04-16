@@ -3,7 +3,7 @@ object ds: Tds
   Left = 766
   Top = 41
   Height = 687
-  Width = 467
+  Width = 538
   object user: TDataSource
     DataSet = dm.user
     Left = 24
@@ -166,7 +166,7 @@ object ds: Tds
   end
   object ptkp: TDataSource
     DataSet = dm.ptkp
-    Left = 344
+    Left = 312
     Top = 264
   end
   object bank: TDataSource
@@ -273,5 +273,20 @@ object ds: Tds
     DataSet = dm.fakturpajakview
     Left = 384
     Top = 456
+  end
+  object jasa: TDataSource
+    DataSet = dm.jasa
+    Left = 360
+    Top = 264
+  end
+  object wpview: TDataSource
+    DataSet = dm.wpview
+    Left = 392
+    Top = 16
+  end
+  object pajakinsert: TDataSource
+    DataSet = dm.pajakinsert
+    Left = 392
+    Top = 72
   end
 end

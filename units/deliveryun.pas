@@ -186,7 +186,7 @@ end;
 procedure Tdeliveryfrm.SpeedButton2Click(Sender: TObject);
 begin
    isDelivery :=1;
-   aktifkanform(invoicelistfrm,TInvoicelistfrm);
+   aktifkanformbiasa(invoicelistfrm,TInvoicelistfrm);
 end;
 
 procedure Tdeliveryfrm.FormCreate(Sender: TObject);

@@ -15,6 +15,7 @@ object inventoryviewfrm: Tinventoryviewfrm
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -121,10 +122,23 @@ object inventoryviewfrm: Tinventoryviewfrm
         FFFFFFD8D8D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8
         D9D8D8D9D8D8D9D8D8D9D8D8D9D8D8D9FAFAFAFFFFFFFFFFFF00}
     end
+    object Label2: TLabel
+      Left = 8
+      Top = 11
+      Width = 110
+      Height = 16
+      Caption = 'Cari barang/type:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object cari: TEdit
-      Left = 160
+      Left = 136
       Top = 8
-      Width = 489
+      Width = 513
       Height = 23
       Ctl3D = False
       Font.Charset = ANSI_CHARSET
@@ -137,26 +151,6 @@ object inventoryviewfrm: Tinventoryviewfrm
       TabOrder = 0
       OnChange = cariChange
       OnKeyDown = cariKeyDown
-    end
-    object cbcari: TComboBox
-      Left = 8
-      Top = 7
-      Width = 145
-      Height = 24
-      Ctl3D = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -13
-      Font.Name = 'Arial Narrow'
-      Font.Style = []
-      ItemHeight = 16
-      ParentCtl3D = False
-      ParentFont = False
-      TabOrder = 1
-      Text = '[pilih tipe pencarian]'
-      Items.Strings = (
-        'Cari Barang'
-        'Cari Type')
     end
   end
   object gridinv: TDBGrid

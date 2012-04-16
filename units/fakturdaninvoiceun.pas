@@ -49,8 +49,8 @@ uses dmun,strutils,db,fungsi_merp;
 
 procedure Tinvoicprintfrm.FormActivate(Sender: TObject);
 begin
-  numinvoice.Text := noinvoice; // ambil dari variabel global
-  numtransaksi.Text := notransaksi; // ambil dari variabel global
+   numinvoice.Text := dm.tagihanview.fieldbyname('in_kode').Value;
+   numtransaksi.Text := dm.tagihanview.fieldbyname('in_kode_jual').Value;
 end;
 
 procedure Tinvoicprintfrm.btntambahClick(Sender: TObject);
@@ -58,16 +58,18 @@ begin
   with dm.tagihanrpt do
   begin
     sql.Text := 'select * from invoice where in_kode = (:kd) ';
-    params.ParamByName('kd').Value := numinvoice.Text;
+    params.ParamByName('kd').Value := dm.tagihanview.fieldbyname('in_kode').Value;
     open;
   end;
 
   with dm.deliveryrpt do
   begin
     sql.Text := 'select * from do where do_ju_trans = (:dot) ';
-    params.ParamByName('dot').Value := numtransaksi.Text;
+    params.ParamByName('dot').Value := dm.tagihanview.fieldbyname('in_kode_jual').Value;
     open;
   end;
+
+
 
   rpInvoice.ProjectFile := 'invoice.rav';
   rpInvoice.SelectReport('invoice.rav',true);

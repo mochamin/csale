@@ -62,6 +62,9 @@ type
     tagihanview: TDataSource;
     fakturpajakview: TDataSource;
     jasa: TDataSource;
+    wpview: TDataSource;
+    pajakinsert: TDataSource;
+    fakturpajaklist: TDataSource;
   private
     { Private declarations }
   public

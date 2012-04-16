@@ -12,7 +12,6 @@ object invoicprintfrm: Tinvoicprintfrm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
@@ -202,7 +201,7 @@ object invoicprintfrm: Tinvoicprintfrm
   end
   object rdincust: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
-    DataSet = dm.customer
+    DataSet = dm.customerview
     Left = 264
     Top = 8
   end

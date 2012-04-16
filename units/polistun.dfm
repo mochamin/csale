@@ -1,6 +1,6 @@
 object polistfrm: Tpolistfrm
-  Left = 394
-  Top = 63
+  Left = 395
+  Top = 150
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -68,12 +68,12 @@ object polistfrm: Tpolistfrm
     Left = 0
     Top = 53
     Width = 671
-    Height = 52
+    Height = 76
     Align = alTop
     Color = 14869218
     TabOrder = 3
     object Label2: TLabel
-      Left = 10
+      Left = 58
       Top = 19
       Width = 50
       Height = 16
@@ -85,10 +85,23 @@ object polistfrm: Tpolistfrm
       Font.Style = []
       ParentFont = False
     end
+    object Label3: TLabel
+      Left = 10
+      Top = 43
+      Width = 98
+      Height = 16
+      Caption = 'Filter Pembelian:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object cari: TEdit
-      Left = 64
+      Left = 120
       Top = 16
-      Width = 481
+      Width = 529
       Height = 22
       Ctl3D = False
       Font.Charset = ANSI_CHARSET
@@ -101,6 +114,22 @@ object polistfrm: Tpolistfrm
       TabOrder = 0
       OnChange = cariChange
     end
+    object lookfilter: TComboBox
+      Left = 120
+      Top = 41
+      Width = 193
+      Height = 21
+      Ctl3D = False
+      ItemHeight = 13
+      ParentCtl3D = False
+      TabOrder = 1
+      Text = 'Semua Pembelian'
+      OnClick = lookfilterClick
+      Items.Strings = (
+        'Semua'
+        'Langsung'
+        'Vendor')
+    end
   end
   object Panel4: TPanel
     Left = 0
@@ -111,9 +140,9 @@ object polistfrm: Tpolistfrm
   end
   object gridpo: TDBGrid
     Left = 0
-    Top = 105
+    Top = 129
     Width = 671
-    Height = 402
+    Height = 378
     Align = alClient
     Ctl3D = False
     DataSource = ds.polist
@@ -412,7 +441,7 @@ object polistfrm: Tpolistfrm
   object rdbarangmstr: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DataSet = dm.barangrpt
-    Left = 560
-    Top = 69
+    Left = 624
+    Top = 5
   end
 end

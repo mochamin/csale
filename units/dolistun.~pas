@@ -31,12 +31,15 @@ type
     lookcust: TDBLookupComboBox;
     SpeedButton1: TSpeedButton;
     rdbarangdelrpt: TRvDataSetConnection;
+    N2: TMenuItem;
+    RefreshData1: TMenuItem;
     procedure FormActivate(Sender: TObject);
     procedure cariChange(Sender: TObject);
     procedure CetakDeliveryOrder1Click(Sender: TObject);
     procedure HapusDeliveryOrder1Click(Sender: TObject);
     procedure lookcustClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure RefreshData1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -93,7 +96,7 @@ begin
 
    with dm.deliverydetailrpt do
   begin
-    sql.Text :='select * from dodetail where dd_kode = (:dd) ';
+    sql.Text :='select * from dodetail where dd_kode = (:dd) order by dd_id desc ';
     params.ParamByName('dd').Value := dm.deliveryview.fieldbyname('do_kode').Value;
     open;
   end;
@@ -142,6 +145,11 @@ begin
     open;
    end; // end of dm.delivery
    cbcust.Checked := false;
+end;
+
+procedure Tdolistfrm.RefreshData1Click(Sender: TObject);
+begin
+ dm.deliveryview.Refresh;
 end;
 
 end.

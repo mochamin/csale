@@ -33,6 +33,8 @@ type
     DBLookupComboBox2: TDBLookupComboBox;
     SpeedButton5: TSpeedButton;
     SpeedButton6: TSpeedButton;
+    dbunit: TDBEdit;
+    Label8: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton6Click(Sender: TObject);

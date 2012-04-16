@@ -104,6 +104,7 @@ object deliveryfrm: Tdeliveryfrm
       Cursor = crHandPoint
       Caption = '...'
       Flat = True
+      Visible = False
     end
     object Label4: TLabel
       Left = 67
@@ -281,7 +282,6 @@ object deliveryfrm: Tdeliveryfrm
       Ctl3D = False
       DataField = 'do_tgl'
       DataSource = ds.delivery
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -13
@@ -527,10 +527,10 @@ object deliveryfrm: Tdeliveryfrm
     Columns = <
       item
         Expanded = False
-        FieldName = 'dd_kd_barang'
+        FieldName = 'dd_kode_barang'
         ReadOnly = True
         Title.Caption = 'Kd Barang'
-        Width = 150
+        Width = 100
         Visible = True
       end
       item

@@ -89,7 +89,10 @@ uses
   projectlapun in '..\units\projectlapun.pas' {projectlapfrm},
   fakturpajakviewun in '..\units\fakturpajakviewun.pas' {fakturpajakviewfrm},
   jasaun in '..\units\jasaun.pas' {jasafrm},
-  jasaaddun in '..\units\jasaaddun.pas' {jasaaddfrm};
+  jasaaddun in '..\units\jasaaddun.pas' {jasaaddfrm},
+  pajakaddun in '..\units\pajakaddun.pas' {pajakAddfrm},
+  wpviewun in '..\units\wpviewun.pas' {wpviewfrm},
+  fakturpajakun in '..\units\fakturpajakun.pas' {fakturpajakfrm};
 
 {$R *.res}
 
@@ -102,5 +105,6 @@ begin
   Application.CreateForm(Tprogressfrm, progressfrm);
   Application.CreateForm(Tjasafrm, jasafrm);
   Application.CreateForm(Tjasaaddfrm, jasaaddfrm);
+  Application.CreateForm(Twpviewfrm, wpviewfrm);
   Application.Run;
 end.

@@ -1,6 +1,6 @@
 object tagihanfrm: Ttagihanfrm
-  Left = 338
-  Top = 139
+  Left = 286
+  Top = 392
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -15,7 +15,6 @@ object tagihanfrm: Ttagihanfrm
   FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poScreenCenter
-  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -300,6 +299,13 @@ object tagihanfrm: Ttagihanfrm
         FF7FFF7FFF7F}
       Caption = 'Refresh Data'
       OnClick = RefreshData1Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object FakturPajak1: TMenuItem
+      Caption = 'Faktur Pajak'
+      OnClick = FakturPajak1Click
     end
   end
   object ImageList1: TImageList
