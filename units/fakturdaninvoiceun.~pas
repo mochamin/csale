@@ -29,6 +29,7 @@ type
     numtransaksi: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btntambahClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
    
@@ -75,6 +76,12 @@ begin
   rpInvoice.SelectReport('invoice.rav',true);
   rpInvoice.Execute;
   close;
+end;
+
+procedure Tinvoicprintfrm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+ Action := caFree;
 end;
 
 end.

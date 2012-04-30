@@ -12,9 +12,11 @@ inherited customerfrm: Tcustomerfrm
     Width = 885
     inherited SpeedButton2: TSpeedButton
       Left = 65
+      Visible = False
     end
     inherited SpeedButton1: TSpeedButton
       Left = 34
+      Visible = False
     end
     inherited btncari: TSpeedButton
       Left = 16

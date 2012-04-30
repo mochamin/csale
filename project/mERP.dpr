@@ -92,7 +92,8 @@ uses
   jasaaddun in '..\units\jasaaddun.pas' {jasaaddfrm},
   pajakaddun in '..\units\pajakaddun.pas' {pajakAddfrm},
   wpviewun in '..\units\wpviewun.pas' {wpviewfrm},
-  fakturpajakun in '..\units\fakturpajakun.pas' {fakturpajakfrm};
+  fakturpajakun in '..\units\fakturpajakun.pas' {fakturpajakfrm},
+  invoiceamountun in '..\units\invoiceamountun.pas' {invoiceamountfrm};
 
 {$R *.res}
 
@@ -102,9 +103,5 @@ begin
   Application.CreateForm(Tutamafrm, utamafrm);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tds, ds);
-  Application.CreateForm(Tprogressfrm, progressfrm);
-  Application.CreateForm(Tjasafrm, jasafrm);
-  Application.CreateForm(Tjasaaddfrm, jasaaddfrm);
-  Application.CreateForm(Twpviewfrm, wpviewfrm);
   Application.Run;
 end.

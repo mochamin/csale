@@ -77,6 +77,8 @@ var
   nofaktur   : string;
   downpayment : double;
   downpaymentntax : double;
+  balance    : double;
+
 
 implementation
 uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi,
@@ -163,13 +165,15 @@ end;
 procedure Tjualfrm.hitungTotal;
 
 begin
- total:=0;
- tax :=0;
- hpp := 0;
- downpayment :=0;
+ total           :=0;
+ tax             :=0;
+ hpp             := 0;
+ balance         :=0;
+ downpayment     :=0;
+ downpaymentntax :=0;
 
   //periksa apakah ada dp atau tidak
-    if dbdp.Text = null then
+    if dbdp.Text = '0' then
     begin
      downpayment :=0;
      downpaymentntax :=0;
@@ -193,6 +197,7 @@ begin
   end;
 
   totalntax := total+tax;
+  balance   := total-downpayment;
   // post ke gl
   with dm.general_ledger do
   begin
@@ -429,9 +434,19 @@ begin
  begin
   hitungTotal;
   kurangiStock;
+  //showmessage('Balance : '+floatTostr(balance));
+  //showmessage('Downpayment : '+floatTostr(downpaymentntax));
   dm.jual.Edit;
-  dm.jual.FieldByName('ju_total').Value := total;
-  dm.jual.FieldByName('ju_tax').Value   := tax;
+  dm.jual.FieldByName('ju_balance').Value         := balance;
+  dm.jual.FieldByName('ju_downpayment_tax').Value := downpaymentntax;
+  dm.jual.FieldByName('ju_total').Value           := total;
+  dm.jual.FieldByName('ju_tax').Value             := tax;
+  //cek apakah ada downpayment atau tidak
+  if (dbdp.Text <> '0') or (dbdp.Text<>'') then
+  begin
+  //jika ada downpayment maka isdp bernilai 1
+  dm.jual.FieldByName('ju_isdp').Value            := 1;
+  end;
   //simpan(dm.jual);
   dm.jual.Post;
   dm.jual.ApplyUpdates;

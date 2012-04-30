@@ -28,10 +28,11 @@ var isInventory      : integer;
     bayarpiutang     : double;
     isJual           : integer;
     isViewfromJual   : integer;
-    gnpwp             : string;
+    gnpwp            : string;
     gCust            : string;
     gNofaktur        : string;
     gTotal,gPPN      : string;
+    isPrintPajak     : integer;
 
 implementation
 

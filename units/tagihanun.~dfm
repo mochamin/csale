@@ -1,11 +1,11 @@
 object tagihanfrm: Ttagihanfrm
-  Left = 286
-  Top = 392
+  Left = 237
+  Top = 94
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
-  ClientHeight = 568
-  ClientWidth = 903
+  ClientHeight = 569
+  ClientWidth = 1124
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object tagihanfrm: Ttagihanfrm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 903
+    Width = 1124
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -42,7 +42,7 @@ object tagihanfrm: Ttagihanfrm
   object Panel4: TPanel
     Left = 0
     Top = 41
-    Width = 903
+    Width = 1124
     Height = 8
     Align = alTop
     BevelOuter = bvNone
@@ -52,7 +52,7 @@ object tagihanfrm: Ttagihanfrm
   object Panel5: TPanel
     Left = 0
     Top = 49
-    Width = 903
+    Width = 1124
     Height = 4
     Align = alTop
     BevelOuter = bvNone
@@ -64,7 +64,7 @@ object tagihanfrm: Ttagihanfrm
   object Panel2: TPanel
     Left = 0
     Top = 53
-    Width = 903
+    Width = 1124
     Height = 44
     Align = alTop
     TabOrder = 3
@@ -136,14 +136,14 @@ object tagihanfrm: Ttagihanfrm
   object DBGrid1: TDBGrid
     Left = 0
     Top = 97
-    Width = 903
-    Height = 471
+    Width = 1124
+    Height = 472
     Align = alClient
     Ctl3D = False
     DataSource = ds.tagihanview
     Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     ParentCtl3D = False
-    PopupMenu = PopupMenu1
+    PopupMenu = ptagihan
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -156,6 +156,11 @@ object tagihanfrm: Ttagihanfrm
         Expanded = False
         FieldName = 'in_kode'
         Title.Caption = 'No.Invoice'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
         Width = 150
         Visible = True
       end
@@ -163,36 +168,85 @@ object tagihanfrm: Ttagihanfrm
         Expanded = False
         FieldName = 'in_kode_jual'
         Title.Caption = 'Kode Transaksi'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
         Width = 120
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'Customer'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'in_amount'
-        Title.Caption = 'Amount (Rp)'
-        Width = 85
+        Title.Caption = 'Nilai Transaksi (Rp)'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
+        Width = 110
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'in_tax'
-        Title.Caption = 'Tax (Rp)'
-        Width = 85
+        FieldName = 'in_tagihan'
+        Title.Caption = 'Invoice Amount (Rp)'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
+        Width = 120
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'in_tagihan_tax'
+        Title.Caption = 'Invoice Tax (Rp)'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
+        Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'in_date'
         Title.Caption = 'Tgl Transaksi'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'in_balance'
+        Title.Caption = 'Balance (Rp)'
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clBlack
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = [fsBold]
+        Width = 100
         Visible = True
       end>
   end
-  object PopupMenu1: TPopupMenu
+  object ptagihan: TPopupMenu
     Left = 304
     Top = 312
     object CetakInvoice1: TMenuItem
@@ -303,9 +357,9 @@ object tagihanfrm: Ttagihanfrm
     object N3: TMenuItem
       Caption = '-'
     end
-    object FakturPajak1: TMenuItem
-      Caption = 'Faktur Pajak'
-      OnClick = FakturPajak1Click
+    object gf: TMenuItem
+      Caption = 'Generate Faktur Pajak'
+      OnClick = gfClick
     end
   end
   object ImageList1: TImageList

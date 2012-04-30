@@ -43,6 +43,7 @@ type
     rdbarangpajak: TRvDataSetConnection;
     custkode: TDBEdit;
     ref: TDBEdit;
+    btncetak: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure exdppKeyPress(Sender: TObject; var Key: Char);
     procedure MaskEdit1KeyPress(Sender: TObject; var Key: Char);
@@ -53,6 +54,9 @@ type
     procedure btnsimpanClick(Sender: TObject);
     procedure btnbatalClick(Sender: TObject);
     procedure npwpChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btncetakClick(Sender: TObject);
   private
     { Private declarations }
     procedure simpanFaktur;
@@ -112,6 +116,7 @@ begin
       dm.fakturpajakdetail.FieldByName('fd_row_total').Value   := fieldbyname('jd_total').Value;
       dm.fakturpajakdetail.Post;
       dm.fakturpajakdetail.ApplyUpdates;
+      
     next;
     end; // end of while do
   end;
@@ -125,17 +130,23 @@ begin
     sql.Text := 'select * from fakturpajak where fp_kode = (:ref) ';
     params.ParamByName('ref').Value := nodokumen.Text;
     open;
-  
+
     kodefaktur := fieldbyname('fp_kode').Value;
   end;
 
- 
+
   with dm.fakturpajakdetailrpt do
   begin
     sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
     params.ParamByName('fk').Value := kodefaktur;
     open;
   end;
+
+  //tandai flag faktur dengan 1 untuk melihat bahwa faktur pajak sudah dicetak
+  dm.tagihanview.Edit;
+  dm.tagihanview.FieldByName('in_fakturpajak').Value := 1;
+  dm.tagihanview.Post;
+  dm.tagihanview.ApplyUpdates;
 
   rpPajak.ProjectFile := 'fakturpajak.rav';
   rpPajak.SelectReport('fakturpajak.rav',true);
@@ -219,6 +230,60 @@ begin
    btnsimpan.Visible  := true;
    btnbatal.Visible   := true;
  end;
+end;
+
+procedure TpajakAddfrm.FormActivate(Sender: TObject);
+begin
+  if isPrintPajak = 1 then
+  begin
+     btnsimpan.Visible := false;
+     btntambah.Visible := false;
+     btnbatal.Visible  := false;
+     cbcetak.Visible   := false;
+     btncetak.Visible  := true;
+  end else
+  begin
+     btnsimpan.Visible := true;
+     btntambah.Visible := true;
+     btnbatal.Visible  := true;
+     cbcetak.Visible   := true;
+     btncetak.Visible  := false;
+  end;
+end;
+
+procedure TpajakAddfrm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+ isPrintPajak := 0;
+ action := caFree;
+end;
+
+procedure TpajakAddfrm.btncetakClick(Sender: TObject);
+var kodefaktur : string;
+begin
+   with dm.fakturpajakrpt do
+  begin
+    sql.Text := 'select * from fakturpajak where fp_kode = (:ref) ';
+    params.ParamByName('ref').Value := nodokumen.Text;
+    open;
+
+    kodefaktur := fieldbyname('fp_kode').Value;
+  end;
+
+  //showmessage(kodefaktur);
+
+  with dm.fakturpajakdetailrpt do
+  begin
+    sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
+    params.ParamByName('fk').Value := kodefaktur;
+    open;
+  end;
+
+ 
+
+  rpPajak.ProjectFile := 'fakturpajak.rav';
+  rpPajak.SelectReport('fakturpajak.rav',true);
+  rpPajak.Execute;
 end;
 
 end.

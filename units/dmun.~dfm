@@ -1,12 +1,12 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 200
-  Top = 32
+  Left = 353
+  Top = 45
   Height = 701
   Width = 1158
   object conerp: TZConnection
     Protocol = 'mysql-5'
-    HostName = 'sigmavisualindo'
+    HostName = 'localhost'
     Database = 'merp'
     User = 'mocha'
     Password = 'yaallah'
@@ -456,6 +456,24 @@ object dm: Tdm
       FieldName = 'ju_downpayment'
       DisplayFormat = '#,###'
     end
+    object jualju_lunas: TSmallintField
+      FieldName = 'ju_lunas'
+    end
+    object jualju_invoice_sent: TSmallintField
+      FieldName = 'ju_invoice_sent'
+    end
+    object jualju_barang_sent: TSmallintField
+      FieldName = 'ju_barang_sent'
+    end
+    object jualju_downpayment_tax: TFloatField
+      FieldName = 'ju_downpayment_tax'
+    end
+    object jualju_balance: TFloatField
+      FieldName = 'ju_balance'
+    end
+    object jualju_isdp: TSmallintField
+      FieldName = 'ju_isdp'
+    end
   end
   object jualdetail: TZQuery
     Connection = conerp
@@ -726,6 +744,22 @@ object dm: Tdm
       KeyFields = 'ju_cust_kode'
       Size = 50
       Lookup = True
+    end
+    object invoiceju_downpayment: TFloatField
+      FieldName = 'ju_downpayment'
+      DisplayFormat = '#,###'
+      EditFormat = '###'
+    end
+    object invoiceju_balance: TFloatField
+      FieldName = 'ju_balance'
+      DisplayFormat = '#,###'
+    end
+    object invoiceju_downpayment_tax: TFloatField
+      FieldName = 'ju_downpayment_tax'
+      DisplayFormat = '#,###'
+    end
+    object invoiceju_isdp: TSmallintField
+      FieldName = 'ju_isdp'
     end
   end
   object orderdetail: TZQuery
@@ -2479,6 +2513,54 @@ object dm: Tdm
     Params = <>
     Left = 736
     Top = 24
+    object fakturpajakfp_id: TIntegerField
+      FieldName = 'fp_id'
+      Required = True
+    end
+    object fakturpajakfp_kode: TStringField
+      FieldName = 'fp_kode'
+      Required = True
+      Size = 255
+    end
+    object fakturpajakfp_cust_id: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object fakturpajakfp_ref: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object fakturpajakfp_date: TDateField
+      FieldName = 'fp_date'
+    end
+    object fakturpajakfp_cust_kode: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object fakturpajakfp_nama_cust: TStringField
+      FieldName = 'fp_nama_cust'
+      Size = 255
+    end
+    object fakturpajakfp_npwp: TStringField
+      FieldName = 'fp_npwp'
+      Size = 255
+    end
+    object fakturpajakfp_dpp: TFloatField
+      FieldName = 'fp_dpp'
+    end
+    object fakturpajakfp_ppn: TFloatField
+      FieldName = 'fp_ppn'
+    end
+    object fakturpajakfp_ppnbm: TFloatField
+      FieldName = 'fp_ppnbm'
+    end
+    object fakturpajakfp_total_transaksi: TFloatField
+      FieldName = 'fp_total_transaksi'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajakfp_balance: TFloatField
+      FieldName = 'fp_balance'
+      DisplayFormat = '#,###'
+    end
   end
   object fakturpajakdetail: TZQuery
     Connection = conerp
@@ -2498,6 +2580,53 @@ object dm: Tdm
     Params = <>
     Left = 736
     Top = 136
+    object fakturpajakrptfp_id: TIntegerField
+      FieldName = 'fp_id'
+    end
+    object fakturpajakrptfp_kode: TStringField
+      FieldName = 'fp_kode'
+      Size = 255
+    end
+    object fakturpajakrptfp_cust_id: TIntegerField
+      FieldName = 'fp_cust_id'
+    end
+    object fakturpajakrptfp_ref: TStringField
+      FieldName = 'fp_ref'
+      Size = 255
+    end
+    object fakturpajakrptfp_date: TDateField
+      FieldName = 'fp_date'
+    end
+    object fakturpajakrptfp_cust_kode: TStringField
+      FieldName = 'fp_cust_kode'
+      Size = 255
+    end
+    object fakturpajakrptfp_nama_cust: TStringField
+      FieldName = 'fp_nama_cust'
+      Size = 255
+    end
+    object fakturpajakrptfp_npwp: TStringField
+      FieldName = 'fp_npwp'
+      Size = 255
+    end
+    object fakturpajakrptfp_dpp: TFloatField
+      FieldName = 'fp_dpp'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajakrptfp_ppn: TFloatField
+      FieldName = 'fp_ppn'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajakrptfp_ppnbm: TFloatField
+      FieldName = 'fp_ppnbm'
+      DisplayFormat = '#,###'
+    end
+    object fakturpajakrptfp_total_transaksi: TFloatField
+      FieldName = 'fp_total_transaksi'
+    end
+    object fakturpajakrptfp_balance: TFloatField
+      FieldName = 'fp_balance'
+    end
   end
   object fakturpajakdetailrpt: TZQuery
     Connection = conerp
@@ -3443,6 +3572,22 @@ object dm: Tdm
       ReadOnly = True
       Size = 255
     end
+    object tagihanrptin_tagihan: TFloatField
+      FieldName = 'in_tagihan'
+      DisplayFormat = '#,###'
+    end
+    object tagihanrptin_tagihan_tax: TFloatField
+      FieldName = 'in_tagihan_tax'
+      DisplayFormat = '#,###'
+    end
+    object tagihanrptin_tagihan_total: TFloatField
+      FieldName = 'in_tagihan_total'
+      DisplayFormat = '#,###'
+    end
+    object tagihanrptin_balance: TFloatField
+      FieldName = 'in_balance'
+      DisplayFormat = '#,###'
+    end
   end
   object tagihanview: TZQuery
     Connection = conerp
@@ -3506,6 +3651,25 @@ object dm: Tdm
       KeyFields = 'in_cust_kode'
       Size = 50
       Lookup = True
+    end
+    object tagihanviewin_tagihan: TFloatField
+      FieldName = 'in_tagihan'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_tagihan_tax: TFloatField
+      FieldName = 'in_tagihan_tax'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_tagihan_total: TFloatField
+      FieldName = 'in_tagihan_total'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_balance: TFloatField
+      FieldName = 'in_balance'
+      DisplayFormat = '#,###'
+    end
+    object tagihanviewin_fakturpajak: TSmallintField
+      FieldName = 'in_fakturpajak'
     end
   end
   object dorpt: TZQuery
@@ -3856,7 +4020,7 @@ object dm: Tdm
     SQL.Strings = (
       'select * from fakturpajak')
     Params = <>
-    Left = 792
+    Left = 808
     Top = 24
     object pajakinsertfp_id: TIntegerField
       FieldName = 'fp_id'
@@ -3903,6 +4067,14 @@ object dm: Tdm
       FieldName = 'fp_ppnbm'
       DisplayFormat = '#,###'
       EditFormat = '###'
+    end
+    object pajakinsertfp_total_transaksi: TFloatField
+      FieldName = 'fp_total_transaksi'
+      DisplayFormat = '#,###'
+    end
+    object pajakinsertfp_balance: TFloatField
+      FieldName = 'fp_balance'
+      DisplayFormat = '#,###'
     end
   end
   object fakturpajaklist: TZQuery
@@ -4047,5 +4219,21 @@ object dm: Tdm
       FieldName = 'cu_alamatfp'
       Size = 255
     end
+  end
+  object invoicepajakrpt: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 808
+    Top = 88
+  end
+  object invoicehapus: TZQuery
+    Connection = conerp
+    SQL.Strings = (
+      'select * from invoice')
+    Params = <>
+    Left = 376
+    Top = 80
   end
 end

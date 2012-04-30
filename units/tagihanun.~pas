@@ -18,14 +18,14 @@ type
     cari: TEdit;
     lookcust: TDBLookupComboBox;
     cbfilter: TCheckBox;
-    PopupMenu1: TPopupMenu;
+    ptagihan: TPopupMenu;
     CetakInvoice1: TMenuItem;
     N1: TMenuItem;
     Pembayaran1: TMenuItem;
     N2: TMenuItem;
     RefreshData1: TMenuItem;
     ImageList1: TImageList;
-    FakturPajak1: TMenuItem;
+    gf: TMenuItem;
     N3: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure cariChange(Sender: TObject);
@@ -35,7 +35,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure Pembayaran1Click(Sender: TObject);
-    procedure FakturPajak1Click(Sender: TObject);
+    procedure gfClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -184,7 +184,7 @@ begin
  aktifkanform(lunasPiutangfrm,TLunasPiutangfrm);
 end;
 
-procedure Ttagihanfrm.FakturPajak1Click(Sender: TObject);
+procedure Ttagihanfrm.gfClick(Sender: TObject);
 begin
  isViewfromJual :=1;
  generatefakturpajak;
@@ -192,11 +192,13 @@ begin
  dm.pajakinsert.Append;
  dm.pajakinsert.FieldByName('fp_npwp').Value      := dm.tagihanview.fieldbyname('custnpwp').AsString;
  dm.pajakinsert.FieldByName('fp_nama_cust').Value := dm.tagihanview.fieldbyname('customer').AsString;
- dm.pajakinsert.FieldByName('fp_dpp').Value       := dm.tagihanview.fieldbyname('in_amount').AsString;
- dm.pajakinsert.FieldByName('fp_ppn').Value       := dm.tagihanview.fieldbyname('in_tax').Value;
+ dm.pajakinsert.FieldByName('fp_dpp').Value       := dm.tagihanview.fieldbyname('in_tagihan').AsString;
+ dm.pajakinsert.FieldByName('fp_ppn').Value       := dm.tagihanview.fieldbyname('in_tagihan_tax').Value;
  dm.pajakinsert.FieldByName('fp_kode').Value      := gNofaktur;
  dm.pajakinsert.FieldByName('fp_cust_kode').Value := dm.tagihanview.fieldbyname('in_cust_kode').Value;
  dm.pajakinsert.FieldByName('fp_ref').Value       := dm.tagihanview.fieldbyname('in_kode_jual').Value;
+ dm.pajakinsert.FieldByName('fp_total_transaksi').Value    := dm.tagihanview.fieldbyname('in_amount').Value;
+ dm.pajakinsert.FieldByName('fp_balance').Value    := dm.tagihanview.fieldbyname('in_balance').Value;
  aktifkanform(pajakAddfrm,TPajakAddfrm);
 end;
 

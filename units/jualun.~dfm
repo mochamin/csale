@@ -1,6 +1,6 @@
 object jualfrm: Tjualfrm
-  Left = 115
-  Top = 66
+  Left = 131
+  Top = 68
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'

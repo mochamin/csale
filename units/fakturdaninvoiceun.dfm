@@ -15,6 +15,7 @@ object invoicprintfrm: Tinvoicprintfrm
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel

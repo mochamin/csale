@@ -1,0 +1,12 @@
+apabila generate invoice utk transaksi awal dengan downpayment, maka
+form payment tidak dimunculkan melainkan langsung men-generate down payment ke invoice (dgn jumlah downpayment);
+
+*tabel jual:
+-tambahkan field ju_isdp tinyint(1) default 0
+
+faktur pajak:
+===================
+lihat form invoice (tagihanfrm). Terdapat popUp yang akan memunculkan cetak faktur pajak jikalau nilai in_fakturpajak=1
+
+*tabel invoice
+ - tambahkan field in_fakturpajak tinyint(1) defult 0

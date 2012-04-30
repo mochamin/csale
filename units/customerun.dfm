@@ -90,7 +90,7 @@ inherited customerfrm: Tcustomerfrm
       Width = 883
       Height = 469
       DataSource = ds.customer
-      Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
       OnDblClick = DBGrid1DblClick
       Columns = <
         item
