@@ -75,6 +75,7 @@ uses dmun,fungsi_merp, wpviewun,db,strutils;
 
 procedure  Tpajakaddfrm.simpanFaktur;
 var kodefaktur : string;
+   tgl : string;
 begin
    with dm.fakturpajakcari do
    begin
@@ -97,11 +98,19 @@ begin
    end; // end of pajakinsert
   
   //simpan ke tabel fakturpajakdetail
-  with dm.jualdetail do
+  with dm.jualdetailpajak do
   begin
     sql.Text := 'select * from jualdetail where jd_kode = (:jdkd) ';
-    params.ParamByName('jdkd').Value := dm.invoice.fieldbyname('ju_kode').Value;
+    params.ParamByName('jdkd').Value := dm.tagihanview.fieldbyname('in_kode_jual').Value;
     open;
+
+   { if isEmpty = false then
+    begin
+      showmessage('jual detail ditemukan!');
+    end else
+    begin
+      showmessage('kode tidak ditemukan di jual detail');
+    end;}
 
     first;
     while not eof do
@@ -132,6 +141,7 @@ begin
     open;
 
     kodefaktur := fieldbyname('fp_kode').Value;
+    tgl := formatdatetime('dd mmmm yyyy',fieldbyname('fp_date').Value);
   end;
 
 
@@ -150,6 +160,7 @@ begin
 
   rpPajak.ProjectFile := 'fakturpajak.rav';
   rpPajak.SelectReport('fakturpajak.rav',true);
+  rpPajak.SetParam('tanggal',tgl);
   rpPajak.Execute;
   end; // end of cbcetak
 end;
@@ -217,7 +228,7 @@ begin
  if messagedlg('Batalkan Faktur Pajak ini?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
  begin
     dm.pajakinsert.CancelUpdates;
-    dm.pajakinsert.Append;
+   // dm.pajakinsert.Append;
     btnsimpan.Visible := false;
     btnbatal.Visible  := false;
  end;
@@ -241,6 +252,7 @@ begin
      btnbatal.Visible  := false;
      cbcetak.Visible   := false;
      btncetak.Visible  := true;
+     tgldok.Date := dm.fakturpajaklist.fieldbyname('fp_date').Value;
   end else
   begin
      btnsimpan.Visible := true;
@@ -248,7 +260,9 @@ begin
      btnbatal.Visible  := true;
      cbcetak.Visible   := true;
      btncetak.Visible  := false;
+     tgldok.Date := dm.tagihanview.fieldbyname('in_date').Value;
   end;
+
 end;
 
 procedure TpajakAddfrm.FormClose(Sender: TObject;
@@ -260,6 +274,7 @@ end;
 
 procedure TpajakAddfrm.btncetakClick(Sender: TObject);
 var kodefaktur : string;
+    tgl        : string;
 begin
    with dm.fakturpajakrpt do
   begin
@@ -268,6 +283,7 @@ begin
     open;
 
     kodefaktur := fieldbyname('fp_kode').Value;
+    tgl := formatdateTime('dd mmmm yyyy',fieldbyname('fp_date').Value);
   end;
 
   //showmessage(kodefaktur);
@@ -277,12 +293,15 @@ begin
     sql.Text := 'select * from fakturpajakdetail where fd_kode = (:fk) ';
     params.ParamByName('fk').Value := kodefaktur;
     open;
+
+
   end;
 
  
 
   rpPajak.ProjectFile := 'fakturpajak.rav';
   rpPajak.SelectReport('fakturpajak.rav',true);
+  rpPajak.SetParam('tanggal',tgl);
   rpPajak.Execute;
 end;
 

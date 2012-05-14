@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, Mask, DBCtrls;
+  Dialogs, StdCtrls, ExtCtrls, Buttons, Mask, DBCtrls, ComCtrls;
 
 type
   Tinvoiceamountfrm = class(TForm)
@@ -17,8 +17,11 @@ type
     jml: TEdit;
     Label3: TLabel;
     note: TMemo;
+    Label4: TLabel;
+    tgl: TDateTimePicker;
     procedure BitBtn1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure cetakInvoice;
@@ -110,7 +113,7 @@ begin
      append;           
      fieldbyname('in_kode').Value           := noPO;
      fieldbyname('in_kode_jual').Value      := dm.invoice.fieldbyname('ju_kode').Value;
-     fieldbyname('in_date').Value           := date;
+     fieldbyname('in_date').Value           := tgl.Date;
      fieldbyname('in_cust_kode').Value      := dm.invoice.fieldbyname('ju_cust_kode').Value;
      fieldbyname('in_amount').Value         := dm.invoice.fieldbyname('ju_total').Value;
      fieldbyname('in_pic_id').Value         := dm.invoice.fieldbyname('ju_cust_pic').Value;
@@ -172,6 +175,11 @@ begin
   jml.Text := floatToStr(dm.invoice.fieldbyname('ju_total').Value);
  end;
 
+end;
+
+procedure Tinvoiceamountfrm.FormCreate(Sender: TObject);
+begin
+ tgl.Date := date;
 end;
 
 end.

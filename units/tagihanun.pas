@@ -27,6 +27,8 @@ type
     ImageList1: TImageList;
     gf: TMenuItem;
     N3: TMenuItem;
+    N4: TMenuItem;
+    UbahTanggalInvoice1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure cariChange(Sender: TObject);
     procedure lookcustClick(Sender: TObject);
@@ -36,8 +38,12 @@ type
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure Pembayaran1Click(Sender: TObject);
     procedure gfClick(Sender: TObject);
+    procedure UbahTanggalInvoice1Click(Sender: TObject);
+    procedure DBGrid1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
+    procedure ubahTglCepat;
   public
     { Public declarations }
   end;
@@ -46,7 +52,8 @@ var
   tagihanfrm: Ttagihanfrm;
 
 implementation
-uses dmun,fungsi_merp, fakturdaninvoiceun, lunaspiutangun, pajakaddun;
+uses dmun,fungsi_merp, fakturdaninvoiceun, lunaspiutangun, pajakaddun,
+  tanggalubahun,strutils;
 {$R *.dfm}
 
 procedure Ttagihanfrm.FormCreate(Sender: TObject);
@@ -54,6 +61,30 @@ begin
   aktifkandata(dm.tagihanview);
   aktifkandata(dm.customer);
 end;
+
+procedure Ttagihanfrm.ubahTglCepat;
+var tempnomor : string;
+begin
+  
+  with dm.jualcari do
+  begin
+    sql.Text := 'select * from jual where ju_kode = (:kd) ';
+    params.ParamByName('kd').Value := dm.tagihanview.fieldbyname('in_kode_jual').value;
+    open;   
+  end;
+
+   with dm.tagihanview do
+   begin
+    tempnomor := leftStr(fieldbyname('in_kode').Value,10);  // ambil sebelas digit yang tidak diubah oleh perubahan bulan dan tahun
+    edit;
+    fieldbyname('in_date').Value := dm.jualcari.fieldbyname('ju_tgl').Value;
+    fieldbyname('in_kode').Value := tempnomor+RightStr(dateToStr(dm.jualcari.fieldbyname('ju_tgl').Value),7);
+    post;
+    applyupdates;
+   end;
+
+end;
+
 
 procedure Ttagihanfrm.cariChange(Sender: TObject);
 begin
@@ -173,6 +204,37 @@ procedure Ttagihanfrm.DBGrid1DrawColumnCell(Sender: TObject;
     fixRect := Rect;
     fixRect.Left := fixRect.Left + bmpWidth;
   end;   // end of columnfield
+
+  // sisipkan image untuk notifikasi biar lebih jelaaas
+  if (column.Field=dm.tagihanview.FieldByName('in_tagihan_tax')) then
+  begin
+    if dm.tagihanview.FieldByName('in_fakturpajak').Value = 1 then
+    begin
+      imgIndex := 2
+    end else
+    begin
+     imgIndex :=3;
+    end; 
+
+    bitmap := TBitmap.Create;
+    try
+      //grab the image from the ImageList 
+      //(using the "Salary" field's value)
+      ImageList1.GetBitmap(imgIndex,bitmap);
+      //Fix the bitmap dimensions
+      bmpWidth := (Rect.Bottom - Rect.Top);
+      FixRect.Right := Rect.Left + bmpWidth;
+      //draw the bitmap
+      grid.Canvas.StretchDraw(FixRect,bitmap);
+    finally
+      bitmap.Free;
+    end;  // end of try
+
+    // reset the output rectangle, 
+    // add space for the graphics
+    fixRect := Rect;
+    fixRect.Left := fixRect.Left + bmpWidth;
+  end;   // end of columnfield
  
    grid.DefaultDrawColumnCell(FixRect, DataCol, Column, State) ;
 
@@ -186,10 +248,17 @@ end;
 
 procedure Ttagihanfrm.gfClick(Sender: TObject);
 begin
+ if dm.tagihanview.FieldByName('in_fakturpajak').Value = 1 then
+ begin
+   messagedlg('Faktur Pajak untuk Invoice ini sudah di Generate!',mtWarning,[mbOk],0);
+   abort;
+ end;
+
  isViewfromJual :=1;
  generatefakturpajak;
  aktifkandata(dm.pajakinsert);
  dm.pajakinsert.Append;
+ 
  dm.pajakinsert.FieldByName('fp_npwp').Value      := dm.tagihanview.fieldbyname('custnpwp').AsString;
  dm.pajakinsert.FieldByName('fp_nama_cust').Value := dm.tagihanview.fieldbyname('customer').AsString;
  dm.pajakinsert.FieldByName('fp_dpp').Value       := dm.tagihanview.fieldbyname('in_tagihan').AsString;
@@ -200,6 +269,17 @@ begin
  dm.pajakinsert.FieldByName('fp_total_transaksi').Value    := dm.tagihanview.fieldbyname('in_amount').Value;
  dm.pajakinsert.FieldByName('fp_balance').Value    := dm.tagihanview.fieldbyname('in_balance').Value;
  aktifkanform(pajakAddfrm,TPajakAddfrm);
+end;
+
+procedure Ttagihanfrm.UbahTanggalInvoice1Click(Sender: TObject);
+begin
+ aktifkanform(tanggalubahfrm,Ttanggalubahfrm);
+end;
+
+procedure Ttagihanfrm.DBGrid1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=vk_f3 then ubahTglcepat;
 end;
 
 end.

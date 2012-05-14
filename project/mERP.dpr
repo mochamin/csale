@@ -93,7 +93,8 @@ uses
   pajakaddun in '..\units\pajakaddun.pas' {pajakAddfrm},
   wpviewun in '..\units\wpviewun.pas' {wpviewfrm},
   fakturpajakun in '..\units\fakturpajakun.pas' {fakturpajakfrm},
-  invoiceamountun in '..\units\invoiceamountun.pas' {invoiceamountfrm};
+  invoiceamountun in '..\units\invoiceamountun.pas' {invoiceamountfrm},
+  tanggalubahun in '..\units\tanggalubahun.pas' {tanggalubahfrm};
 
 {$R *.res}
 
@@ -103,5 +104,6 @@ begin
   Application.CreateForm(Tutamafrm, utamafrm);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tds, ds);
+  Application.CreateForm(Ttanggalubahfrm, tanggalubahfrm);
   Application.Run;
 end.

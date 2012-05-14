@@ -1,6 +1,6 @@
 object utamafrm: Tutamafrm
-  Left = 233
-  Top = 106
+  Left = 254
+  Top = 173
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
   ClientHeight = 478

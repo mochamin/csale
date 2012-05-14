@@ -4,7 +4,7 @@ object invoiceamountfrm: Tinvoiceamountfrm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP'
-  ClientHeight = 209
+  ClientHeight = 228
   ClientWidth = 374
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,11 +15,12 @@ object invoiceamountfrm: Tinvoiceamountfrm
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
     Left = 16
-    Top = 65
+    Top = 84
     Width = 80
     Height = 16
     Caption = 'Jumlah (Rp):'
@@ -32,10 +33,23 @@ object invoiceamountfrm: Tinvoiceamountfrm
   end
   object Label3: TLabel
     Left = 16
-    Top = 89
+    Top = 108
     Width = 78
     Height = 16
     Caption = 'Keterangan:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 16
+    Top = 60
+    Width = 55
+    Height = 16
+    Caption = 'Tanggal:'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -88,7 +102,7 @@ object invoiceamountfrm: Tinvoiceamountfrm
   end
   object BitBtn1: TBitBtn
     Left = 232
-    Top = 168
+    Top = 186
     Width = 121
     Height = 33
     Caption = '&Generate Invoice'
@@ -97,7 +111,7 @@ object invoiceamountfrm: Tinvoiceamountfrm
   end
   object jml: TEdit
     Left = 104
-    Top = 64
+    Top = 83
     Width = 249
     Height = 22
     Ctl3D = False
@@ -108,18 +122,27 @@ object invoiceamountfrm: Tinvoiceamountfrm
     Font.Style = []
     ParentCtl3D = False
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
     Text = '0'
   end
   object note: TMemo
     Left = 104
-    Top = 88
+    Top = 107
     Width = 249
     Height = 73
     Ctl3D = False
     Lines.Strings = (
       '')
     ParentCtl3D = False
-    TabOrder = 5
+    TabOrder = 6
+  end
+  object tgl: TDateTimePicker
+    Left = 104
+    Top = 59
+    Width = 249
+    Height = 21
+    Date = 41043.576891354170000000
+    Time = 41043.576891354170000000
+    TabOrder = 4
   end
 end

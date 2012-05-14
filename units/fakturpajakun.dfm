@@ -80,6 +80,7 @@ object fakturpajakfrm: Tfakturpajakfrm
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      Visible = False
       Glyph.Data = {
         76050000424D7605000000000000360000002800000015000000150000000100
         18000000000040050000C30E0000C30E00000000000000000000FFFFFFFFFFFF
@@ -139,6 +140,7 @@ object fakturpajakfrm: Tfakturpajakfrm
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      Visible = False
       Glyph.Data = {
         76050000424D7605000000000000360000002800000015000000150000000100
         18000000000040050000C30E0000C30E00000000000000000000FFFFFFFFFFFF

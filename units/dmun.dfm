@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 199
-  Top = 47
+  Left = 228
+  Top = 71
   Height = 701
   Width = 1158
   object conerp: TZConnection
@@ -3591,8 +3591,9 @@ object dm: Tdm
   end
   object tagihanview: TZQuery
     Connection = conerp
+    CachedUpdates = True
     SQL.Strings = (
-      'select * from invoice order by in_kode asc')
+      'select * from invoice order by in_date asc')
     Params = <>
     Left = 336
     Top = 568
@@ -4081,7 +4082,7 @@ object dm: Tdm
     Connection = conerp
     CachedUpdates = True
     SQL.Strings = (
-      'select * from fakturpajak')
+      'select * from fakturpajak order by fp_id asc')
     Params = <>
     Left = 856
     Top = 496
@@ -4235,5 +4236,139 @@ object dm: Tdm
     Params = <>
     Left = 376
     Top = 80
+  end
+  object jualcari: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    SQL.Strings = (
+      'select * from jual order by ju_id desc limit 1')
+    Params = <>
+    Left = 656
+    Top = 560
+    object StringField119: TStringField
+      FieldName = 'ju_kode'
+      Size = 255
+    end
+    object DateField23: TDateField
+      FieldName = 'ju_tgl'
+    end
+    object IntegerField58: TIntegerField
+      FieldName = 'ju_cust_id'
+    end
+    object IntegerField59: TIntegerField
+      FieldName = 'ju_cust_pic'
+    end
+    object DateField24: TDateField
+      FieldName = 'ju_due'
+    end
+    object StringField120: TStringField
+      FieldName = 'ju_bayar'
+      Size = 10
+    end
+    object StringField121: TStringField
+      FieldName = 'ju_po'
+      Size = 255
+    end
+    object IntegerField60: TIntegerField
+      FieldName = 'ju_project'
+    end
+    object FloatField62: TFloatField
+      FieldName = 'ju_total'
+    end
+    object FloatField63: TFloatField
+      FieldName = 'ju_tax'
+    end
+    object StringField122: TStringField
+      FieldName = 'ju_akun'
+      Size = 255
+    end
+    object StringField123: TStringField
+      FieldName = 'ju_ppn'
+      Size = 5
+    end
+    object StringField124: TStringField
+      FieldName = 'ju_cust_kode'
+      Size = 255
+    end
+    object FloatField64: TFloatField
+      FieldName = 'ju_downpayment'
+      DisplayFormat = '#,###'
+    end
+    object SmallintField10: TSmallintField
+      FieldName = 'ju_lunas'
+    end
+    object SmallintField11: TSmallintField
+      FieldName = 'ju_invoice_sent'
+    end
+    object SmallintField12: TSmallintField
+      FieldName = 'ju_barang_sent'
+    end
+    object FloatField65: TFloatField
+      FieldName = 'ju_downpayment_tax'
+    end
+    object FloatField66: TFloatField
+      FieldName = 'ju_balance'
+    end
+    object SmallintField13: TSmallintField
+      FieldName = 'ju_isdp'
+    end
+  end
+  object jualdetailpajak: TZQuery
+    Connection = conerp
+    CachedUpdates = True
+    BeforePost = jualdetailBeforePost
+    OnNewRecord = jualdetailNewRecord
+    SQL.Strings = (
+      'select * from jualdetail order by jd_id desc limit 1')
+    Params = <>
+    Left = 392
+    Top = 184
+    object StringField125: TStringField
+      FieldName = 'jd_kode'
+      Size = 255
+    end
+    object DateField25: TDateField
+      FieldName = 'jd_tgl'
+    end
+    object IntegerField61: TIntegerField
+      FieldName = 'jd_kd_barang'
+    end
+    object StringField126: TStringField
+      FieldName = 'jd_nama_barang'
+      Size = 255
+    end
+    object IntegerField62: TIntegerField
+      FieldName = 'jd_qty'
+    end
+    object FloatField67: TFloatField
+      FieldName = 'jd_harga_pokok'
+      DisplayFormat = '#,###'
+    end
+    object FloatField68: TFloatField
+      FieldName = 'jd_harga_jual'
+      DisplayFormat = '#,###'
+    end
+    object SmallintField14: TSmallintField
+      FieldName = 'jd_disc_persen'
+    end
+    object FloatField69: TFloatField
+      FieldName = 'jd_total'
+      DisplayFormat = '#,###'
+    end
+    object FloatField70: TFloatField
+      FieldName = 'jd_discrp'
+      DisplayFormat = '#,###'
+    end
+    object FloatField71: TFloatField
+      FieldName = 'jd_margin'
+    end
+    object StringField127: TStringField
+      FieldName = 'jd_satuan'
+      Size = 255
+    end
+    object StringField128: TStringField
+      FieldName = 'jd_type'
+      Size = 255
+    end
   end
 end
