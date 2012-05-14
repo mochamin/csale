@@ -1,12 +1,12 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 353
-  Top = 45
+  Left = 199
+  Top = 47
   Height = 701
   Width = 1158
   object conerp: TZConnection
     Protocol = 'mysql-5'
-    HostName = 'localhost'
+    HostName = 'sigmavisualindo'
     Database = 'merp'
     User = 'mocha'
     Password = 'yaallah'

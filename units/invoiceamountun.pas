@@ -166,6 +166,12 @@ begin
  begin
     jml.Text := floatToStr(dm.invoice.fieldbyname('ju_downpayment').Value);
  end;
+
+ if dm.invoice.FieldByName('ju_downpayment').Value < 1 then
+ begin
+  jml.Text := floatToStr(dm.invoice.fieldbyname('ju_total').Value);
+ end;
+
 end;
 
 end.

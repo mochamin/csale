@@ -326,7 +326,7 @@ begin
 
    dm.delivery.Edit;
    dm.delivery.FieldByName('do_ju_trans').Value   :=  dm.invoice.fieldbyname('ju_kode').Value;
-   dm.delivery.FieldByName('do_cust_id').Value    :=  dm.invoice.fieldbyname('ju_cust_id').Value;
+   dm.delivery.FieldByName('do_cust_kode').Value  :=  dm.invoice.fieldbyname('ju_cust_kode').Value;
    dm.delivery.FieldByName('do_cust_pic').Value   :=  dm.invoice.fieldbyname('ju_cust_pic').Value;
 
   // input ke deliverydetail data barang-barang

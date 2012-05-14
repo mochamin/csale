@@ -1,6 +1,6 @@
 object tagihanfrm: Ttagihanfrm
-  Left = 97
-  Top = 147
+  Left = 154
+  Top = 76
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'

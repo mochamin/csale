@@ -116,6 +116,7 @@ type
     Project2: TMenuItem;
     DaftarFakturPajak1: TMenuItem;
     Jasa1: TMenuItem;
+    btnfaktur: TSpeedButton;
     procedure Exit1Click(Sender: TObject);
     procedure GroupSettings1Click(Sender: TObject);
     procedure UserSettings1Click(Sender: TObject);
@@ -178,6 +179,7 @@ type
     procedure Project2Click(Sender: TObject);
     procedure DaftarFakturPajak1Click(Sender: TObject);
     procedure Jasa1Click(Sender: TObject);
+    procedure btnfakturClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -566,6 +568,11 @@ end;
 procedure Tutamafrm.Jasa1Click(Sender: TObject);
 begin
  aktifkanform(Jasafrm,TJasafrm);
+end;
+
+procedure Tutamafrm.btnfakturClick(Sender: TObject);
+begin
+  aktifkanform(fakturpajakfrm,TFakturPajakfrm);
 end;
 
 end.

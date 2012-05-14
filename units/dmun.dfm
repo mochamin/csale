@@ -6,7 +6,7 @@ object dm: Tdm
   Width = 1158
   object conerp: TZConnection
     Protocol = 'mysql-5'
-    HostName = 'localhost'
+    HostName = 'sigmavisualindo'
     Database = 'merp'
     User = 'mocha'
     Password = 'yaallah'
@@ -3592,7 +3592,7 @@ object dm: Tdm
   object tagihanview: TZQuery
     Connection = conerp
     SQL.Strings = (
-      'select * from invoice')
+      'select * from invoice order by in_kode asc')
     Params = <>
     Left = 336
     Top = 568
