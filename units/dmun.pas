@@ -955,6 +955,8 @@ type
     FloatField71: TFloatField;
     StringField127: TStringField;
     StringField128: TStringField;
+    billingalert: TZQuery;
+    message: TZQuery;
     procedure belidetailBeforePost(DataSet: TDataSet);
     procedure footnoteBeforePost(DataSet: TDataSet);
     procedure jualdetailNewRecord(DataSet: TDataSet);

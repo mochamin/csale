@@ -1,6 +1,6 @@
 object fakturpajakfrm: Tfakturpajakfrm
-  Left = 260
-  Top = 42
+  Left = 249
+  Top = 83
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -190,9 +190,9 @@ object fakturpajakfrm: Tfakturpajakfrm
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 94
+    Top = 97
     Width = 959
-    Height = 444
+    Height = 441
     Align = alClient
     Ctl3D = False
     DataSource = ds.fakturpajaklist
@@ -304,26 +304,26 @@ object fakturpajakfrm: Tfakturpajakfrm
     Left = 0
     Top = 53
     Width = 959
-    Height = 41
+    Height = 44
     Align = alTop
     TabOrder = 5
     object Label2: TLabel
       Left = 8
       Top = 11
-      Width = 140
-      Height = 18
+      Width = 125
+      Height = 15
       Caption = 'Cari No Dokumen/WP:'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -13
       Font.Name = 'Calibri'
       Font.Style = [fsBold]
       ParentFont = False
     end
     object cari: TEdit
-      Left = 160
+      Left = 136
       Top = 8
-      Width = 761
+      Width = 329
       Height = 24
       Ctl3D = False
       Font.Charset = ANSI_CHARSET
@@ -335,6 +335,34 @@ object fakturpajakfrm: Tfakturpajakfrm
       ParentFont = False
       TabOrder = 0
       OnChange = cariChange
+    end
+    object cbwp: TCheckBox
+      Left = 502
+      Top = 13
+      Width = 136
+      Height = 17
+      Caption = 'Filter Customer/WP:'
+      Ctl3D = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = cbwpClick
+    end
+    object lookcust: TDBLookupComboBox
+      Left = 640
+      Top = 10
+      Width = 281
+      Height = 21
+      KeyField = 'cu_kode'
+      ListField = 'cu_nama'
+      ListSource = ds.wpview
+      TabOrder = 2
+      OnClick = lookcustClick
     end
   end
   object poppajak: TPopupMenu
@@ -408,6 +436,13 @@ object fakturpajakfrm: Tfakturpajakfrm
         FF7FFF7FFF7F}
       Caption = 'Refresh Data'
       OnClick = RefreshData1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object HapusFakturPajak1: TMenuItem
+      Caption = '&Hapus Faktur Pajak'
+      OnClick = HapusFakturPajak1Click
     end
   end
 end

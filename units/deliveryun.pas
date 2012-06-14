@@ -41,6 +41,7 @@ type
     procedure btnbatalClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
     procedure generateDO;
@@ -54,7 +55,7 @@ var
 
 implementation
 
-uses dmun,fungsi_merp, polistun, invoicelistun,strutils;
+uses dmun,fungsi_merp, polistun, invoicelistun,strutils, custpicun;
 {$R *.dfm}
 
 procedure Tdeliveryfrm.flagtransaksiJual;
@@ -193,6 +194,17 @@ procedure Tdeliveryfrm.FormCreate(Sender: TObject);
 begin
  aktifkandata(dm.delivery);
  aktifkandata(dm.deliverydetail);
+end;
+
+procedure Tdeliveryfrm.SpeedButton3Click(Sender: TObject);
+begin
+ with dm.custpic do
+ begin
+   sql.Text := 'SELECT * FROM custpic WHERE cp_custid = (:kdcust) ';
+   params.ParamByName('kdcust').Value :=lookcust.KeyValue;
+   open;
+ end;
+ aktifkanform(custpicfrm,TCustpicfrm);
 end;
 
 end.

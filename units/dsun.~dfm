@@ -1,6 +1,6 @@
 object ds: Tds
   OldCreateOrder = False
-  Left = 766
+  Left = 648
   Top = 41
   Height = 687
   Width = 538
@@ -288,5 +288,15 @@ object ds: Tds
     DataSet = dm.pajakinsert
     Left = 392
     Top = 72
+  end
+  object fakturpajaklist: TDataSource
+    DataSet = dm.fakturpajaklist
+    Left = 408
+    Top = 136
+  end
+  object billingalert: TDataSource
+    DataSet = dm.billingalert
+    Left = 424
+    Top = 192
   end
 end

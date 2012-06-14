@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, StdCtrls, Buttons, ExtCtrls, Menus;
+  Dialogs, Grids, DBGrids, StdCtrls, Buttons, ExtCtrls, Menus, DBCtrls;
 
 type
   Tfakturpajakfrm = class(TForm)
@@ -23,10 +23,17 @@ type
     CetakFaktur1: TMenuItem;
     N1: TMenuItem;
     RefreshData1: TMenuItem;
+    cbwp: TCheckBox;
+    lookcust: TDBLookupComboBox;
+    N2: TMenuItem;
+    HapusFakturPajak1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure cariChange(Sender: TObject);
     procedure CetakFaktur1Click(Sender: TObject);
     procedure RefreshData1Click(Sender: TObject);
+    procedure lookcustClick(Sender: TObject);
+    procedure cbwpClick(Sender: TObject);
+    procedure HapusFakturPajak1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,13 +51,14 @@ uses dmun,fungsi_merp, pajakaddun;
 procedure Tfakturpajakfrm.FormCreate(Sender: TObject);
 begin
   aktifkandata(dm.fakturpajaklist);
+  aktifkandata(dm.wpview);
 end;
 
 procedure Tfakturpajakfrm.cariChange(Sender: TObject);
 begin
- with dm.fakturpajak do
+ with dm.fakturpajaklist do
  begin
-   sql.Text := 'select * from fakturpajak where fp_kode like (:kd ) or fp_nama_cust like (:kd) order by fp_id asc ';
+   sql.Text := 'select * from fakturpajak where fp_kode like (:kd ) or fp_nama_cust like (:kd) order by fp_kode asc ';
    params.ParamByName('kd').Value   := '%'+cari.Text+'%';
    open;
  end;
@@ -79,6 +87,40 @@ end;
 procedure Tfakturpajakfrm.RefreshData1Click(Sender: TObject);
 begin
     dm.fakturpajaklist.Refresh;
+end;
+
+procedure Tfakturpajakfrm.lookcustClick(Sender: TObject);
+begin
+ if cbwp.Checked = true then
+ begin
+  with dm.fakturpajaklist do
+  begin
+    sql.Text := 'select * from fakturpajak where fp_nama_cust like (:nm) ';
+    params.ParamByName('nm').Value := '%'+lookcust.Text+'%';
+    open;
+  end;
+ end; // end of cbwp 
+end;
+
+procedure Tfakturpajakfrm.cbwpClick(Sender: TObject);
+begin
+ if cbwp.Checked = false then
+ begin
+  with dm.fakturpajaklist do
+     begin
+       sql.Text := 'select * from fakturpajak order by fp_kode asc ';
+       open;
+     end;
+  end;   
+end;
+
+procedure Tfakturpajakfrm.HapusFakturPajak1Click(Sender: TObject);
+begin
+ if messagedlg('Anda Yakin menghapus faktur ini?',mtWarning,[mbYes,mbNo],0)=mrYes then
+ begin
+   dm.fakturpajaklist.Delete;
+   dm.fakturpajaklist.ApplyUpdates;
+ end;
 end;
 
 end.

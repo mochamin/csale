@@ -268,6 +268,10 @@ end;
 procedure TpajakAddfrm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+ if dm.pajakinsert.State in [dsEdit,dsInsert] then
+ begin
+   dm.pajakinsert.CancelUpdates;
+ end;
  isPrintPajak := 0;
  action := caFree;
 end;

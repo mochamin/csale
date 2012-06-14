@@ -1,0 +1,9 @@
+dclclxdb70.bpl
+dclclxstd70.bpl
+dcldb70.bpl
+dclsmp70.bpl
+dbx70.bpl
+dclstd70.bpl
+dclofficexp70.bpl
+dclrave70.bpl
+zcomponentdesign70.bpl

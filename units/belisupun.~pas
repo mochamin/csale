@@ -66,6 +66,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
     procedure generatePO;
@@ -81,7 +82,7 @@ var
 implementation
 
 uses dmun,fungsi_merp,strutils, supplierun, barangviewun, custandcpun,
-     calendarun, projectun;
+     calendarun, projectun, supplierpicun;
 {$R *.dfm}
 
 procedure Tbelisupfrm.prosesAkunting;
@@ -386,6 +387,16 @@ end;
 procedure Tbelisupfrm.SpeedButton4Click(Sender: TObject);
 begin
   aktifkanform(projectfrm,tprojectfrm);
+end;
+
+procedure Tbelisupfrm.SpeedButton3Click(Sender: TObject);
+begin
+  with dm.supplierpic do
+  begin
+    sql.Text := 'SELECT * FROM supplier_pic WHERE sp_supplier = '+dm.supplier.fieldbyname('sp_id').AsString;
+    open;
+  end;
+  aktifkanform(supplierPicfrm,TsupplierPicfrm);
 end;
 
 end.

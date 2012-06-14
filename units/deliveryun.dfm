@@ -1,6 +1,6 @@
 object deliveryfrm: Tdeliveryfrm
-  Left = 42
-  Top = 124
+  Left = 257
+  Top = 121
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'mERP 1.0'
@@ -127,7 +127,7 @@ object deliveryfrm: Tdeliveryfrm
       Cursor = crHandPoint
       Caption = '...'
       Flat = True
-      Visible = False
+      OnClick = SpeedButton3Click
     end
     object Label5: TLabel
       Left = 42

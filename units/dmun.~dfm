@@ -1,15 +1,14 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 228
-  Top = 71
+  Left = 219
+  Top = 135
   Height = 701
-  Width = 1158
+  Width = 1024
   object conerp: TZConnection
     Protocol = 'mysql-5'
-    HostName = 'sigmavisualindo'
+    HostName = 'localhost'
     Database = 'merp'
-    User = 'mocha'
-    Password = 'yaallah'
+    User = 'root'
     Connected = True
     Left = 8
     Top = 8
@@ -137,7 +136,6 @@ object dm: Tdm
   object supplier: TZQuery
     Connection = conerp
     CachedUpdates = True
-    Active = True
     SQL.Strings = (
       'SELECT * FROM supplier ORDER BY sp_id ASC')
     Params = <>
@@ -265,7 +263,6 @@ object dm: Tdm
       'SELECT * FROM belidetail')
     Params = <>
     MasterFields = 'be_kode'
-    MasterSource = ds.beli
     LinkedFields = 'bd_kode'
     Left = 248
     Top = 128
@@ -325,7 +322,6 @@ object dm: Tdm
       'select * from custpic')
     Params = <>
     MasterFields = 'cu_id'
-    MasterSource = ds.customer
     LinkedFields = 'cp_custid'
     Left = 328
     Top = 8
@@ -484,7 +480,6 @@ object dm: Tdm
       'select * from jualdetail order by jd_id desc limit 1')
     Params = <>
     MasterFields = 'ju_kode'
-    MasterSource = ds.jual
     LinkedFields = 'jd_kode'
     Left = 136
     Top = 176
@@ -853,7 +848,6 @@ object dm: Tdm
       'select * from dodetail order by dd_id desc limit 1')
     Params = <>
     MasterFields = 'do_kode'
-    MasterSource = ds.delivery
     LinkedFields = 'dd_kode'
     Left = 264
     Top = 240
@@ -1291,7 +1285,6 @@ object dm: Tdm
       'select * from quotation_detail')
     Params = <>
     MasterFields = 'qt_kode'
-    MasterSource = ds.penawaran
     LinkedFields = 'qd_kode'
     Left = 241
     Top = 432
@@ -2212,7 +2205,6 @@ object dm: Tdm
       'select * from karyawan_detail')
     Params = <>
     MasterFields = 'kr_no_induk'
-    MasterSource = ds.karyawan
     LinkedFields = 'kd_no_induk'
     Left = 848
     Top = 144
@@ -2568,7 +2560,6 @@ object dm: Tdm
       'select * from fakturpajakdetail')
     Params = <>
     MasterFields = 'fp_kode'
-    MasterSource = ds.fakturpajak
     LinkedFields = 'fd_kode'
     Left = 736
     Top = 80
@@ -2850,7 +2841,6 @@ object dm: Tdm
       'where sd_jenis='#39'tambah'#39)
     Params = <>
     MasterFields = 'sl_kode'
-    MasterSource = ds.salary_level
     LinkedFields = 'sd_kode'
     Left = 1048
     Top = 184
@@ -2883,7 +2873,6 @@ object dm: Tdm
       'where sd_jenis='#39'kurang'#39)
     Params = <>
     MasterFields = 'sl_kode'
-    MasterSource = ds.salary_level
     LinkedFields = 'sd_kode'
     Left = 936
     Top = 424
@@ -3177,7 +3166,6 @@ object dm: Tdm
       'select * from jurnal_umum_detail')
     Params = <>
     MasterFields = 'ju_kode'
-    MasterSource = ds.jurnalumum
     LinkedFields = 'jl_kode'
     Left = 536
     Top = 488
@@ -4082,7 +4070,7 @@ object dm: Tdm
     Connection = conerp
     CachedUpdates = True
     SQL.Strings = (
-      'select * from fakturpajak')
+      'select * from fakturpajak order by fp_kode asc')
     Params = <>
     Left = 856
     Top = 496
@@ -4370,5 +4358,14 @@ object dm: Tdm
       FieldName = 'jd_type'
       Size = 255
     end
+  end
+  object billingalert: TZQuery
+    Connection = conerp
+    Active = True
+    SQL.Strings = (
+      'select * from billalert')
+    Params = <>
+    Left = 704
+    Top = 400
   end
 end

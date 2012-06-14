@@ -117,6 +117,7 @@ object jualfrm: Tjualfrm
       Cursor = crHandPoint
       Caption = '...'
       Flat = True
+      OnClick = SpeedButton6Click
     end
     object Label4: TLabel
       Left = 51
@@ -139,7 +140,7 @@ object jualfrm: Tjualfrm
       Cursor = crHandPoint
       Caption = '...'
       Flat = True
-      Visible = False
+      OnClick = SpeedButton3Click
     end
     object Label5: TLabel
       Left = 909
@@ -289,6 +290,7 @@ object jualfrm: Tjualfrm
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 1
+      OnClick = lookcustClick
     end
     object lookpic: TDBLookupComboBox
       Left = 77

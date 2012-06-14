@@ -57,6 +57,9 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure lookcustClick(Sender: TObject);
   private
     { Private declarations }
     procedure generatePO;
@@ -82,7 +85,7 @@ var
 
 implementation
 uses dmun,fungsi_merp,db, inventoryviewun,strutils, projectun,akuntansi,
-  jasaun;
+  jasaun, customerun, custpicun;
 {$R *.dfm}
 
 procedure Tjualfrm.generateTrans;
@@ -477,13 +480,16 @@ end;
 
 procedure Tjualfrm.btnbatalClick(Sender: TObject);
 begin
-   batal(dm.jual);
+ if messagedlg('Batalkan transaksi ini?',mtConfirmation,[mbYes,mbNo],0)=mrYes then
+ begin
+   dm.jual.CancelUpdates;
    dm.jualdetail.CancelUpdates;
    btnsimpan.Visible := false;
    btnbatal.Visible := false;
    pnheader.Enabled := false;
   gridjual.Enabled := false;
   isdueclick :=0;
+ end;  
 end;
 
 procedure Tjualfrm.SpeedButton2Click(Sender: TObject);
@@ -499,6 +505,32 @@ end;
 procedure Tjualfrm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
  isJual := 0;
+end;
+
+procedure Tjualfrm.SpeedButton6Click(Sender: TObject);
+begin
+ aktifkanform(customerfrm,TCustomerfrm);
+end;
+
+procedure Tjualfrm.SpeedButton3Click(Sender: TObject);
+begin
+ with dm.custpic do
+ begin
+   sql.Text := 'SELECT * FROM custpic WHERE cp_cust_kode = (:kdcust) ';
+   params.ParamByName('kdcust').Value := lookcust.KeyValue;
+   open;
+ end;
+ aktifkanform(custpicfrm,TCustpicfrm);
+end;
+
+procedure Tjualfrm.lookcustClick(Sender: TObject);
+begin
+  with dm.custpic do
+ begin
+   sql.Text := 'SELECT * FROM custpic WHERE cp_cust_kode = (:kdcust) ';
+   params.ParamByName('kdcust').Value := lookcust.KeyValue;
+   open;
+ end;
 end;
 
 end.

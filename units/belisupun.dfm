@@ -323,7 +323,7 @@ object belisupfrm: Tbelisupfrm
       Cursor = crHandPoint
       Caption = '...'
       Flat = True
-      Visible = False
+      OnClick = SpeedButton3Click
     end
     object Label5: TLabel
       Left = 637

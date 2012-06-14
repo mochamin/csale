@@ -1,0 +1,1 @@
+mysql -uroot -pyaallah < merp.sql

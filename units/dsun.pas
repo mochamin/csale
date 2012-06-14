@@ -65,6 +65,8 @@ type
     wpview: TDataSource;
     pajakinsert: TDataSource;
     fakturpajaklist: TDataSource;
+    billingalert: TDataSource;
+    message: TDataSource;
   private
     { Private declarations }
   public

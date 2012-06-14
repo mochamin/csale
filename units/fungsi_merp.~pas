@@ -1,7 +1,7 @@
 unit fungsi_merp;
 
 interface
-uses zdataset,dialogs,controls,qforms,forms,classes,Toolwin,windows,dmun,strutils,sysutils;
+uses zdataset,dialogs,dmun,controls,qforms,forms,classes,Toolwin,windows,strutils,sysutils;
 
 procedure simpan(namaDataSet:TZquery);
 procedure batal(namaDataSet:TZquery);
@@ -10,7 +10,7 @@ procedure aktifkanformbiasa(namaform : TForm;TnamaForm:TComponentClass);
 procedure aktifkandata(namaDataSet:TZquery);
 procedure aktifkandataread(namaDataSet:TZReadOnlyquery);
 procedure hapus(namaDataSet:TZQuery);
-procedure aktifkanchild(namafrm:Tform);
+{procedure aktifkanchild(namafrm:Tform);}
 procedure generateFakturPajak;
 
 
@@ -45,7 +45,7 @@ begin
   {Child := TMDIChild.Create(Application);
   Child.Caption := Name;
   if FileExists(Name) then Child.Memo1.Lines.LoadFromFile(Name);
-end;}
+end;  }
 
 procedure generatefakturpajak;
 var fpdb : string;
@@ -78,6 +78,7 @@ begin
   if namaform = nil then
   begin
     Application.CreateForm(TnamaForm,namaForm);
+    namaform.Caption := 'cSale 2.0';
     namaform.ShowModal;
   end else
   begin
